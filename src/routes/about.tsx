@@ -109,7 +109,7 @@ function About() {
                       width={member.portrait.width}
                       height={member.portrait.height}
                       loading="lazy"
-                      className="h-full min-h-0 w-full object-cover object-[center_20%]"
+                      className="h-full min-h-0 w-full object-cover object-top"
                     />
                   ) : (
                     <UserRound className="size-20 text-background/30" />

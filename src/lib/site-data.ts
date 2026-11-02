@@ -114,8 +114,12 @@ export const companyLeadership = [
     name: "Mr. Vishwanath Baigar",
     role: "Founder & Director",
     description: "With over two decades of hands-on experience in power transmission, he helped build RB International from a Bhosari shop into a multi-division supplier.",
-    portrait: null,
-    note: "Founder portrait and biography are placeholders pending approval.",
+    portrait: {
+      src: "/team/vishwanath-baigar.jpeg",
+      width: 983,
+      height: 1280,
+    },
+    note: "Biography is a placeholder pending approval.",
   },
   {
     name: "Mr. Omprakash D. Rokhade",
