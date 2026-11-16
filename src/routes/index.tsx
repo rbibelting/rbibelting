@@ -17,7 +17,7 @@ import { pageHead } from "@/lib/seo";
 import hero from "@/assets/factory-hero.jpg";
 
 const stats = [
-  ["20+", "Years in industry"],
+  ["23+", "Years in industry"],
   ["500+", "Active clients"],
   ["50+", "Brand partnerships"],
   ["PAN India", "+ Export service"],
@@ -109,9 +109,10 @@ function Home() {
         </div>
       </section>
 
-      <section className="pattern-shared content-surface py-16 text-foreground">
+      <section id="brand-partners" className="pattern-shared content-surface py-16 text-foreground scroll-mt-24">
         <div className="site-container">
           <SectionHeading
+            wide
             eyebrow={brandPartnersContent.eyebrow}
             title={brandPartnersContent.title}
           />
@@ -122,7 +123,79 @@ function Home() {
         </div>
       </section>
 
-      <section className="pattern-shared pb-6 pt-20" aria-label={upcomingRange.title}>
+
+      <IndustryShowcase />
+
+      <section className="pattern-shared bg-muted py-20">
+        <div className="site-container">
+          <SectionHeading
+            wide
+            eyebrow="Why manufacturers call us"
+            title={
+              <>
+                <span className="block whitespace-nowrap text-[1.05rem] leading-[1.08] min-[390px]:text-[1.25rem] sm:hidden">Fast answers. Genuine products.</span>
+                <span className="block whitespace-nowrap text-[1.05rem] leading-[1.08] min-[390px]:text-[1.25rem] sm:hidden">Practical support.</span>
+                <span className="hidden sm:inline">Fast answers. Genuine products. Practical support.</span>
+              </>
+            }
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceBenefits.map(({ title, description }, index) => {
+              const Icon = [PackageCheck, MessageSquareText, Handshake][index] ?? Handshake;
+              return (
+              <article key={title} className="border-t-4 border-primary bg-background p-7">
+                <Icon className="text-primary" />
+                <h3 className="mt-5 text-xl font-black">{title}</h3>
+                <p className="mt-3 leading-7 text-muted-foreground">{description}</p>
+              </article>
+              );
+            })}
+          </div>
+          <div className="mt-10 flex flex-col justify-between gap-6 border-t border-border pt-8 md:flex-row md:items-center">
+          <div>
+            <h2 className="text-3xl font-black">Have a specific requirement?</h2>
+            <p className="mt-2 leading-7 text-muted-foreground">
+              Send the brand, code, size or application. Our team aims to respond within 2 business hours.
+            </p>
+          </div>
+          <Button size="lg" className="shrink-0 self-start md:self-center" onClick={() => setOpen(true)}>
+            Submit enquiry
+          </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Temporarily hidden; remove the hidden attribute to restore the brand network. */}
+      <section hidden className="pattern-shared py-16">
+        <div className="site-container">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div>
+              <p className="eyebrow">Brand network</p>
+              <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">Brands associated with RBI Belting</h2>
+              <p className="mt-4 leading-7 text-muted-foreground">
+                A broad supply network for belts, motion control, adhesives, maintenance chemicals and industrial MRO requirements.
+              </p>
+              <Button variant="outline" className="mt-5" onClick={() => setOpen(true)}>
+                <MessageSquareText />
+                Ask for a brand
+              </Button>
+            </div>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2.5">
+              {allBrands.map((brand, index) => (
+                <div
+                  key={brand}
+                  className={`inline-flex min-h-10 items-center border px-3 py-1.5 text-xs font-black leading-tight shadow-sm transition hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-primary-foreground sm:min-h-12 sm:px-4 sm:py-2 sm:text-sm ${brandThemes[index % brandThemes.length]}`}
+                >
+                  <span className="mr-3 text-xs font-black opacity-50">{String(index + 1).padStart(2, "0")}</span>
+                  {brand}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="own-range" className="pattern-shared py-20" aria-label={upcomingRange.title}>
         <div className="site-container grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-10">
           <div className="min-w-0">
             <SectionHeading
@@ -159,79 +232,6 @@ function Home() {
               <p className="mt-1 text-sm leading-6 text-muted-foreground">{upcomingRange.interestDescription}</p>
             </div>
           </aside>
-        </div>
-      </section>
-
-      <IndustryShowcase />
-
-      <section className="pattern-shared bg-muted py-20">
-        <div className="site-container">
-          <SectionHeading
-            eyebrow="Why manufacturers call us"
-            title={
-              <>
-                <span className="block whitespace-nowrap text-[1.05rem] leading-[1.08] min-[390px]:text-[1.25rem] sm:hidden">Fast answers. Genuine products.</span>
-                <span className="block whitespace-nowrap text-[1.05rem] leading-[1.08] min-[390px]:text-[1.25rem] sm:hidden">Practical support.</span>
-                <span className="hidden sm:inline">Fast answers. Genuine products. Practical support.</span>
-              </>
-            }
-          />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceBenefits.map(({ title, description }, index) => {
-              const Icon = [PackageCheck, MessageSquareText, Handshake][index] ?? Handshake;
-              return (
-              <article key={title} className="border-t-4 border-primary bg-background p-7">
-                <Icon className="text-primary" />
-                <h3 className="mt-5 text-xl font-black">{title}</h3>
-                <p className="mt-3 leading-7 text-muted-foreground">{description}</p>
-              </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="pattern-shared content-surface py-14 text-foreground">
-        <div className="site-container flex flex-col justify-between gap-6 md:flex-row md:items-center">
-          <div>
-            <h2 className="text-3xl font-black">Have a specific requirement?</h2>
-            <p className="mt-2 text-primary-foreground/75">
-              Send the brand, code, size or application. Our team aims to respond within 2 business hours.
-            </p>
-          </div>
-          <Button size="lg" variant="secondary" onClick={() => setOpen(true)}>
-            Submit enquiry
-          </Button>
-        </div>
-      </section>
-
-      {/* Temporarily hidden; remove the hidden attribute to restore the brand network. */}
-      <section hidden className="pattern-shared py-16">
-        <div className="site-container">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-            <div>
-              <p className="eyebrow">Brand network</p>
-              <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">Brands associated with RBI Belting</h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                A broad supply network for belts, motion control, adhesives, maintenance chemicals and industrial MRO requirements.
-              </p>
-              <Button variant="outline" className="mt-5" onClick={() => setOpen(true)}>
-                <MessageSquareText />
-                Ask for a brand
-              </Button>
-            </div>
-            <div className="flex flex-wrap gap-1.5 sm:gap-2.5">
-              {allBrands.map((brand, index) => (
-                <div
-                  key={brand}
-                  className={`inline-flex min-h-10 items-center border px-3 py-1.5 text-xs font-black leading-tight shadow-sm transition hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-primary-foreground sm:min-h-12 sm:px-4 sm:py-2 sm:text-sm ${brandThemes[index % brandThemes.length]}`}
-                >
-                  <span className="mr-3 text-xs font-black opacity-50">{String(index + 1).padStart(2, "0")}</span>
-                  {brand}
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

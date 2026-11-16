@@ -49,9 +49,6 @@ export function CompanyTimeline() {
           onFocusCapture={(event) => setKeyboardFocused(event.target.matches(":focus-visible"))}
           onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setKeyboardFocused(false); }}
         >
-          <p className="mb-5 text-sm font-bold tracking-wider text-muted-foreground">
-            {companyHistory.milestones[0].year} <span className="mx-2 text-primary" aria-hidden="true">—</span> {companyHistory.milestones[companyHistory.milestones.length - 1]?.year}
-          </p>
           <CarouselContent className="-ml-4 items-stretch touch-pan-y pb-1" aria-live="off">
             {companyHistory.milestones.map((milestone) => (
               <CarouselItem key={milestone.year} className="flex basis-[85%] pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" aria-label={`${milestone.year}: ${milestone.description}`}>

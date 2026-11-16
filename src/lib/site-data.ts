@@ -134,6 +134,7 @@ export const companyLeadership = [
   },
 ] as const;
 export const formContent = {
+  categoryPlaceholder: "Select a category",
   contactDisclaimer: "By submitting, you agree to be contacted by RB International regarding your enquiry.",
   generalTitle: "General enquiry",
   careersCategory: "Careers / Join our team",
@@ -159,7 +160,7 @@ export type ProductVideo = {
   duration: string;
 };
 export const productVideoShowcases: Record<string, readonly ProductVideo[]> = {
-  "power-transmission/conveyor-belts": [
+  "automation/linear-motion": [
     {
       src: "/product-videos/conveyor-equipment-demo.mp4",
       poster: "/product-videos/conveyor-equipment-demo.jpg",
@@ -244,6 +245,7 @@ export const brandLogos: Record<string, BrandLogo> = {
   "THK": { src: "/brand-logos/thk.png", fit: "cover" },
   "HIWIN": { src: "/brand-logos/hiwin.png" },
   "Rexroth": { src: "/brand-logos/rexroth.png" },
+  "ROBOT": { src: "/brand-logos/robot.jpeg", scale: 1.65 },
 };
 const brandLogoAliases: Record<string, string> = {
   "Goodyear Eagle NRG": "Goodyear",
@@ -270,6 +272,8 @@ export type DealerCertificate = {
   image: string;
   width: number;
   height: number;
+  rotation?: -90 | 90;
+  straighten?: boolean;
   frame?: CertificateFrame;
   previewCropPosition?: string;
 };
@@ -280,10 +284,6 @@ export const dealerRelationships = {
   viewLabel: "View image",
   enlargeLabel: "View full certificate",
   viewerLabel: "Certificate document",
-  fitHint: "Use Zoom in to read the certificate details.",
-  zoomHint: "Scroll sideways and down to read. Select Fit to screen to see the full document.",
-  zoomLabel: "Zoom in",
-  fitLabel: "Fit to screen",
   previousLabel: "Previous image",
   nextLabel: "Next image",
 };
@@ -300,6 +300,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "gates-2026",
+    straighten: true,
     brand: "Gates",
     title: "Authorized distributor",
     detail: "January–December 2026 · Industrial power transmission products",
@@ -315,6 +316,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "pix-2026-27",
+    straighten: true,
     brand: "PIX",
     title: "Authorised business partner",
     detail: "FY 2026–27 · Power transmission products",
@@ -355,6 +357,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
     detail: "April 2014–March 2015 · Chakan, Pune",
     group: "authorizations",
     image: "/certificates/pidilite-ibs-reseller-2014-15.jpeg",
+    rotation: -90,
     width: 719,
     height: 1280,
     frame: {
@@ -504,12 +507,12 @@ export const pillars: Record<PillarKey,Pillar> = {
  "power-transmission": { key:"power-transmission",name:"Power Transmission",kicker:"Belts & Drives",image:"power",description:"Belts, pulleys, couplings and tools that keep production lines moving, from one-off replacements to complete drive packages.",brands:["Fenner","Gates","Optibelt","Goodyear Eagle NRG","Continental ContiTech","Megadyne","Carlisle","PIX","Hutchinson","Mitsubishi","Polymaxx"],subcategories:[
   sub("v-belts","V-Belts","Classical, narrow, cogged, banded and variable speed V-belts for industrial drives.",["Classical V-Belts","Narrow V-Belts","Micro V-Belts","Banded V-Belts","Variable Speed Belts","Link/Nutlink V-Belts","Cogged V-Belts"],["Fenner","Gates","Optibelt","PIX","Continental ContiTech","Carlisle","Hutchinson","Goodyear"],"Air Compressors | Centrifugal Pumps | Submersible Pumps | Blowers & Exhaust Fans | Lathe Machines | Milling Machines | Grinding Machines | Textile Looms | Packaging Machines | Conveyor Drives | Crushers & Mixers | HVAC Units | Diesel Generators | Printing Machines | Rice Mill Equipment | Sugar Cane Crushers | Flour Mill Machines"),
   sub("timing-belts","Timing Belts","Rubber, PU, coated and carbon-fibre synchronous belts for accurate power transfer.",["Rubber Timing Belts","PU Timing Belts","PU Coated Timing Belts","Eagle PD Timing Belts","Gates Polychain GT Carbon","Gates Polyflex JB","HTD Belts","Special Timing Belts"],["Gates","Megadyne","Optibelt","Continental ContiTech","Goodyear"],"CNC Routers & Machines | Pick-and-Place Systems | Packaging Lines | Labelling Machines | Printing Presses | Bottling & Filling Lines | Paper Converting Machines | Textile Spinning Frames | Injection Moulding Machines | Medical Diagnostic Equipment | 3D Printers | Laser Cutting Machines | Automatic Doors & Gates | Vending Machines"),
-  sub("conveyor-belts","Conveyor Belts","PU, PVC, modular, rubber and food-grade belts for material movement.",["PU Conveyor Belts","PVC Conveyor Belts","Food Grade Belts","Plastic Modular Belts","Steel Modular Belts","Rubber Conveyor Belts","Elevator/Lift Belts","Vacuum Belts"],["Megadyne","Habasit","Polymaxx","Continental ContiTech"],"Food Processing Lines | Pharmaceutical Conveyance | Airport Baggage Handling | Warehouse Sorting | Bottling Plants | Cement & Mining Transport | Packaging End-of-Line | Logistics & Distribution | Grain & Agro Processing"),
+  sub("conveyor-belts","Conveyor Belts","PU, PVC, modular, rubber and food-grade belts for material movement.",["General Purpose Conveyor Belts","PVC Conveyor Belts","PU Conveyor Belts","Both Side Fabric Conveyor Belts","Cleated & Sidewall Conveyor Belts","Diamond PVC Conveyor Belts","Ruff-Tuff Conveyor Belts","PVC V-Guide Center Profile","Cotton Conveyor Belts","Teflon Conveyor Belts","Rubber Conveyor Belts","Sugar Boiler Belts","Stone Crusher Belts","Bucket Elevator Belts","Alligator Joint Belts"],["Megadyne","Habasit","Polymaxx","Continental ContiTech"],"Food Processing Lines | Pharmaceutical Conveyance | Airport Baggage Handling | Warehouse Sorting | Bottling Plants | Cement & Mining Transport | Packaging End-of-Line | Logistics & Distribution | Grain & Agro Processing"),
   sub("caterpillar-belts","Caterpillar Belts","Caterpillar haul-off belts for gripping and pulling extruded products through production lines.",["Caterpillar Haul-Off Belts"],[],"Pipe Extrusion Lines | Cable Extrusion Lines | Profile Extrusion Lines"),
   sub("flat-belts","Flat Belts","High-efficiency flat transmission, steel cord, round PU and woven belts.",["Flat Transmission Belts","Steel Cord Flat Belts","Round PU Cords/Belts","Woven Belts"],["Megadyne","Hutchinson","Polymaxx"],"High-Speed Spindle Drives | Woodworking Planers & Saws | Textile Ring Frames | Paper Mill Rollers | Polishing & Buffing Machines | Leather Processing Equipment | Card Clothing Machines | Light-Duty Conveying | Envelope & Stationery Machines | Tobacco Processing Equipment"),
-  sub("pulleys-and-bushes","Pulleys & Bushes","Precision timing and V-pulleys with taper lock and keyless bushes.",["Timing Pulleys","CI Timing Pulleys","V-Pulleys","Taper Lock Bushes","Keyless Bushes"],["Fenner","Gates","PIX"],"All V-Belt Driven Equipment | All Timing Belt Driven Equipment | Motor-to-Shaft Power Transmission | Speed Reduction/Increase Assemblies | Conveyor Head & Tail Drums | Machine Tool Spindles | Pump Drive Assemblies | Fan & Blower Shaft Assemblies"),
-  sub("couplings","Couplings","Flexible, servo and encoder couplings for reliable shaft connection.",["Eurogrip Flexible Couplings","Servo Couplings","Encoder Couplings"],["Gates","Fenner","Polymaxx"],"Motor-to-Gearbox Connections | Servo Motor Shaft Linkage | Encoder Feedback Systems | CNC Spindle Drives | Pump-to-Motor Coupling | Conveyor Drive Units | Stepper Motor Assemblies | Precision Positioning Systems"),
-  sub("accessories","Accessories & Tools","Tension testers, maintenance tools, cleaners and rust preventives.",["Belt Tension Testers","Maintenance Tools","Rust Preventives & Cleaners"],["Gates","Fenner","WD-40","CRC"],"Belt Tension Measurement (all belt types) | Preventive Maintenance Checks | Belt Installation & Alignment | Rust Prevention on Shafts, Pulleys & Machine Surfaces | Bearing & Coupling Cleanup | Drive System Inspection") ]},
+  sub("pulleys-and-bushes","V-Pulleys & Bushes","Precision timing and V-pulleys with taper lock and keyless bushes.",["Timing Pulleys","CI Timing Pulleys","V-Pulleys","Taper Lock Bushes","Keyless Bushes"],["Fenner","Gates","PIX"],"All V-Belt Driven Equipment | All Timing Belt Driven Equipment | Motor-to-Shaft Power Transmission | Speed Reduction/Increase Assemblies | Conveyor Head & Tail Drums | Machine Tool Spindles | Pump Drive Assemblies | Fan & Blower Shaft Assemblies"),
+  sub("couplings","Couplings","Flexible, servo and encoder couplings for reliable shaft connection.",["Eurogrip Flexible Couplings","Servo Couplings","Encoder Couplings","Star Couplings","S-P Wrap Flex / Spider Couplings","Cushion Star Couplings","HRC Couplings","Pin-bush Couplings","Tyre Couplings","Gear Couplings","Resilient Grid Couplings"],["Gates","Fenner","Polymaxx"],"Motor-to-Gearbox Connections | Servo Motor Shaft Linkage | Encoder Feedback Systems | CNC Spindle Drives | Pump-to-Motor Coupling | Conveyor Drive Units | Stepper Motor Assemblies | Precision Positioning Systems"),
+  sub("accessories","Accessories & Tools","Tension testers, maintenance tools, cleaners and rust preventives.",["Belt Tension Testers","Maintenance Tools","Rust Preventives & Cleaners","Digital Tension Meter","X’Align Laser-guided Pulley Alignment Tool","PIX Service Kit","Collapsible Belt Length Measure","Belt Length Measurer","Analog Tension Tester","Belt Profile Gauge","PIX Belt Kit","Pulley Gauges","PIX Pentagon (Poly-V Belt Gauge)","PIX Pentagon (Timing Belt Gauges)","Banded Pulley Gauges"],["Gates","Fenner","WD-40","CRC"],"Belt Tension Measurement (all belt types) | Preventive Maintenance Checks | Belt Installation & Alignment | Rust Prevention on Shafts, Pulleys & Machine Surfaces | Bearing & Coupling Cleanup | Drive System Inspection") ]},
  automation:{key:"automation",name:"Automation & Motion Control",kicker:"Precision components",image:"automation",description:"Linear motion, robotics, motors and controllers for machine builders and production teams upgrading speed, accuracy and repeatability.",brands:["Gates","Megadyne","Polymaxx","Mitsubishi"],subcategories:[
   sub("linear-motion","Linear Motion Systems","Ball screws, guideways, shafts and rack systems for accurate movement.",["Ball Screws","Ball Screw Support Units","Linear Guideways","Linear Shafts","Racks & Pinions"],["Mitsubishi","Polymaxx"],"CNC Milling Machines | CNC Routers (Wood, Stone, Metal) | Laser Cutting Machines | Plasma Cutting Tables | 3D Printers (Industrial) | Pick-and-Place Gantries | Wafer Handling (Electronics) | PCB Drilling Machines | Coordinate Measuring Machines (CMM) | Engraving Machines | Glass Cutting Tables | Die Cutting Machines"),
   sub("robotics","Robotics & Actuators","Gantry robots, XYTH systems and mono stages for automated handling.",["Gantry Robots/Actuators","XYTH Series","Mono Stage Systems"],["Mitsubishi","Polymaxx"],"Automated Assembly Lines | Material Handling Gantries | Palletizing Systems | Cartesian Pick-and-Place | Dispensing & Gluing Systems | Welding Automation | Sorting & Grading Lines | Vision-Guided Inspection Stations | Loading/Unloading Automation | Multi-Axis Positioning Systems"),
@@ -542,7 +545,37 @@ export const industries = [
   { name: "General Manufacturing & Job Shops", image: "factory", description: "Replacement belts, maintenance adhesives and drive components for everyday workshop needs." },
 ] as const;
 export const navItems=[{label:"Home",to:"/"},{label:"About",to:"/about"},{label:"Power Transmission",to:"/power-transmission"},{label:"Automation",to:"/automation"},{label:"Adhesives",to:"/adhesives"},{label:"Contact",to:"/contact"},{label:"Franchise",to:"/franchise"}] as const;
-export const searchItems=pillarList.flatMap(p=>p.subcategories.flatMap(s=>[{name:s.name,to:`/${p.key}/${s.slug}`,keywords:[s.name,...s.types,...s.brands].join(" ").toLowerCase()},...s.types.map(t=>({name:t,to:`/${p.key}/${s.slug}`,keywords:`${t} ${s.name} ${s.brands.join(" ")}`.toLowerCase()}))]));
+export const productTypeAnchor = (name: string) => `type-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+export const searchItems = pillarList.flatMap(pillar => [
+  { name: pillar.name, to: `/${pillar.key}`, context: "Product division", keywords: `${pillar.name} ${pillar.kicker}` },
+  ...pillar.subcategories.flatMap(sub => [
+    { name: sub.name, to: `/${pillar.key}?product=${encodeURIComponent(sub.slug)}`, context: pillar.name, keywords: [sub.name, ...sub.types, ...sub.brands, sub.applications].join(" ") },
+    ...sub.types.map(type => ({ name: type, to: `/${pillar.key}?product=${encodeURIComponent(sub.slug)}`, context: `${pillar.name} · ${sub.name}`, keywords: `${type} ${sub.name} ${sub.brands.join(" ")}` })),
+    ...sub.brands.map(brand => ({ name: `${brand} — ${sub.name}`, to: `/${pillar.key}?product=${encodeURIComponent(sub.slug)}`, context: pillar.name, keywords: `${brand} ${sub.name} ${sub.types.join(" ")}` })),
+  ]),
+]).concat(logoBrands.map(brand => ({ name: brand, to: "/#brand-partners", context: "Brand partner", keywords: brand })));
+
+const normalizeSearch = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+export function searchProducts(query: string) {
+  const normalized = normalizeSearch(query);
+  if (!normalized) return [];
+  const exactMatches = searchItems.filter(item => normalizeSearch(item.name) === normalized);
+  if (exactMatches.length) return exactMatches;
+  const tokens = normalized.split(/\s+/);
+  return searchItems
+    .filter(item => {
+      const words = normalizeSearch(item.name).split(/\s+/);
+      return tokens.every(token => words.some(word => token.length === 1 ? word === token : word.startsWith(token)));
+    })
+    .map(item => {
+      const name = normalizeSearch(item.name);
+      const score = name === normalized ? 0 : name.startsWith(normalized) ? 1 : name.includes(normalized) ? 2 : tokens.every(token => name.includes(token)) ? 3 : 4;
+      return { item, score };
+    })
+    .sort((a, b) => a.score - b.score)
+    .map(({ item }) => item);
+}
+
 
 // Supplied Google Maps review snapshot, collected 27 October 2026.
 export const customerReviews = {

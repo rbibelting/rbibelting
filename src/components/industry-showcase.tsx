@@ -20,7 +20,7 @@ export function IndustryShowcase() {
   return (
     <section id="industry-coverage" aria-label={industryCoverage.eyebrow} className="pattern-shared pb-20 pt-6">
       <div className="site-container">
-        <SectionHeading eyebrow={industryCoverage.eyebrow} title={industryCoverage.title} />
+        <SectionHeading wide eyebrow={industryCoverage.eyebrow} title={industryCoverage.title} />
         <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:gap-8">
           <div className="min-w-0">
             <p className="mb-3 text-sm leading-6 text-muted-foreground">{industryCoverage.instruction}</p>

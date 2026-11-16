@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CategoryPage } from "@/components/category-pages";
+import { CategoryRoute } from "@/components/category-pages";
 import { pillars } from "@/lib/site-data";
 import { pageHead, breadcrumbSchema } from "@/lib/seo";
 const p = pillars["power-transmission"];
@@ -17,5 +17,5 @@ export const Route = createFileRoute("/power-transmission")({
         { name: p.name, path: "/power-transmission" },
       ]),
     ) : {},
-  component: () => <CategoryPage pillar={p} />,
+  component: () => <CategoryRoute pillar={p} />,
 });

@@ -38,7 +38,7 @@ export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, 
       company: String(formData.get("company") || ""),
       phone: String(formData.get("phone") || ""),
       email: String(formData.get("email") || ""),
-      category: String(formData.get("category") || seed.category || "Others"),
+      category: String(formData.get("category") || seed.category || "Not specified"),
       requirement: String(formData.get("requirement") || seed.requirement || ""),
     };
     if (!clean(details.name) || !clean(details.phone) || !clean(details.requirement)) {
@@ -69,7 +69,8 @@ export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, 
       </div>
       <div>
         <Label htmlFor="eq-category">Category</Label>
-        <select id="eq-category" name="category" defaultValue={seed.category || "Others"} className="mt-1 h-12 w-full rounded-md border border-input bg-background px-3">
+        <select id="eq-category" name="category" defaultValue={seed.category || ""} className="mt-1 h-12 w-full rounded-md border border-input bg-background px-3">
+          <option value="" disabled>{formContent.categoryPlaceholder}</option>
           <option>Power Transmission</option><option>Automation</option><option>Adhesives</option><option>Franchise</option>{variant === "general" && <option>{formContent.careersCategory}</option>}<option>Others</option>
         </select>
       </div>
