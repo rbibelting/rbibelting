@@ -80,7 +80,7 @@ export const footerContact = {
 };
 // Verified public company details shared by structured data. Placeholder social links are excluded.
 export const websiteIdentity = {
-  url: "https://rbi-belting-y8in.vercel.app",
+  url: "https://www.rbibelting.com",
   name: "RB International Belting & Automation",
   description: "Industrial power transmission products, automation components and industrial adhesives supplied from Pune across India and export markets.",
   telephone: ["+918788195839", "+919890961752"],
