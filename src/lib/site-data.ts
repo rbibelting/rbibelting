@@ -374,6 +374,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "wd40-platinum-2022-23",
+    straighten: true,
     brand: "WD-40 / Pidilite",
     title: "Platinum Club certificate",
     detail: "FY 2022–23 · Platinum program qualification",
@@ -389,6 +390,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "3m-appreciation",
+    straighten: true,
     brand: "3M",
     title: "Certificate of appreciation",
     detail: "Recognition for driving the safety culture in India",
