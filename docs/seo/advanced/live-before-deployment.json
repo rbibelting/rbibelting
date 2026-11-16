@@ -1,0 +1,1044 @@
+{
+  "base": "https://www.rbibelting.com",
+  "canonical_origin": "https://www.rbibelting.com",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Industrial Belts, Automation & Adhesives | RB International Pune",
+      "description": [
+        "RB International supplies power transmission belts, automation components and industrial adhesives from Pune to 500+ manufacturers across India and export markets."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/"
+      ],
+      "h1": [
+        "India's trusted partner in power transmission, automation & industrial adhesives"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "WebPage"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 4731,
+      "findings": []
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "title": "About RB International Belting & Automation, Pune",
+      "description": [
+        "Learn how RB International grew from a Bhosari belting supplier into a three-division industrial partner serving manufacturers across India since 2003."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/about"
+      ],
+      "h1": [
+        "The RB story: two decades of trust, delivered."
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "AboutPage",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3031,
+      "findings": []
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "title": "Contact RB International Belting & Automation, Pune",
+      "description": [
+        "Send your industrial belt, automation or adhesive requirement to RB International in Bhosari, Pune. Call, email or WhatsApp our sales team today."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/contact"
+      ],
+      "h1": [
+        "Talk directly to our industrial supply team."
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "ContactPage",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 1960,
+      "findings": []
+    },
+    {
+      "path": "/franchise",
+      "status": 200,
+      "title": "Industrial Belting Franchise India | RB International",
+      "description": [
+        "Register interest in an RB International industrial belting and automation franchise for major manufacturing hubs across India. Opportunity details coming soon."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/franchise"
+      ],
+      "h1": [
+        "Partner with us. Build your own RB International branch."
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 2332,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission",
+      "status": 200,
+      "title": "Power Transmission Belts & Drives | RB International, Pune",
+      "description": [
+        "Industrial belts, pulleys and couplings from Fenner, Gates, PIX and more. Get fast technical support and PAN India supply from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission"
+      ],
+      "h1": [
+        "Power Transmission"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 3008,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/v-belts",
+      "status": 200,
+      "title": "V-Belts Supplier Pune | RB International Belting",
+      "description": [
+        "Buy v-belts for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/v-belts"
+      ],
+      "h1": [
+        "V-Belts"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 2965,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/timing-belts",
+      "status": 200,
+      "title": "Timing Belts Supplier Pune | RB International Belting",
+      "description": [
+        "Buy timing belts for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/timing-belts"
+      ],
+      "h1": [
+        "Timing Belts"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 3918,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/conveyor-belts",
+      "status": 200,
+      "title": "Conveyor Belts Supplier Pune | RB International Belting",
+      "description": [
+        "Buy conveyor belts for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/conveyor-belts"
+      ],
+      "h1": [
+        "Conveyor Belts"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 5234,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/caterpillar-belts",
+      "status": 200,
+      "title": "Caterpillar Belts Supplier Pune | RB International Belting",
+      "description": [
+        "Buy caterpillar belts for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/caterpillar-belts"
+      ],
+      "h1": [
+        "Caterpillar Belts"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 2383,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/flat-belts",
+      "status": 200,
+      "title": "Flat Belts Supplier Pune | RB International Belting",
+      "description": [
+        "Buy flat belts for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/flat-belts"
+      ],
+      "h1": [
+        "Flat Belts"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 3072,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/pulleys-and-bushes",
+      "status": 200,
+      "title": "V-Pulleys & Bushes Supplier Pune | RB International Belting",
+      "description": [
+        "Buy v-pulleys & bushes for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/pulleys-and-bushes"
+      ],
+      "h1": [
+        "V-Pulleys & Bushes"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 3201,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/couplings",
+      "status": 200,
+      "title": "Couplings Supplier Pune | RB International Belting",
+      "description": [
+        "Buy couplings for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/couplings"
+      ],
+      "h1": [
+        "Couplings"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 4310,
+      "findings": []
+    },
+    {
+      "path": "/power-transmission/accessories",
+      "status": 200,
+      "title": "Accessories & Tools Supplier Pune | RB International Belting",
+      "description": [
+        "Buy accessories & tools for industrial applications from leading brands. Technical selection support, stock and PAN India delivery from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission/accessories"
+      ],
+      "h1": [
+        "Accessories & Tools"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission",
+        "/power-transmission/accessories",
+        "/power-transmission/caterpillar-belts",
+        "/power-transmission/conveyor-belts",
+        "/power-transmission/couplings",
+        "/power-transmission/flat-belts",
+        "/power-transmission/pulleys-and-bushes",
+        "/power-transmission/timing-belts",
+        "/power-transmission/v-belts"
+      ],
+      "main_text_length": 5214,
+      "findings": []
+    },
+    {
+      "path": "/automation",
+      "status": 200,
+      "title": "Automation & Motion Control | RB International, Pune",
+      "description": [
+        "Ball screws, linear guideways, gantry robots, servo motors and CNC controllers for machine builders across India, supplied from Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/automation"
+      ],
+      "h1": [
+        "Automation & Motion Control"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/automation/controllers",
+        "/automation/linear-motion",
+        "/automation/motors-and-drives",
+        "/automation/robotics",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 2444,
+      "findings": []
+    },
+    {
+      "path": "/automation/linear-motion",
+      "status": 200,
+      "title": "Linear Motion Systems Supplier India | RB International, Pune",
+      "description": [
+        "Source linear motion systems for precision industrial automation. Application support and PAN India supply from RB International in Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/automation/linear-motion"
+      ],
+      "h1": [
+        "Linear Motion Systems"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/automation/controllers",
+        "/automation/linear-motion",
+        "/automation/motors-and-drives",
+        "/automation/robotics",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3274,
+      "findings": []
+    },
+    {
+      "path": "/automation/robotics",
+      "status": 200,
+      "title": "Robotics & Actuators Supplier India | RB International, Pune",
+      "description": [
+        "Source robotics & actuators for precision industrial automation. Application support and PAN India supply from RB International in Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/automation/robotics"
+      ],
+      "h1": [
+        "Robotics & Actuators"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/automation/controllers",
+        "/automation/linear-motion",
+        "/automation/motors-and-drives",
+        "/automation/robotics",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 2877,
+      "findings": []
+    },
+    {
+      "path": "/automation/motors-and-drives",
+      "status": 200,
+      "title": "Motors & Drives Supplier India | RB International, Pune",
+      "description": [
+        "Source motors & drives for precision industrial automation. Application support and PAN India supply from RB International in Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/automation/motors-and-drives"
+      ],
+      "h1": [
+        "Motors & Drives"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/automation/controllers",
+        "/automation/linear-motion",
+        "/automation/motors-and-drives",
+        "/automation/robotics",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 2872,
+      "findings": []
+    },
+    {
+      "path": "/automation/controllers",
+      "status": 200,
+      "title": "Controllers Supplier India | RB International, Pune",
+      "description": [
+        "Source controllers for precision industrial automation. Application support and PAN India supply from RB International in Pune."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/automation/controllers"
+      ],
+      "h1": [
+        "Controllers"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/automation",
+        "/automation/controllers",
+        "/automation/linear-motion",
+        "/automation/motors-and-drives",
+        "/automation/robotics",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 2610,
+      "findings": []
+    },
+    {
+      "path": "/adhesives",
+      "status": 200,
+      "title": "Industrial Adhesives & Chemicals | RB International, Pune",
+      "description": [
+        "Source Loctite, Pidilite, 3M, Anabond, Araldite and MRO chemicals from RB Adhesive Company in Bhosari, Pune. Send your requirement."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/adhesives"
+      ],
+      "h1": [
+        "Industrial Adhesives & Chemicals"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/adhesives/general-purpose",
+        "/adhesives/sealants",
+        "/adhesives/specialty",
+        "/adhesives/structural",
+        "/adhesives/tapes",
+        "/adhesives/threadlockers",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 2856,
+      "findings": []
+    },
+    {
+      "path": "/adhesives/threadlockers",
+      "status": 200,
+      "title": "Threadlockers & Retaining Compounds Dealer Pune | RB Adhesive Company",
+      "description": [
+        "Buy genuine threadlockers & retaining compounds from trusted industrial brands. Application support and dispatch from Bhosari, Pune to sites across India."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/adhesives/threadlockers"
+      ],
+      "h1": [
+        "Threadlockers & Retaining Compounds"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/adhesives/general-purpose",
+        "/adhesives/sealants",
+        "/adhesives/specialty",
+        "/adhesives/structural",
+        "/adhesives/tapes",
+        "/adhesives/threadlockers",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3210,
+      "findings": []
+    },
+    {
+      "path": "/adhesives/sealants",
+      "status": 200,
+      "title": "Silicone Sealants & Gasket Makers Dealer Pune | RB Adhesive Company",
+      "description": [
+        "Buy genuine silicone sealants & gasket makers from trusted industrial brands. Application support and dispatch from Bhosari, Pune to sites across India."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/adhesives/sealants"
+      ],
+      "h1": [
+        "Silicone Sealants & Gasket Makers"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/adhesives/general-purpose",
+        "/adhesives/sealants",
+        "/adhesives/specialty",
+        "/adhesives/structural",
+        "/adhesives/tapes",
+        "/adhesives/threadlockers",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3029,
+      "findings": []
+    },
+    {
+      "path": "/adhesives/structural",
+      "status": 200,
+      "title": "Structural & Epoxy Adhesives Dealer Pune | RB Adhesive Company",
+      "description": [
+        "Buy genuine structural & epoxy adhesives from trusted industrial brands. Application support and dispatch from Bhosari, Pune to sites across India."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/adhesives/structural"
+      ],
+      "h1": [
+        "Structural & Epoxy Adhesives"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/adhesives/general-purpose",
+        "/adhesives/sealants",
+        "/adhesives/specialty",
+        "/adhesives/structural",
+        "/adhesives/tapes",
+        "/adhesives/threadlockers",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3214,
+      "findings": []
+    },
+    {
+      "path": "/adhesives/general-purpose",
+      "status": 200,
+      "title": "General Purpose & Wood Adhesives Dealer Pune | RB Adhesive Company",
+      "description": [
+        "Buy genuine general purpose & wood adhesives from trusted industrial brands. Application support and dispatch from Bhosari, Pune to sites across India."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/adhesives/general-purpose"
+      ],
+      "h1": [
+        "General Purpose & Wood Adhesives"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/adhesives/general-purpose",
+        "/adhesives/sealants",
+        "/adhesives/specialty",
+        "/adhesives/structural",
+        "/adhesives/tapes",
+        "/adhesives/threadlockers",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3177,
+      "findings": []
+    },
+    {
+      "path": "/adhesives/specialty",
+      "status": 200,
+      "title": "Specialty Chemicals & MRO Dealer Pune | RB Adhesive Company",
+      "description": [
+        "Buy genuine specialty chemicals & mro from trusted industrial brands. Application support and dispatch from Bhosari, Pune to sites across India."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/adhesives/specialty"
+      ],
+      "h1": [
+        "Specialty Chemicals & MRO"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/adhesives/general-purpose",
+        "/adhesives/sealants",
+        "/adhesives/specialty",
+        "/adhesives/structural",
+        "/adhesives/tapes",
+        "/adhesives/threadlockers",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3446,
+      "findings": []
+    },
+    {
+      "path": "/adhesives/tapes",
+      "status": 200,
+      "title": "Industrial Tapes & Compounds Dealer Pune | RB Adhesive Company",
+      "description": [
+        "Buy genuine industrial tapes & compounds from trusted industrial brands. Application support and dispatch from Bhosari, Pune to sites across India."
+      ],
+      "canonical": [
+        "https://www.rbibelting.com/adhesives/tapes"
+      ],
+      "h1": [
+        "Industrial Tapes & Compounds"
+      ],
+      "types": [
+        "Organization",
+        "LocalBusiness",
+        "WebSite",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Product",
+        "ItemList"
+      ],
+      "links": [
+        "/",
+        "/about",
+        "/adhesives",
+        "/adhesives/general-purpose",
+        "/adhesives/sealants",
+        "/adhesives/specialty",
+        "/adhesives/structural",
+        "/adhesives/tapes",
+        "/adhesives/threadlockers",
+        "/automation",
+        "/contact",
+        "/franchise",
+        "/power-transmission"
+      ],
+      "main_text_length": 3155,
+      "findings": []
+    }
+  ],
+  "orphan_pages": [],
+  "link_depth": {
+    "/": 0,
+    "/about": 1,
+    "/adhesives": 1,
+    "/automation": 1,
+    "/contact": 1,
+    "/franchise": 1,
+    "/power-transmission": 1,
+    "/adhesives/general-purpose": 2,
+    "/adhesives/sealants": 2,
+    "/adhesives/specialty": 2,
+    "/adhesives/structural": 2,
+    "/adhesives/tapes": 2,
+    "/adhesives/threadlockers": 2,
+    "/automation/controllers": 2,
+    "/automation/linear-motion": 2,
+    "/automation/motors-and-drives": 2,
+    "/automation/robotics": 2,
+    "/power-transmission/accessories": 2,
+    "/power-transmission/caterpillar-belts": 2,
+    "/power-transmission/conveyor-belts": 2,
+    "/power-transmission/couplings": 2,
+    "/power-transmission/flat-belts": 2,
+    "/power-transmission/pulleys-and-bushes": 2,
+    "/power-transmission/timing-belts": 2,
+    "/power-transmission/v-belts": 2
+  },
+  "duplicate_titles": [],
+  "duplicate_descriptions": [],
+  "missing_route_statuses": {
+    "/not-a-real-page": 404,
+    "/automation/not-a-real-product": 404,
+    "/power-transmission/not-a-real-product": 404,
+    "/adhesives/not-a-real-product": 404
+  },
+  "parameter_checks": [
+    {
+      "path": "/power-transmission?product=v-belts",
+      "status": 200,
+      "canonical": [
+        "https://www.rbibelting.com/power-transmission"
+      ],
+      "passed": true
+    },
+    {
+      "path": "/automation?product=linear-motion",
+      "status": 200,
+      "canonical": [
+        "https://www.rbibelting.com/automation"
+      ],
+      "passed": true
+    },
+    {
+      "path": "/adhesives?product=threadlockers",
+      "status": 200,
+      "canonical": [
+        "https://www.rbibelting.com/adhesives"
+      ],
+      "passed": true
+    }
+  ],
+  "robots_valid": true,
+  "sitemap_matches_source": true,
+  "passed": true
+}

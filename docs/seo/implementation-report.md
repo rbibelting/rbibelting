@@ -1,3 +1,5 @@
+> Historical October snapshot. See [the current advanced SEO report](advanced/implementation-report.md) for the www.rbibelting.com configuration, collection schema and current validation.
+
 # Structured data implementation and validation
 
 Audit date: 29 October 2026. Changes are local; not pushed or deployed.

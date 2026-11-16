@@ -9,7 +9,12 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prebuild": "node scripts/generate-sitemap.mjs",
+    "seo:sitemap": "node scripts/generate-sitemap.mjs",
+    "seo:audit": "python3 scripts/audit-seo.py",
+    "seo:schema": "node scripts/validate-schema.mjs",
+    "seo:data": "node scripts/check-seo-data.mjs"
   },
   "overrides": {
     "rolldown": "1.2.1"

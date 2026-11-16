@@ -41,35 +41,35 @@ for (const canonical of urls) {
       assert.ok(!['offers', 'aggregateRating', 'review', 'price', 'availability'].includes(key), `no invented commercial data: ${key}`);
       if (['url', 'image', 'logo', 'item', '@id'].includes(key) && typeof item === 'string') {
         assert.ok(item.startsWith('https://'), `absolute URL: ${item}`);
-        assert.ok(!item.includes('rbibelting.com'), 'no stale domain');
+        if (item.includes('#organization') || item.includes('#webpage') || item.includes('#website')) assert.ok(item.startsWith(origin), 'canonical entity origin');
       }
       if (Array.isArray(item)) item.forEach(inspect); else inspect(item);
     }
   }
   inspect(graph);
-  const product = nodes.find(node => node['@type'] === 'Product');
+  const list = nodes.find(node => node['@id'] === `${canonical.href}#product-types`);
+  assert.ok(!types.includes('Product'), 'range collections are not individual products');
   if (canonical.pathname.split('/').filter(Boolean).length === 2) {
-    assert.ok(product?.name && product.description && product.category, 'dynamic product range');
-    assert.ok(product.additionalProperty.length > 0, 'visible range characteristics');
-    assert.ok(types.includes('CollectionPage') && types.includes('ItemList'));
+    assert.ok(types.includes('CollectionPage') && list, 'collection and type list');
+    assert.equal(list.numberOfItems, list.itemListElement.length);
+    for (const item of list.itemListElement) {
+      assert.ok(item.name && item.item.description && item.url.startsWith(canonical.href + '#type-'));
+      assert.ok(html.includes(`id="${new URL(item.url).hash.slice(1)}"`), 'type URL points to visible card');
+    }
+    assert.ok(html.includes('id="selection-guidance"'), 'server-rendered selection guidance');
   }
   if (canonical.pathname === '/contact') {
     assert.ok(types.includes('ContactPage') && types.includes('FAQPage'));
     assert.equal(page.mainEntity.length, 5);
     assert.ok(page.mainEntity.every(question => question.acceptedAnswer.text));
   } else assert.ok(!types.includes('FAQPage'), 'FAQ only where rendered');
-  for (const image of product?.image ?? []) {
-    const asset = await fetch(new URL(new URL(image).pathname, base));
-    assert.equal(asset.status, 200, `product image exists: ${image}`);
-    assert.ok(asset.headers.get('content-type')?.startsWith('image/'));
-  }
-  report.push({ path: canonical.pathname, status: response.status, types, productImages: product?.image?.length ?? 0 });
+  report.push({ path: canonical.pathname, status: response.status, types, listedTypes: list?.numberOfItems ?? 0 });
   await mkdir('/tmp/rbi-schema-validation', { recursive: true });
   await writeFile(`/tmp/rbi-schema-validation/${canonical.pathname.replaceAll('/', '_') || 'home'}.html`, html);
 }
 const missing = await fetch(new URL('/automation/not-a-real-product', base));
 assert.equal(missing.status, 404, 'unknown product retains 404 behavior');
 await writeFile('/tmp/rbi-schema-validation/report.json', JSON.stringify(report, null, 2));
-console.log(`PASS: ${report.length} SSR routes; one connected graph per page; canonical URLs, breadcrumbs, FAQs, product images and 404 behavior verified.`);
+console.log(`PASS: ${report.length} SSR routes; one connected graph per page; canonical URLs, breadcrumbs, FAQs, range lists and 404 behavior verified.`);
 console.log(`Canonical origin: ${origin}`);
 console.log('HTML exports and detailed results: /tmp/rbi-schema-validation/');

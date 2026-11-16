@@ -1,15 +1,11 @@
 import logo from "@/assets/rb-logo.jpeg";
-import classicalBelt from "@/assets/v-belts/classical-clean.jpg";
-import coggedBelt from "@/assets/v-belts/cogged-clean.jpg";
-import bandedBelt from "@/assets/v-belts/banded-clean.jpg";
-import narrowBelt from "@/assets/v-belts/narrow-clean.jpg";
 import {
   footerContact,
   pillarList,
-  productPhotoShowcases,
+  describeType,
+  productTypeAnchor,
   websiteIdentity,
   type Pillar,
-  type SubCategory,
 } from "@/lib/site-data";
 
 type SchemaNode = Record<string, unknown>;
@@ -70,28 +66,6 @@ function categoryList(pillar: Pillar, url: string): SchemaNode {
   };
 }
 
-function productRange(pillar: Pillar, sub: SubCategory, url: string): SchemaNode {
-  // These URLs describe ranges, not priced SKUs. Only show product photos that
-  // already belong to the range; division hero photographs are not product images.
-  const photos = sub.slug === "v-belts"
-    ? [classicalBelt, coggedBelt, bandedBelt, narrowBelt]
-    : (productPhotoShowcases[`${pillar.key}/${sub.slug}`] ?? []).map((photo) => photo.image);
-  return {
-    "@type": "Product",
-    "@id": `${url}#product-range`,
-    name: sub.name,
-    description: sub.short,
-    url,
-    category: pillar.name,
-    ...(photos.length ? { image: photos.map(absoluteUrl) } : {}),
-    ...(sub.brands.length ? { brand: sub.brands.map((name) => ({ "@type": "Brand", name })) } : {}),
-    additionalProperty: [
-      { "@type": "PropertyValue", name: "Product types", value: sub.types.join(", ") },
-      { "@type": "PropertyValue", name: "Applications", value: sub.applications },
-    ],
-  };
-}
-
 export function pageStructuredData(title: string, description: string, path: string, extra?: object | object[]) {
   const url = absoluteUrl(path);
   const parts = path.split("/").filter(Boolean);
@@ -135,14 +109,17 @@ export function pageStructuredData(title: string, description: string, path: str
     nodes.push(categoryList(pillar, url));
     page["mainEntity"] = reference(`${url}#products`);
   } else if (pillar && sub) {
-    nodes.push(productRange(pillar, sub, url), {
+    nodes.push({
       "@type": "ItemList",
       "@id": `${url}#product-types`,
       name: `${sub.name} product types`,
       numberOfItems: sub.types.length,
-      itemListElement: sub.types.map((name, index) => ({ "@type": "ListItem", position: index + 1, name })),
+      itemListElement: sub.types.map((name, index) => ({
+        "@type": "ListItem", position: index + 1, name,
+        url: `${url}#${productTypeAnchor(name)}`,
+        item: { "@type": "Thing", name, description: describeType(name), url: `${url}#${productTypeAnchor(name)}` },
+      })),
     });
-    page["about"] = reference(`${url}#product-range`);
     page["mainEntity"] = reference(`${url}#product-types`);
   }
   return { "@context": "https://schema.org", "@graph": nodes };

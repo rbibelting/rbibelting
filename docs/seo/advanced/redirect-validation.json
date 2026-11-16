@@ -1,0 +1,37 @@
+[
+  {
+    "requested": "https://rbibelting.com/",
+    "redirects": [
+      {
+        "from": "https://rbibelting.com/",
+        "status": 308,
+        "to": "https://www.rbibelting.com/"
+      }
+    ],
+    "final_url": "https://www.rbibelting.com/",
+    "status": 200
+  },
+  {
+    "requested": "https://www.rbibelting.com/",
+    "redirects": [],
+    "final_url": "https://www.rbibelting.com/",
+    "status": 200
+  },
+  {
+    "requested": "http://rbibelting.com/",
+    "redirects": [
+      {
+        "from": "http://rbibelting.com/",
+        "status": 308,
+        "to": "https://rbibelting.com/"
+      },
+      {
+        "from": "https://rbibelting.com/",
+        "status": 308,
+        "to": "https://www.rbibelting.com/"
+      }
+    ],
+    "final_url": "https://www.rbibelting.com/",
+    "status": 200
+  }
+]

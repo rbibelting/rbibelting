@@ -1,0 +1,152 @@
+[
+  {
+    "path": "/",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/about",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/contact",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/franchise",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/v-belts",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/timing-belts",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/conveyor-belts",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/caterpillar-belts",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/flat-belts",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/pulleys-and-bushes",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/couplings",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/power-transmission/accessories",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/automation",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/automation/linear-motion",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/automation/robotics",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/automation/motors-and-drives",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/automation/controllers",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/adhesives",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/adhesives/threadlockers",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/adhesives/sealants",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/adhesives/structural",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/adhesives/general-purpose",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/adhesives/specialty",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  },
+  {
+    "path": "/adhesives/tapes",
+    "title_changed": false,
+    "description_changed": false,
+    "canonical_changed": false
+  }
+]

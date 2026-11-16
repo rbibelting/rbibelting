@@ -83,8 +83,8 @@ export const websiteIdentity = {
   url: "https://www.rbibelting.com",
   name: "RB International Belting & Automation",
   description: "Industrial power transmission products, automation components and industrial adhesives supplied from Pune across India and export markets.",
-  telephone: ["+918788195839", "+919890961752"],
-  email: ["response@rbibelting.in", footerContact.email],
+  telephone: ["+918788195839", "+919890961752"] as const,
+  email: ["response@rbibelting.in", footerContact.email] as const,
   socialProfiles: ["https://www.instagram.com/rbibelting/"],
   address: {
     streetAddress: "Shop No 5, Kamath Complex, Telco Road, Landewadi, Bhosari Industrial Estate",
@@ -140,6 +140,12 @@ export const formContent = {
   careersCategory: "Careers / Join our team",
   requirementPlaceholder: "Part number, size, brand, application or quantity",
 };
+export function getEnquiryCategory(value?: string) {
+  if (value === "power-transmission") return "Power Transmission";
+  if (value === "automation" || value === "Automation & Motion Control") return "Automation";
+  if (value === "adhesives" || value === "Industrial Adhesives & Chemicals") return "Adhesives";
+  return value;
+}
 export const productRangeContent = {
   detailsLabel: "Product range details",
   typesTabLabel: "Product types",
@@ -658,3 +664,159 @@ export const customerReviews = {
     }
   ]
 };
+
+// Family-level guidance: selection inputs, not promised model specifications or stock.
+export type RangeGuidance = {
+  explanation: string;
+  selection: readonly string[];
+  question: string;
+  answer: string;
+  related: readonly string[];
+};
+export const rangeGuidance: Record<string, RangeGuidance> = {
+  "v-belts": {
+    explanation: "V-belts transmit power through friction between the belt and pulley grooves. Match the belt section and length reference to the pulley and drive before choosing a replacement.",
+    selection: ["Existing belt marking, section and length reference", "Pulley groove profile, drive speed, power and number of belts", "Temperature, contamination and whether a matched set is required"],
+    question: "Is a V-belt interchangeable with a timing belt?",
+    answer: "No. A timing belt uses teeth engaging with a matching pulley, while a V-belt runs in grooves. The pulley and drive design determine which belt is suitable.",
+    related: ["timing-belts", "pulleys-and-bushes", "accessories"],
+  },
+  "timing-belts": {
+    explanation: "Synchronous timing belts use teeth and a matching pulley profile to coordinate shaft movement. The tooth profile, pitch and width must suit the drive; the existing part code is the best starting point.",
+    selection: ["Belt code, tooth profile, pitch, tooth count or specified length, and width", "Pulley details, drive power, speed and positioning requirement", "Existing construction and environmental conditions"],
+    question: "What does timing belt pitch mean?",
+    answer: "Pitch is the spacing between adjacent belt teeth. Matching pitch alone is insufficient: tooth shape, width and pulley compatibility must also be checked against the manufacturer specification.",
+    related: ["pulleys-and-bushes", "linear-motion", "motors-and-drives"],
+  },
+  "conveyor-belts": {
+    explanation: "Conveyor belts carry materials between process stages. Select the surface, construction and joint for the conveyed product, loading, cleaning method and conveyor geometry.",
+    selection: ["Belt width, length, thickness and existing material or code", "Conveyed material, load, speed, incline and roller diameter", "Joint, cleats, sidewalls, cleaning chemicals and any required food-contact documentation"],
+    question: "Can any PU or PVC belt be used for food contact?",
+    answer: "Do not assume suitability from the material name. Request the selected manufacturer's documentation for the exact belt and intended contact, cleaning and temperature conditions.",
+    related: ["flat-belts", "caterpillar-belts", "accessories"],
+  },
+  "caterpillar-belts": {
+    explanation: "Caterpillar haul-off belts grip and pull extruded pipe, cable or profiles along a production line. Contact surface and geometry need to match the haul-off machine and the product being pulled.",
+    selection: ["Machine model, existing belt reference, dimensions and drawing", "Extruded product, line speed and pulling load", "Contact-surface requirements and operating temperature"],
+    question: "What information identifies a replacement haul-off belt?",
+    answer: "Provide the existing code or drawing, belt dimensions, machine details and photographs of the contact surface and drive side. Confirm construction and fit before ordering.",
+    related: ["conveyor-belts", "timing-belts"],
+  },
+  "flat-belts": {
+    explanation: "Flat transmission belts transfer motion between compatible pulley surfaces. Choose the construction and dimensions for the drive; a conveyor belt and a transmission belt are not automatically interchangeable.",
+    selection: ["Existing belt code, width, thickness and length", "Pulley dimensions, drive speed, power and joint arrangement", "Contact surface, tensioning method and operating environment"],
+    question: "How do flat transmission belts differ from conveyor belts?",
+    answer: "Transmission belts primarily transfer power, while conveyor belts primarily carry materials. Suitability depends on the machine, construction and manufacturer specification rather than appearance alone.",
+    related: ["conveyor-belts", "v-belts", "accessories"],
+  },
+  "pulleys-and-bushes": {
+    explanation: "Pulleys engage the belt and set the drive ratio. Bushes connect compatible hubs to shafts. Belt profile, pulley geometry and shaft fit must be checked together.",
+    selection: ["V-groove section or timing tooth profile and pitch", "Pulley diameter, grooves or tooth count, and belt width", "Shaft diameter, keyway, hub dimensions and bush reference"],
+    question: "Is the shaft diameter enough to choose a taper lock bush?",
+    answer: "No. The bush series, matching hub, bore, keyway and application loads must also suit the assembly. Share the existing bush reference or a dimensioned drawing.",
+    related: ["v-belts", "timing-belts", "couplings"],
+  },
+  "couplings": {
+    explanation: "Shaft couplings connect rotating components. Coupling selection depends on torque, speed, shaft geometry and the permitted misalignment or positioning behaviour of the application.",
+    selection: ["Both shaft diameters, keyways and space between shaft ends", "Torque or motor power, operating speed and load changes", "Alignment, backlash requirement, environment and existing coupling code"],
+    question: "Can a flexible coupling replace correct shaft alignment?",
+    answer: "No. Flexible elements accommodate only the limits specified by their manufacturer. Confirm alignment and installation requirements for the selected coupling.",
+    related: ["motors-and-drives", "linear-motion", "pulleys-and-bushes"],
+  },
+  "accessories": {
+    explanation: "Belt measuring, tension and pulley-alignment tools help identify replacement parts and maintain belt drives. Choose the instrument and procedure for the belt and machine involved.",
+    selection: ["Belt type, drive layout and measurement task", "Required measurement range and manufacturer tensioning instructions", "Instrument reference and any calibration or service requirements"],
+    question: "Is there one correct tension for every industrial belt?",
+    answer: "No. Tension depends on the belt, span and drive design. Use the belt or machine manufacturer's specified method and values for the exact installation.",
+    related: ["v-belts", "timing-belts", "pulleys-and-bushes"],
+  },
+  "linear-motion": {
+    explanation: "Linear motion systems guide or drive movement along a straight path. Guideways support and constrain motion; ball screws convert rotary movement into linear travel.",
+    selection: ["Existing guideway or screw code and a dimensioned drawing", "Load, travel, mounting orientation and required positioning behaviour", "Screw lead, drive speed, end supports, lubrication and environmental conditions"],
+    question: "What is the lead of a ball screw?",
+    answer: "Lead is the linear travel produced by one screw revolution. It affects the relationship between motor speed and travel speed; load, accuracy and support details still need to be checked.",
+    related: ["motors-and-drives", "couplings", "robotics"],
+  },
+  "robotics": {
+    explanation: "Gantry robots and actuators move loads between defined positions in automated processes. The axis arrangement and controls must be matched to the task and machine integration.",
+    selection: ["Payload including tooling, travel on each axis and cycle requirement", "Mounting orientation, available space and working environment", "Controller, feedback, safety and integration requirements"],
+    question: "What should a gantry enquiry include?",
+    answer: "Share the task, payload, travel, required cycle, machine drawing and existing control system. Final configuration requires a review of the mechanical and control requirements.",
+    related: ["linear-motion", "motors-and-drives", "controllers"],
+  },
+  "motors-and-drives": {
+    explanation: "Motors and drives provide controlled rotary motion. The motor, drive, feedback and any gearbox must work together with the load and control system.",
+    selection: ["Existing motor and drive codes, supply and controller interface", "Load torque, speed range, acceleration and operating cycle", "Mounting, shaft, feedback, brake and gearbox details where applicable"],
+    question: "Can a servo drive be selected only from motor power?",
+    answer: "No. Electrical ratings, feedback, control interface, duty and manufacturer compatibility also matter. Share both motor and drive references when replacing an installed system.",
+    related: ["controllers", "couplings", "linear-motion"],
+  },
+  "controllers": {
+    explanation: "Machine controllers coordinate motion and process signals. Replacement or integration requires matching the axis functions, drive interface, feedback and machine software requirements.",
+    selection: ["Machine type, controller code, axis count and existing software", "Drive interfaces, feedback and input/output requirements", "Program format, operator interface and integration documentation"],
+    question: "What is needed to check controller compatibility?",
+    answer: "Provide the machine and controller references, wiring/interface documents and the required process functions. A similar enclosure or connector does not establish compatibility.",
+    related: ["motors-and-drives", "robotics", "linear-motion"],
+  },
+  "threadlockers": {
+    explanation: "Threadlockers help secure threaded fasteners against loosening. Select the grade for the fastener material, size, required removal method and service conditions.",
+    selection: ["Fastener material, diameter and existing grade", "Required strength, disassembly method and service temperature", "Surface cleanliness, coatings and curing requirements"],
+    question: "Is the strongest threadlocker always the best choice?",
+    answer: "No. Strength and removal method must suit the joint and maintenance plan. Check the manufacturer's technical data sheet for the actual fastener and service conditions.",
+    related: ["sealants", "general-purpose", "specialty"],
+  },
+  "sealants": {
+    explanation: "Industrial sealants help prevent leakage through specified joints. The joint design, gap, fluids and temperature determine which sealing chemistry is suitable.",
+    selection: ["Joint type, substrate materials and gap", "Fluid or gas exposure, pressure and temperature conditions", "Required cure time, disassembly and existing product grade"],
+    question: "Can one sealant be used on every threaded or flange joint?",
+    answer: "No. Joint geometry, materials and exposure conditions differ. Select against the manufacturer's data sheet and the requirements of the actual assembly.",
+    related: ["threadlockers", "general-purpose", "structural"],
+  },
+  "general-purpose": {
+    explanation: "Wood, contact and instant adhesives serve different bonding tasks. Select a product for the actual substrates, joint design and service conditions rather than treating all general-purpose adhesives as equivalent.",
+    selection: ["Substrate materials, porosity, coatings and joint gap", "Indoor or outdoor exposure, moisture and expected load", "Assembly time, clamping, curing conditions and existing product reference"],
+    question: "Can wood adhesive and instant adhesive be used interchangeably?",
+    answer: "No. Their application and curing requirements differ. Confirm the chosen grade for the actual substrates, bond area and service conditions using the manufacturer's technical data sheet.",
+    related: ["structural", "tapes", "specialty"],
+  },
+  "structural": {
+    explanation: "Structural adhesives bond components through a prepared joint. Substrates, joint design, load and curing conditions must be considered together rather than selecting by brand alone.",
+    selection: ["Both substrates, coatings, bond area and joint gap", "Load type, vibration, fluids and service temperature", "Surface preparation, working time and cure process"],
+    question: "Can an adhesive bond any two materials without preparation?",
+    answer: "No. Surface condition and material compatibility affect bonding. Use the chosen manufacturer's technical data sheet and validate the proposed joint in the intended application.",
+    related: ["sealants", "tapes", "specialty"],
+  },
+  "specialty": {
+    explanation: "Maintenance chemicals include cleaners, lubricants and repair products with different functions. Choose the product for the substrate, contamination and operating conditions, with its safety data sheet available.",
+    selection: ["Maintenance task, substrate and contamination", "Temperature, electrical isolation and material-compatibility requirements", "Existing grade, application method and technical/safety data sheets"],
+    question: "Can any electrical cleaner be used on an energized panel?",
+    answer: "Do not assume this is safe. Follow the equipment isolation procedure and the exact cleaner's safety and technical instructions before use.",
+    related: ["threadlockers", "structural", "accessories"],
+  },
+  "tapes": {
+    explanation: "Industrial tapes join, mask or protect surfaces depending on their backing and adhesive. Surface energy, contact pressure, load and exposure conditions affect selection.",
+    selection: ["Substrates, surface finish and tape width", "Load direction, temperature, moisture and chemical exposure", "Required thickness, removability and surface preparation"],
+    question: "Does tape width alone determine bond suitability?",
+    answer: "No. Adhesive compatibility, surface preparation, bond area and service conditions also matter. Confirm the exact tape grade against the manufacturer's technical guidance.",
+    related: ["structural", "sealants", "specialty"],
+  },
+};
+export function relatedRanges(sub: SubCategory) {
+  return (rangeGuidance[sub.slug]?.related ?? []).flatMap(slug =>
+    pillarList.flatMap(pillar => pillar.subcategories.filter(item => item.slug === slug).map(item => ({
+      name: item.name, to: `/${pillar.key}/${item.slug}`,
+    }))),
+  );
+}
+export const rangeGuidanceContent = {
+  title: "Selection and application guidance",
+  inputsTitle: "Details to include in your enquiry",
+  relatedTitle: "Related components",
+  disclaimer: "Exact size, material, compatibility and availability are confirmed against the selected manufacturer's documentation. No model-specific specification is implied by this range page.",
+};
+
+export const industryProductLinks = {
+  factory: [{name: "Conveyor Belts", to: "/power-transmission/conveyor-belts"}, {name: "Couplings", to: "/power-transmission/couplings"}],
+  belting: [{name: "V-Belts", to: "/power-transmission/v-belts"}, {name: "Conveyor Belts", to: "/power-transmission/conveyor-belts"}],
+  automation: [{name: "Linear Motion Systems", to: "/automation/linear-motion"}, {name: "Motors & Drives", to: "/automation/motors-and-drives"}],
+} as const;

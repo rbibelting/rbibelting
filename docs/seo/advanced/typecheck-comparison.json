@@ -1,0 +1,12 @@
+{
+  "baseline_diagnostics": 38,
+  "current_diagnostics": 38,
+  "new_diagnostic_signatures": [],
+  "baseline_files": [
+    "src/components/category-pages.tsx",
+    "src/components/dealer-relationships.tsx",
+    "src/components/division-cards.tsx",
+    "src/components/v-belts-showcase.tsx",
+    "src/routes/__root.tsx"
+  ]
+}

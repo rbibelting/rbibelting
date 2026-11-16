@@ -1,16 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { ReactNode } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { EnquiryForm } from "@/components/enquiry";
 import { PageHero } from "@/components/page-sections";
 import { breadcrumbSchema, pageHead } from "@/lib/seo";
-import { footerContact, formContent } from "@/lib/site-data";
+import { footerContact, formContent, websiteIdentity } from "@/lib/site-data";
 import hero from "@/assets/factory-hero.jpg";
 
 export const faqs = [
@@ -82,7 +76,7 @@ function Contact() {
           </div>
           <aside className="space-y-4">
             <ContactItem Icon={MapPin} title="Visit us">
-              Shop No 5, Kamath Complex, Telco Road, Landewadi, Bhosari Industrial Estate, Pune 411026
+              {footerContact.address}
             </ContactItem>
             <ContactItem Icon={Phone} title="Call Sales">
               <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
@@ -92,7 +86,7 @@ function Contact() {
               </div>
             </ContactItem>
             <ContactItem Icon={Mail} title="Email">
-              <a href="mailto:response@rbibelting.in">response@rbibelting.in</a>
+              <a href={`mailto:${websiteIdentity.email[0]}`}>{websiteIdentity.email[0]}</a>
               <br />
               <a href={`mailto:${footerContact.email}`}>{footerContact.email}</a>
             </ContactItem>
@@ -113,18 +107,18 @@ function Contact() {
               Quick answers for product identification, dispatch and support from the RB International team.
             </p>
           </div>
-          <Accordion type="single" collapsible className="border-t border-border">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={faq.question} value={`faq-${index}`} className="border-border">
-                <AccordionTrigger className="text-left text-lg font-black hover:text-primary">
+          <div className="border-t border-border">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="border-b border-border py-4">
+                <summary className="cursor-pointer text-left text-lg font-black hover:text-primary">
                   {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-base leading-7 text-muted-foreground">
+                </summary>
+                <p className="mt-3 text-base leading-7 text-muted-foreground">
                   {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+                </p>
+              </details>
             ))}
-          </Accordion>
+          </div>
         </div>
       </section>
     </>
