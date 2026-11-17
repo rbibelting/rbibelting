@@ -81,28 +81,28 @@ function Footer({footerRef}:{footerRef:React.RefObject<HTMLElement|null>}) {
   return (
     <footer ref={footerRef} className="bg-foreground text-background">
       <div className="site-container grid gap-8 py-10 md:grid-cols-2 lg:grid-cols-[1.25fr_.85fr_1.1fr_1.35fr]">
-        <div className="min-w-0">
-          <img src={logo} alt="RB International Belting and Automation logo" width={80} height={80} className="size-20 rounded-full object-contain" />
-          <p className="mt-5 max-w-sm text-sm leading-6 text-background/70">{footerContact.description}</p>
-          <div className="mt-5 flex gap-2.5"><a href="https://www.instagram.com/rbibelting/" aria-label="RB International on Instagram" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Instagram className="size-4"/></a><a href="#" aria-label="RB International on LinkedIn" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Linkedin className="size-4"/></a><a href="#" aria-label="RB International on YouTube" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Youtube className="size-4"/></a><a href="#" aria-label="RB International on Facebook" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Facebook className="size-4"/></a></div>
+        <div className="min-w-0 text-center md:text-left">
+          <img src={logo} alt="RB International Belting and Automation logo" width={80} height={80} className="mx-auto size-20 rounded-full object-contain md:mx-0" />
+          <p className="mx-auto mt-5 max-w-sm text-sm leading-6 text-background/70 md:mx-0">{footerContact.description}</p>
+          <div className="mt-5 flex justify-center gap-2.5 md:justify-start"><a href="https://www.instagram.com/rbibelting/" aria-label="RB International on Instagram" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Instagram className="size-4"/></a><a href="#" aria-label="RB International on LinkedIn" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Linkedin className="size-4"/></a><a href="#" aria-label="RB International on YouTube" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Youtube className="size-4"/></a><a href="#" aria-label="RB International on Facebook" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Facebook className="size-4"/></a></div>
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 text-center md:text-left">
           <h2 className="footer-title tracking-[0.25em]">Quick Links</h2>
-          {footerQuickLinks.map(link => <a key={link.to} href={link.to} className="footer-link text-sm">{link.label}</a>)}
+          {footerQuickLinks.map(link => <a key={link.to} href={link.to} className="footer-link justify-center text-sm md:justify-start">{link.label}</a>)}
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 text-center md:text-left">
           <h2 className="footer-title tracking-[0.25em]">Products</h2>
           {footerProductLinks.map(links => <div key={links[0].to} className="py-[.35rem] text-sm leading-6 text-background/70">
             {links.map((link, index) => <span key={link.to}>{index > 0 && " & "}<a href={link.to} className="hover:text-primary-soft">{link.label}</a></span>)}
           </div>)}
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 text-center md:text-left">
           <h2 className="footer-title tracking-[0.25em]">Reach Us</h2>
-          <a className="footer-contact text-sm" href={footerContact.mapUrl} target="_blank" rel="noopener noreferrer" title="Open in Google Maps"><MapPin className="text-primary-soft" />{footerContact.address}</a>
-          <a className="footer-contact text-sm" href="tel:+919890961752"><Phone className="text-primary-soft" />+91 98909 61752</a>
-          <a className="footer-contact text-sm" href="tel:+918788195839"><Phone className="text-primary-soft" />+91 87881 95839</a>
-          <a className="footer-contact break-all text-sm" href={`mailto:${footerContact.email}`}><Mail className="text-primary-soft" />{footerContact.email}</a>
-          <p className="footer-contact text-sm"><Clock className="text-primary-soft" />{footerContact.hours}</p>
+          <a className="footer-contact justify-center text-sm md:justify-start" href={footerContact.mapUrl} target="_blank" rel="noopener noreferrer" title="Open in Google Maps"><MapPin className="text-primary-soft" />{footerContact.address}</a>
+          <a className="footer-contact justify-center text-sm md:justify-start" href="tel:+919890961752"><Phone className="text-primary-soft" />+91 98909 61752</a>
+          <a className="footer-contact justify-center text-sm md:justify-start" href="tel:+918788195839"><Phone className="text-primary-soft" />+91 87881 95839</a>
+          <a className="footer-contact justify-center break-all text-sm md:justify-start" href={`mailto:${footerContact.email}`}><Mail className="text-primary-soft" />{footerContact.email}</a>
+          <p className="footer-contact justify-center text-sm md:justify-start"><Clock className="text-primary-soft" />{footerContact.hours}</p>
         </div>
       </div>
       <p className="site-container pb-4 text-center text-sm leading-6 text-background/60">{footerContact.serviceAreas}</p>

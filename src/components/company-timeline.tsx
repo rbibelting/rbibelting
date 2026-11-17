@@ -51,7 +51,7 @@ export function CompanyTimeline() {
         >
           <CarouselContent className="-ml-4 items-stretch touch-pan-y pb-1" aria-live="off">
             {companyHistory.milestones.map((milestone) => (
-              <CarouselItem key={milestone.year} className="flex basis-[85%] pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" aria-label={`${milestone.year}: ${milestone.description}`}>
+              <CarouselItem key={milestone.year} className="flex basis-full pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" aria-label={`${milestone.year}: ${milestone.description}`}>
                 <article className="flex w-full flex-col rounded-sm border border-border border-t-4 border-t-primary bg-background p-5 shadow-sm">
                   <h3 className="text-4xl font-black leading-none tracking-tight text-primary"><time dateTime={milestone.year}>{milestone.year}</time></h3>
                   <p className="mt-5 border-t border-border pt-4 text-sm leading-6 text-foreground/80">{milestone.description.split(/(rbibelting\.com)/).map((part, index) => part === "rbibelting.com" ? <a key={index} href={`${websiteIdentity.url}/`} className="font-bold text-primary underline-offset-4 hover:underline focus-visible:underline">{part}</a> : part)}</p>

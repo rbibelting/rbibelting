@@ -21,7 +21,7 @@
 @keyframes brand-scroll{to{transform:translateX(-50%)}}@keyframes intro-logo{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}@keyframes type-in{from{clip-path:inset(0 50%)}to{clip-path:inset(0 0)}}
 .home-hero{isolation:isolate;background:var(--foreground)}
 @media(max-width:767px){.home-hero>img{position:relative;inset:auto;height:auto;z-index:auto}}
-@media(max-width:640px){.quick-enquiry{max-width:160px;line-height:1.1}.section-title{font-size:2rem}.brand-chip{min-width:145px}.home-hero h1{font-size:2.6rem}.page-hero-full h1{font-size:2.45rem}}
+@media(max-width:640px){.quick-enquiry{max-width:160px;line-height:1.1}.section-title{font-size:2rem}.brand-chip{min-width:145px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.brand-track,.preloader img,.preloader strong{animation:none}.pillar-card,.category-card,.product-type{transition:none}}
 
 /* Shared light section treatment, including formerly dark content bands. */
@@ -39,7 +39,6 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc
 .quick-enquiry{left:max(1.25rem,env(safe-area-inset-left));bottom:calc(1.25rem + env(safe-area-inset-bottom))}
 .whatsapp-float{right:max(1.25rem,env(safe-area-inset-right));bottom:calc(1.25rem + env(safe-area-inset-bottom))}
 @media(max-width:639px){
- .home-hero h1{font-size:clamp(1.875rem,7vw,2.25rem);line-height:1.12}
  .section-title{font-size:clamp(1.625rem,6.5vw,2rem)}
  main section.py-20{padding-block:3rem}
  .category-card,.product-type{padding:1.25rem}
@@ -49,4 +48,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc
  input,select,textarea{scroll-margin-block:6rem}
  .footer-link{display:flex;align-items:center;min-height:44px}
  footer a[href^="tel:"],footer a[href^="mailto:"]{min-height:44px;align-items:center}
+}
+
+/* Match main page headings across phone and tablet layouts. */
+@media(max-width:1023px){
+ .home-hero h1,.page-hero h1{font-size:1.875rem;line-height:1.15}
 }

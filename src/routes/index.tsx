@@ -56,15 +56,15 @@ function Home() {
         <div className="absolute inset-0 hidden bg-foreground/75 md:block" />
         <div className="site-container relative flex items-start py-8 text-background md:min-h-[calc(100svh-5rem-1px)] md:items-center md:py-10">
           <div className="w-full max-w-6xl">
-            <div className="max-w-5xl">
+            <div className="max-w-5xl text-center md:text-left">
               <p className="eyebrow text-primary-soft">{homeHeroContent.eyebrow}</p>
-              <h1 className="mt-5 text-balance text-4xl font-black leading-[1.08] md:text-[clamp(2rem,4vw,3.5rem)]">
+              <h1 className="mt-5 text-center text-balance text-4xl font-black leading-[1.08] md:text-left md:text-[clamp(2rem,4vw,3.5rem)]">
                 {homeHeroContent.title}
               </h1>
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-background/80">
+              <p className="mt-6 mx-auto max-w-3xl text-center text-lg leading-8 text-background/80 md:mx-0 md:text-left">
                 {homeHeroContent.description}
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
                 <Button asChild size="lg" className="h-12">
                   <a href="#divisions">
                     {homeHeroContent.productsLabel} <ArrowRight />
@@ -158,7 +158,7 @@ function Home() {
               Send the brand, code, size or application. Our team aims to respond within 2 business hours.
             </p>
           </div>
-          <Button size="lg" className="shrink-0 self-start md:self-center" onClick={() => setOpen(true)}>
+          <Button size="lg" className="shrink-0 self-center" onClick={() => setOpen(true)}>
             Submit enquiry
           </Button>
           </div>
