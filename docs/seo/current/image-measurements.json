@@ -1,0 +1,66 @@
+[
+  {
+    "source": "public/product-images/conveyor-belts/cleated-conveyor-belt.png",
+    "originalBytes": 2169778,
+    "output": "public/product-images/conveyor-belts/cleated-conveyor-belt-640.webp",
+    "bytes": 14078,
+    "width": 640,
+    "height": 427
+  },
+  {
+    "source": "public/product-images/conveyor-belts/cleated-conveyor-belt.png",
+    "originalBytes": 2169778,
+    "output": "public/product-images/conveyor-belts/cleated-conveyor-belt-1280.webp",
+    "bytes": 61948,
+    "width": 1280,
+    "height": 853
+  },
+  {
+    "source": "public/product-images/conveyor-belts/pu-pvc-conveyor-belt.png",
+    "originalBytes": 1822108,
+    "output": "public/product-images/conveyor-belts/pu-pvc-conveyor-belt-640.webp",
+    "bytes": 13196,
+    "width": 640,
+    "height": 427
+  },
+  {
+    "source": "public/product-images/conveyor-belts/pu-pvc-conveyor-belt.png",
+    "originalBytes": 1822108,
+    "output": "public/product-images/conveyor-belts/pu-pvc-conveyor-belt-1280.webp",
+    "bytes": 39454,
+    "width": 1280,
+    "height": 853
+  },
+  {
+    "source": "public/product-images/conveyor-belts/rubber-conveyor-belt.png",
+    "originalBytes": 2128627,
+    "output": "public/product-images/conveyor-belts/rubber-conveyor-belt-640.webp",
+    "bytes": 17564,
+    "width": 640,
+    "height": 427
+  },
+  {
+    "source": "public/product-images/conveyor-belts/rubber-conveyor-belt.png",
+    "originalBytes": 2128627,
+    "output": "public/product-images/conveyor-belts/rubber-conveyor-belt-1280.webp",
+    "bytes": 65472,
+    "width": 1280,
+    "height": 853
+  },
+  {
+    "source": "public/product-images/conveyor-belts/plastic-modular-conveyor-belt.png",
+    "originalBytes": 1897555,
+    "output": "public/product-images/conveyor-belts/plastic-modular-conveyor-belt-640.webp",
+    "bytes": 23996,
+    "width": 640,
+    "height": 427
+  },
+  {
+    "source": "public/product-images/conveyor-belts/plastic-modular-conveyor-belt.png",
+    "originalBytes": 1897555,
+    "output": "public/product-images/conveyor-belts/plastic-modular-conveyor-belt-1280.webp",
+    "bytes": 60190,
+    "width": 1280,
+    "height": 853
+  }
+]

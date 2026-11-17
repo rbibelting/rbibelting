@@ -1,0 +1,37 @@
+[
+  {
+    "file": "src/components/division-cards.tsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "beforeWarnings": 0,
+    "afterWarnings": 0
+  },
+  {
+    "file": "src/components/page-sections.tsx",
+    "beforeErrors": 46,
+    "afterErrors": 46,
+    "beforeWarnings": 1,
+    "afterWarnings": 1
+  },
+  {
+    "file": "src/components/product-photo.tsx",
+    "beforeErrors": 1,
+    "afterErrors": 1,
+    "beforeWarnings": 0,
+    "afterWarnings": 0
+  },
+  {
+    "file": "src/lib/seo.ts",
+    "beforeErrors": 7,
+    "afterErrors": 7,
+    "beforeWarnings": 0,
+    "afterWarnings": 0
+  },
+  {
+    "file": "src/lib/site-data.ts",
+    "beforeErrors": 253,
+    "afterErrors": 253,
+    "beforeWarnings": 0,
+    "afterWarnings": 0
+  }
+]

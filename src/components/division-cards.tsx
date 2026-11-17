@@ -12,6 +12,7 @@ import {
   divisionCardContent,
   divisionCards,
   pillarList,
+  responsiveProductImage,
   type DivisionCardPhoto,
 } from "@/lib/site-data";
 
@@ -86,6 +87,7 @@ function DivisionPhotos({ name, photos }: { name: string; photos: readonly Divis
             >
               <img
                 src={photo.src}
+                {...responsiveProductImage(photo.src)}
                 alt={photo.alt}
                 width={960}
                 height={600}

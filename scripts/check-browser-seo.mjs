@@ -40,13 +40,13 @@ try {
       report.pages.push({ path, width, ...state });
     }
   }
-  await page.goto(base + '/contact');
+  await page.goto(base + '/contact', { waitUntil: 'networkidle' });
   const question = page.locator('details').first();
   await question.locator('summary').click();
   assert.ok(await question.getAttribute('open') !== null);
   report.checks.push('Contact FAQs open accessibly; answers also exist in initial HTML.');
 
-  await page.goto(base + '/');
+  await page.goto(base + '/', { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: 'Search products' }).click();
   await page.getByPlaceholder('Search product, brand or part type').fill('V-Belts');
   assert.equal(await page.getByRole('link', { name: 'View range', exact: true }).count(), 1);
@@ -65,7 +65,7 @@ try {
   report.checks.push('Quick enquiry preserves the selected product and category.');
   await page.getByRole('dialog').getByRole('button', {name: 'Close', exact: true}).click();
 
-  await page.goto(base + '/contact');
+  await page.goto(base + '/contact', { waitUntil: 'networkidle' });
   await page.getByRole('button', {name: 'Submit your inquiry', exact: true}).click();
   assert.ok(await page.getByText('Please add your name, phone number and requirement.').isVisible());
   assert.equal(await page.evaluate(() => (window.dataLayer || []).filter(item => item.event === 'enquiry_handoff').length), 0);
@@ -86,8 +86,9 @@ try {
   assert.deepEqual(errors, []);
   report.checks.push('No browser page errors during hydration/navigation.');
   report.passed = true;
-  await mkdir('docs/seo/advanced', {recursive:true});
-  await writeFile('docs/seo/advanced/browser-validation.json', JSON.stringify(report, null, 2) + '\n');
+  const outputDirectory = process.env.SEO_REPORT_DIR || 'docs/seo/advanced';
+  await mkdir(outputDirectory, {recursive:true});
+  await writeFile(`${outputDirectory}/browser-validation.json`, JSON.stringify(report, null, 2) + '\n');
   await page.screenshot({path:'/tmp/rbi-seo-mobile.png', fullPage:true});
   console.log(`PASS: ${report.pages.length} rendered page/viewport checks; ${report.checks.length} interaction checks.`);
 } finally {

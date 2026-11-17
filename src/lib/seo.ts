@@ -5,6 +5,7 @@ import {
   describeType,
   productTypeAnchor,
   websiteIdentity,
+  pageImage,
   type Pillar,
 } from "@/lib/site-data";
 
@@ -81,6 +82,11 @@ export function pageStructuredData(title: string, description: string, path: str
     url,
     name: title,
     description,
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: absoluteUrl(pageImage(path).src),
+      caption: pageImage(path).alt,
+    },
     inLanguage: "en",
     isPartOf: reference(websiteId),
     publisher: reference(businessId),
@@ -137,7 +143,13 @@ export function pageHead(title: string, description: string, path: string, schem
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: absoluteUrl(path) },
+      { property: "og:image", content: absoluteUrl(pageImage(path).src) },
+      { property: "og:image:alt", content: pageImage(path).alt },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: absoluteUrl(pageImage(path).src) },
+      { name: "twitter:image:alt", content: pageImage(path).alt },
     ],
     links: [{ rel: "canonical", href: absoluteUrl(path) }],
     scripts: [{ type: "application/ld+json", children: serializeStructuredData(pageStructuredData(title, description, path, schema)) }],

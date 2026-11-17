@@ -27,6 +27,7 @@ export function PageHero({kicker,title,description,image,accent="brand",compact=
           alt={getImageAlt(image, `${kicker} industrial equipment`)}
           width={1408}
           height={912}
+          fetchPriority="high"
           className="h-auto w-full md:absolute md:inset-0 md:-z-10 md:size-full md:object-cover"
         />
       )}

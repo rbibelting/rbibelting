@@ -23,6 +23,30 @@ const imageDescriptions: Record<string, string> = {
 };
 export const getImageAlt = (src: string, fallback: string) => imageDescriptions[src] ?? fallback;
 
+// Original image URLs remain available; responsive derivatives preserve the photography.
+export function responsiveProductImage(src: string) {
+  if (!src.startsWith("/product-images/conveyor-belts/") || !src.endsWith(".png")) return {};
+  const stem = src.slice(0, -4);
+  return {
+    src: `${stem}-1280.webp`,
+    srcSet: `${stem}-640.webp 640w, ${stem}-1280.webp 1280w`,
+    sizes: "(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 640px",
+  };
+}
+
+export function pageImage(path: string) {
+  const section = path.split("/")[1];
+  const src =
+    section === "power-transmission"
+      ? powerDivisionPhoto
+      : section === "automation"
+        ? automationDivisionPhoto
+        : section === "adhesives"
+          ? adhesivesDivisionPhoto
+          : factoryPhoto;
+  return { src, alt: getImageAlt(src, "Industrial production equipment") };
+}
+
 export type PillarKey = "power-transmission" | "automation" | "adhesives";
 export type DivisionCardPhoto = { src: string; alt: string; label?: string; fit?: "cover" | "contain" };
 export const divisionCardContent = {
