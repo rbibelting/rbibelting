@@ -28,7 +28,7 @@ export function VBeltsShowcase({ product, open, onOpenChange, onEnquire }: { pro
   const specs = specifications[product] ?? specifications["Classical V-Belts"];
 
   return <Dialog open={open} onOpenChange={onOpenChange}>
-    <DialogContent className="max-h-[94vh] gap-0 overflow-y-auto p-0 sm:max-w-5xl">
+    <DialogContent className="max-h-[94dvh] gap-0 overflow-y-auto p-0 sm:max-w-5xl">
       <div className="grid lg:grid-cols-[1.18fr_.82fr]">
         <div className="self-start">
           <ProductGallery key={product} photos={slides} active={open} />

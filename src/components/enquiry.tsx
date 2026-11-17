@@ -70,10 +70,10 @@ export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, 
   return (
     <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
       <div className="grid gap-4 sm:grid-cols-2">
-        <div><Label htmlFor={`${formId}-name`}>Name *</Label><Input id={`${formId}-name`} name="name" required maxLength={100} className="mt-1 h-12" /></div>
-        <div><Label htmlFor={`${formId}-company`}>Company</Label><Input id={`${formId}-company`} name="company" maxLength={120} className="mt-1 h-12" /></div>
-        <div><Label htmlFor={`${formId}-phone`}>Phone *</Label><Input id={`${formId}-phone`} name="phone" aria-invalid={!!phoneError} aria-describedby={`${formId}-phone-error`} onChange={event=>setPhoneError(validateBrochurePhone(event.currentTarget.value))} onBlur={event=>setPhoneError(validateBrochurePhone(event.currentTarget.value))} type="tel" required maxLength={20} className="mt-1 h-12" /><p id={`${formId}-phone-error`} role="alert" className="mt-1 text-sm text-destructive">{phoneError}</p></div>
-        <div><Label htmlFor={`${formId}-email`}>Email</Label><Input id={`${formId}-email`} name="email" type="email" maxLength={200} className="mt-1 h-12" /></div>
+        <div><Label htmlFor={`${formId}-name`}>Name *</Label><Input id={`${formId}-name`} name="name" autoComplete="name" required maxLength={100} className="mt-1 h-12" /></div>
+        <div><Label htmlFor={`${formId}-company`}>Company</Label><Input id={`${formId}-company`} name="company" autoComplete="organization" maxLength={120} className="mt-1 h-12" /></div>
+        <div><Label htmlFor={`${formId}-phone`}>Phone *</Label><Input id={`${formId}-phone`} name="phone" aria-invalid={!!phoneError} aria-describedby={`${formId}-phone-error`} onChange={event=>setPhoneError(validateBrochurePhone(event.currentTarget.value))} onBlur={event=>setPhoneError(validateBrochurePhone(event.currentTarget.value))} type="tel" inputMode="tel" autoComplete="tel" required maxLength={20} className="mt-1 h-12" /><p id={`${formId}-phone-error`} role="alert" className="mt-1 text-sm text-destructive">{phoneError}</p></div>
+        <div><Label htmlFor={`${formId}-email`}>Email</Label><Input id={`${formId}-email`} name="email" type="email" inputMode="email" autoComplete="email" maxLength={200} className="mt-1 h-12" /></div>
       </div>
       <div>
         <Label htmlFor={`${formId}-category`}>Category</Label>
@@ -94,5 +94,5 @@ export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, 
 }
 
 export function EnquiryDialog({ open, onOpenChange, seed }: { open: boolean; onOpenChange: (value: boolean) => void; seed: EnquirySeed }) {
-  return <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-2xl"><DialogHeader><DialogTitle className="text-2xl">Send your requirement</DialogTitle><DialogDescription>Tell us the part, size, brand or application. Our team will help identify the right product.</DialogDescription></DialogHeader><EnquiryForm seed={seed} compact /></DialogContent></Dialog>;
+  return <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="max-h-[92dvh] overflow-y-auto sm:max-w-2xl"><DialogHeader><DialogTitle className="text-2xl">Send your requirement</DialogTitle><DialogDescription>Tell us the part, size, brand or application. Our team will help identify the right product.</DialogDescription></DialogHeader><EnquiryForm seed={seed} compact /></DialogContent></Dialog>;
 }

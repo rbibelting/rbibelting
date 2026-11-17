@@ -1,5 +1,5 @@
 import { DealerRelationships } from "@/components/dealer-relationships";
-import { companyLeadership } from "@/lib/site-data";
+import {mainPageSeo,  aboutHeroContent, companyLeadership, companyValues } from "@/lib/site-data";
 import { CompanyTimeline } from "@/components/company-timeline";
 import { createFileRoute } from "@tanstack/react-router";
 import {
@@ -10,7 +10,6 @@ import {
   Timer,
   ShieldCheck,
   UserRound,
-  type LucideIcon,
 } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/page-sections";
 import { pageHead, breadcrumbSchema } from "@/lib/seo";
@@ -18,8 +17,8 @@ import hero from "@/assets/factory-hero.jpg";
 export const Route = createFileRoute("/about")({
   head: () =>
     pageHead(
-      "About RB International Belting & Automation, Pune",
-      "Learn how RB International grew from a Bhosari belting supplier into a three-division industrial partner serving manufacturers across India since 2003.",
+      mainPageSeo["/about"].title,
+      mainPageSeo["/about"].description,
       "/about",
       breadcrumbSchema([
         { name: "Home", path: "/" },
@@ -33,8 +32,8 @@ function About() {
     <>
       <PageHero
         kicker="Our journey"
-        title="The RB story: two decades of trust, delivered."
-        description="Built in Bhosari for the factories that keep India moving. Our growth has come from stock depth, product knowledge and direct customer relationships."
+        title={aboutHeroContent.title}
+        description={aboutHeroContent.description}
         image={hero}
         compact
       />
@@ -42,24 +41,16 @@ function About() {
         <div className="site-container">
           <SectionHeading title="Our company values" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {(
-              [
-                [Boxes, "Stock availability", "If it exists, we have it or we will source it."],
-                [
-                  Brain,
-                  "Technical expertise",
-                  "We help solve application problems, not just sell parts.",
-                ],
-                [Timer, "Speed", "2-hour response target and same-day dispatch on stocked items."],
-                [ShieldCheck, "Trust", "20+ years and no compromise on genuine products."],
-              ] as [LucideIcon, string, string][]
-            ).map(([Icon, t, d]) => (
-              <article key={String(t)} className="bg-background p-6">
-                <Icon className="text-primary" />
-                <h3 className="mt-4 font-black">{String(t)}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{String(d)}</p>
-              </article>
-            ))}
+            {companyValues.map(({ icon, title, description }) => {
+              const Icon = { trust: ShieldCheck, speed: Timer, expertise: Brain, stock: Boxes }[icon];
+              return (
+                <article key={title} className="bg-background p-6">
+                  <Icon className="text-primary" />
+                  <h3 className="mt-4 font-black">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -85,7 +76,7 @@ function About() {
       </section>
       <CompanyTimeline />
       <section
-        className="pattern-shared content-surface py-20 text-foreground"
+        className="pattern-shared content-surface py-12 text-foreground md:py-16"
         aria-label="Appreciation certificates"
       >
         <div className="site-container">

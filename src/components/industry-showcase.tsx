@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { industries, industryCoverage, industryProductLinks } from "@/lib/site-data";
+import { getImageAlt, industries, industryCoverage, industryProductLinks } from "@/lib/site-data";
 import { SectionHeading } from "@/components/page-sections";
 import factory from "@/assets/factory-hero.jpg";
 import automation from "@/assets/automation.jpg";
@@ -45,7 +45,7 @@ export function IndustryShowcase() {
             </div>
           </div>
           <figure id="industry-preview" aria-labelledby="industry-preview-title" className="relative min-w-0 overflow-hidden bg-foreground text-background">
-            <img src={photo.src} alt={photo.alt} width={1408} height={912} loading="lazy" decoding="async" className="h-auto w-full lg:absolute lg:inset-0 lg:size-full lg:object-cover" />
+            <img src={photo.src} alt={getImageAlt(photo.src, photo.alt)} width={1408} height={912} loading="lazy" decoding="async" className="h-auto w-full lg:absolute lg:inset-0 lg:size-full lg:object-cover" />
             <div className="absolute inset-0 hidden bg-gradient-to-t from-black/90 via-black/15 to-transparent lg:block" />
             <figcaption aria-live="polite" aria-atomic="true" className="relative flex flex-col justify-end p-6 sm:p-8 lg:h-full">
               <span className="mb-4 h-1 w-12 bg-primary-soft" aria-hidden="true" />

@@ -31,3 +31,14 @@ assert.ok(!JSON.stringify(event).includes('private@example.com'));
 const root = await readFile('src/routes/__root.tsx', 'utf8');
 assert.equal([...root.matchAll(/id="google-tag-manager"/g)].length, 1);
 console.log(`PASS: ${paths.length} sitemap paths, ${slugs.size} range guidance records, product search destinations, category normalization and sanitized analytics.`);
+
+for (const product of data.catalogueProductModels) {
+  const [division, slug] = product.path.split('/').filter(Boolean);
+  const sub = data.pillarList.find(pillar => pillar.key === division)?.subcategories.find(sub => sub.slug === slug);
+  assert.ok(sub?.types.includes(product.name), `Product must match a visible catalogue card: ${product.name}`);
+  assert.ok(product.brand && product.name.includes(product.brand), `Explicit brand for ${product.name}`);
+}
+const robots = await readFile('public/robots.txt', 'utf8');
+for (const agent of data.aiCrawlerUserAgents) assert.ok(robots.includes(`User-agent: ${agent}\n`), `AI crawler policy: ${agent}`);
+assert.ok(!/^Disallow:\s*\//m.test(robots), 'Public catalogue remains crawlable');
+console.log(`PASS: ${data.catalogueProductModels.length} named catalogue Products and ${data.aiCrawlerUserAgents.length} explicit AI crawler permissions.`);

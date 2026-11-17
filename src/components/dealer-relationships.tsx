@@ -19,7 +19,7 @@ import {
 
 function CertificateImage({ certificate }: { certificate: DealerCertificate }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const alt = `${certificate.brand}: ${certificate.title}. ${certificate.detail}`;
+  const alt = certificate.alt;
   const frame = certificate.rotation || certificate.straighten ? certificate.frame : undefined;
 
   useEffect(() => {
@@ -89,7 +89,9 @@ function CertificateImage({ certificate }: { certificate: DealerCertificate }) {
   }, [certificate.image, frame]);
 
   if (frame) {
-    return <canvas ref={canvasRef} width={frame.width} height={frame.height} role="img" aria-label={alt} className="size-full object-contain" style={certificate.rotation ? { filter: "brightness(1.15) contrast(1.18)" } : undefined} />;
+    return <canvas ref={canvasRef} width={frame.width} height={frame.height} role="img" aria-label={alt} className="size-full object-contain" style={certificate.rotation ? { filter: "brightness(1.15) contrast(1.18)" } : undefined}>
+      <img src={certificate.image} alt={alt} width={certificate.width} height={certificate.height} loading="lazy" decoding="async" />
+    </canvas>;
   }
 
   return (
@@ -116,8 +118,9 @@ export function DealerRelationships({ appreciation = false }: { appreciation?: b
 
   return (
     <>
-      <div className="[&_.text-muted-foreground]:text-background/70">
+      <div className={appreciation ? "text-foreground [&_.section-title]:text-foreground [&>div]:mb-6" : "text-foreground"}>
         <SectionHeading
+          wide={appreciation}
           eyebrow={content.eyebrow}
           title={content.title}
           text={content.description}

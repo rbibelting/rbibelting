@@ -46,7 +46,7 @@ export function ProductRangeDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className={`theme-${pillar.key} flex max-h-[94dvh] w-[calc(100%-1.5rem)] max-w-5xl flex-col gap-0 overflow-hidden rounded-2xl border-border/80 bg-background p-0 shadow-2xl sm:max-w-5xl [&>button]:grid [&>button]:size-10 [&>button]:place-items-center [&>button]:rounded-full [&>button]:bg-muted [&>button]:opacity-100`}
+        className={`theme-${pillar.key} flex max-h-[94dvh] w-[calc(100%-1.5rem)] max-w-5xl flex-col gap-0 overflow-hidden rounded-2xl border-border/80 bg-background p-0 shadow-2xl sm:max-w-5xl [&>button]:grid [&>button]:size-11 [&>button]:place-items-center [&>button]:rounded-full [&>button]:bg-muted [&>button]:opacity-100`}
       >
         <DialogHeader className="shrink-0 space-y-3 border-b border-border/70 px-5 py-4 pr-16 text-left sm:px-6 sm:pr-16">
           <p className="w-fit rounded-full bg-category/8 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-category">

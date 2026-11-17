@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CategoryRoute } from "@/components/category-pages";
-import { pillars } from "@/lib/site-data";
+import {mainPageSeo,  pillars } from "@/lib/site-data";
 import { pageHead, breadcrumbSchema } from "@/lib/seo";
 const p = pillars["power-transmission"];
 export const Route = createFileRoute("/power-transmission")({
@@ -9,8 +9,8 @@ export const Route = createFileRoute("/power-transmission")({
   }),
   head: ({ matches }) =>
     matches.at(-1)?.routeId === "/power-transmission" ? pageHead(
-      "Power Transmission Belts & Drives | RB International, Pune",
-      "Industrial belts, pulleys and couplings from Fenner, Gates, PIX and more. Get fast technical support and PAN India supply from Pune.",
+      mainPageSeo["/power-transmission"].title,
+      mainPageSeo["/power-transmission"].description,
       "/power-transmission",
       breadcrumbSchema([
         { name: "Home", path: "/" },

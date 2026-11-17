@@ -4,36 +4,10 @@ import type { ReactNode } from "react";
 import { EnquiryForm } from "@/components/enquiry";
 import { PageHero } from "@/components/page-sections";
 import { breadcrumbSchema, pageHead } from "@/lib/seo";
-import { footerContact, formContent, websiteIdentity } from "@/lib/site-data";
+import {mainPageSeo,  contactFaqs, footerContact, formContent, websiteIdentity } from "@/lib/site-data";
 import hero from "@/assets/factory-hero.jpg";
 
-export const faqs = [
-  {
-    question: "What details should I share for a fast quotation?",
-    answer:
-      "Share the product type, brand preference, size or part number, quantity, machine application and delivery location. Photos of existing markings or drawings help our team identify the correct option faster.",
-  },
-  {
-    question: "Do you supply outside Pune?",
-    answer:
-      "Yes. RB International supports customers across India and selected export requirements from our Bhosari, Pune base.",
-  },
-  {
-    question: "Can you help if I do not know the exact product code?",
-    answer:
-      "Yes. Send the application, current product photo, size, pulley or machine details, and our team will help shortlist suitable belting, automation or adhesive options.",
-  },
-  {
-    question: "Which product categories can I enquire about?",
-    answer:
-      "You can enquire for power transmission products, automation and motion control components, industrial adhesives, MRO chemicals and related maintenance requirements.",
-  },
-  {
-    question: "How quickly will your team respond?",
-    answer:
-      "For working-hour enquiries, the team aims to respond quickly by phone, email or WhatsApp after reviewing the requirement details.",
-  },
-];
+export const faqs = contactFaqs;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -48,8 +22,8 @@ const faqSchema = {
 export const Route = createFileRoute("/contact")({
   head: () =>
     pageHead(
-      "Contact RB International Belting & Automation, Pune",
-      "Send your industrial belt, automation or adhesive requirement to RB International in Bhosari, Pune. Call, email or WhatsApp our sales team today.",
+      mainPageSeo["/contact"].title,
+      mainPageSeo["/contact"].description,
       "/contact",
       [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]), faqSchema],
     ),
@@ -91,7 +65,7 @@ function Contact() {
               <a href={`mailto:${footerContact.email}`}>{footerContact.email}</a>
             </ContactItem>
             <ContactItem Icon={Clock} title="Working hours">
-              Monday to Saturday
+              Monday to Sunday
               <br />
               9:30 AM to 6:30 PM IST
             </ContactItem>

@@ -8,10 +8,16 @@ import bandedPhoto from "@/assets/v-belts/banded-clean.jpg";
 import narrowPhoto from "@/assets/v-belts/narrow-clean.jpg";
 
 const imageDescriptions: Record<string, string> = {
-  [factoryPhoto]: "Factory production floor with CNC machinery and assembly equipment",
-  [powerDivisionPhoto]: "Industrial drive belts and pulleys on production machinery",
-  [automationDivisionPhoto]: "Automated industrial production equipment",
-  [adhesivesDivisionPhoto]: "Industrial maintenance and repair workbench",
+  [factoryPhoto]: "Industrial factory floor with CNC machines and component assembly lines",
+  [powerDivisionPhoto]: "Industrial power transmission belts running over metal pulleys beside an electric motor",
+  [automationDivisionPhoto]: "Gantry robot and linear motion equipment on an automated manufacturing line",
+  [adhesivesDivisionPhoto]: "Technician applying industrial adhesive to a threaded fastener beside gears and a gearbox",
+  "/division-images/automation-linear-motion.jpg": "Ball screw assembly and linear guideways with sliding carriages on a CNC machine bed",
+  "/division-images/automation-robotics.jpg": "Industrial robotic arm handling a metal component on an automated assembly line",
+  "/division-images/automation-servo-drives.jpg": "Servo motors and electronic servo drives for industrial motion control",
+  "/division-images/adhesives-threadlocking.jpg": "Blue threadlocking adhesive applied to a metal bolt beside machined flanges",
+  "/division-images/adhesives-epoxy-bonding.jpg": "Two-part structural adhesive dispensed through a mixing nozzle along a metal joint",
+  "/division-images/adhesives-tapes-sealants.jpg": "Industrial sealing tapes and sealant cartridge beside a bolted pipe flange",
   [classicalDivisionPhoto]: "Classical wrapped V-belts for industrial drive systems",
   [coggedDivisionPhoto]: "Raw-edge cogged V-belts with notched inner profiles",
   [bandedPhoto]: "Banded V-belts with multiple belt sections joined together",
@@ -51,12 +57,12 @@ export type PillarKey = "power-transmission" | "automation" | "adhesives";
 export type DivisionCardPhoto = { src: string; alt: string; label?: string; fit?: "cover" | "contain" };
 export const divisionCardContent = {
   divisionLabel: "Division",
-  linkLabel: "Explore range",
 };
-export const divisionCards: Record<PillarKey, { title: string; description: string; photos: readonly DivisionCardPhoto[] }> = {
+export const divisionCards: Record<PillarKey, { title: string; description: string; linkLabel: string; photos: readonly DivisionCardPhoto[] }> = {
   "power-transmission": {
     title: "Power Transmission",
-    description: "Belts, pulleys and couplings for reliable industrial drives and conveying.",
+    description: "V-belts, timing belts, conveyor belts, pulleys and couplings. Fenner, Gates, Optibelt, PIX, Continental and more.",
+    linkLabel: "Explore Belts & Drives",
     photos: [
       { src: powerDivisionPhoto, alt: "Industrial drive belts and pulleys on production machinery", label: "Drive Belts & Pulleys" },
       { src: classicalDivisionPhoto, alt: "Classical wrapped V-belts for industrial drives", label: "Classical V-Belts", fit: "contain" },
@@ -67,7 +73,8 @@ export const divisionCards: Record<PillarKey, { title: string; description: stri
   },
   automation: {
     title: "Automation & Motion",
-    description: "Linear motion, robotics and drives for precise machine control and automation.",
+    description: "Ball screws, linear guideways, servo motors, CNC controllers and gantry robots for precision automation.",
+    linkLabel: "Explore Automation",
     photos: [
       { src: automationDivisionPhoto, alt: "Automated industrial production equipment" },
       { src: "/division-images/automation-linear-motion.jpg", alt: "Linear guides and ball screw assembly" },
@@ -77,7 +84,8 @@ export const divisionCards: Record<PillarKey, { title: string; description: stri
   },
   adhesives: {
     title: "Adhesives & Chemicals",
-    description: "Adhesives, sealants and maintenance chemicals for dependable bonding and repair.",
+    description: "Loctite, Pidilite, 3M, Anabond, WD-40. Threadlockers, sealants, epoxies and MRO chemicals.",
+    linkLabel: "Explore Adhesives",
     photos: [
       { src: adhesivesDivisionPhoto, alt: "Industrial maintenance and repair workbench" },
       { src: "/division-images/adhesives-threadlocking.jpg", alt: "Threadlocking adhesive applied to a metal fastener" },
@@ -90,18 +98,45 @@ export const brandPartnersContent = {
   eyebrow: "Our Brand Partners",
   title: "Authorized Dealers and Stockists for 50+ Industrial Brands",
 };
+export const homeHeroContent = {
+  eyebrow: "Authorized Dealers for Fenner | Gates | PIX | Pidilite | Loctite | Since 2003",
+  title: "V-Belts, Timing Belts, Conveyor Belts, Automation Components & Industrial Adhesives Supplier in Pune",
+  description: "Supplying Fenner, Gates, PIX, Optibelt, Loctite, Pidilite, and 50+ industrial brands to 500+ manufacturers across Maharashtra, Gujarat, Tamil Nadu, and Karnataka. Same-day dispatch from Pune.",
+  productsLabel: "View Products",
+  divisionsTitleLines: ["V-Belts, Automation Components &", "Industrial Adhesives: Complete Range"],
+};
 export const serviceBenefits = [
-  { title: "Same-Day Dispatch", description: "Stocked items shipped the same day from our Pune warehouse." },
+  { title: "Same-Day Dispatch", description: "Stocked items shipped same day from Pune. Serving Maharashtra, Gujarat, Tamil Nadu, Karnataka and export markets." },
   { title: "2-Hour Response", description: "Submit your requirement. Our team gets back within 2 business hours." },
   { title: "Application Support", description: "Share your machine, size, or part code. We help you find the exact match." },
+  { title: "Genuine Products Only", description: "Authorized dealer for Gates, Fenner, PIX, Pidilite. No grey market. No duplicates." },
 ];
 export const footerContact = {
-  description: "RB International Belting & Automation, Pune. Authorized dealers for Gates, Fenner, PIX, Pidilite. Suppliers of V-belts, timing belts, conveyor belts, ball screws, servo motors, industrial adhesives.",
-  email: "sales@rbcorp.in",
+  description: "Authorized dealers for Gates, Fenner, PIX, Pidilite. Supplying V-belts, timing belts, conveyor belts, automation components and industrial adhesives to manufacturers across India since 2003.",
+  email: "rbtraders1@yahoo.co.in",
   gst: "27AAHFR3595G1ZU",
-  address: "Shop No 5, Kamath Complex, Telco Road, Landewadi, Bhosari Industrial Estate, Pune 411026",
+  hours: "Mon to Sun: 9:30 AM to 6:30 PM",
+  serviceAreas: "Serving manufacturers in Pune, Mumbai, Nashik, Aurangabad, Kolhapur, Ahmedabad, Surat, Rajkot, Chennai, Coimbatore, Bangalore, Indore, Kolkata, Hyderabad, Jaipur and export markets in the Middle East, Europe and Australia.",
+  address: "Shop No 5, Kamath Complex, Telco Road, Landewadi, Bhosari Industrial Estate, Pune - 411026",
   mapUrl: "https://maps.app.goo.gl/v51wGZH4o8cT1e3D8",
 };
+export const footerQuickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Power Transmission", to: "/power-transmission" },
+  { label: "Automation", to: "/automation" },
+  { label: "Adhesives", to: "/adhesives" },
+  { label: "Franchise", to: "/franchise" },
+  { label: "Contact", to: "/contact" },
+];
+export const footerProductLinks = [
+  [{ label: "V-Belts", to: "/power-transmission/v-belts" }, { label: "Timing Belts", to: "/power-transmission/timing-belts" }],
+  [{ label: "Conveyor Belts", to: "/power-transmission/conveyor-belts" }],
+  [{ label: "Pulleys", to: "/power-transmission/pulleys-and-bushes" }, { label: "Couplings", to: "/power-transmission/couplings" }],
+  [{ label: "Ball Screws & Linear Motion", to: "/automation/linear-motion" }],
+  [{ label: "Servo Motors & Drives", to: "/automation/motors-and-drives" }],
+  [{ label: "Loctite, Pidilite & 3M Adhesives", to: "/adhesives" }],
+];
 // Verified public company details shared by structured data. Placeholder social links are excluded.
 export const websiteIdentity = {
   url: "https://www.rbibelting.com",
@@ -116,13 +151,24 @@ export const websiteIdentity = {
     postalCode: "411026",
     addressCountry: "IN",
   },
-  openingHours: "Mo-Sa 09:30-18:30",
+  openingHours: "Mo-Su 09:30-18:30",
+};
+
+export const companyValues = [
+  { icon: "trust", title: "Trust", description: "20+ years and no compromise on genuine products." },
+  { icon: "speed", title: "Speed", description: "2-hour response target and same-day dispatch on stocked items." },
+  { icon: "expertise", title: "Technical expertise", description: "We help solve application problems, not just sell parts." },
+  { icon: "stock", title: "Stock availability", description: "If it exists, we have it or we can source it." },
+] as const;
+
+export const aboutHeroContent = {
+  title: "About RB International Belting & Automation, Pune",
+  description: "Founded in 2003. 23+ years of supplying V-belts, timing belts, conveyor belts, automation components and industrial adhesives to 500+ manufacturers across India.",
 };
 
 export const companyHistory = {
   eyebrow: "Milestones",
   title: "From a belting shop to three industrial divisions",
-  description: "The timeline below contains approximate milestones and will be confirmed before final publication.",
   milestones: [
     { year: "2003", description: "Founded in Bhosari, Pune as a belting supply firm." },
     { year: "2006", description: "Built authorized dealer relationships with major belting brands." },
@@ -131,30 +177,32 @@ export const companyHistory = {
     { year: "2018", description: "Crossed 300 active client accounts across Maharashtra." },
     { year: "2020", description: "Expanded service to PAN India and international markets." },
     { year: "2023", description: "Completed 20 years with 500+ active clients and 50+ brand relationships." },
+    { year: "2025", description: "Filed trademark for RB International Belting & Automation." },
+    { year: "2026", description: "Launched rbibelting.com. Digital transformation and franchise readiness underway." },
   ],
 } as const;
 export const companyLeadership = [
   {
     name: "Mr. Vishwanath Baigar",
-    role: "Founder & Director",
-    description: "With over two decades of hands-on experience in power transmission, he helped build RB International from a Bhosari shop into a multi-division supplier.",
+    role: "Partner",
+    description: "Mr. Vishwanath brings over two decades of experience in power transmission and industrial supply. His direct relationships with brand principals at Gates, Fenner, PIX and Pidilite, combined with deep technical knowledge of belting applications across automotive, packaging and manufacturing, drive the company’s sales growth and market reputation.",
     portrait: {
       src: "/team/vishwanath-baigar.jpeg",
       width: 983,
       height: 1280,
     },
-    note: "Biography is a placeholder pending approval.",
+    note: "",
   },
   {
     name: "Mr. Omprakash D. Rokhade",
-    role: "Co-Founder & Director",
-    description: "His focus on supply chain efficiency, inventory and customer relationships supports dependable stock availability and delivery.",
+    role: "Partner",
+    description: "Mr. Omprakash has led RB International’s operational expansion and client relationships from the start. His focus on inventory management, supply chain reliability and customer service has enabled the company to serve 500+ active accounts across India.",
     portrait: {
       src: "/team/omprakash-rokhade.jpeg",
       width: 1155,
       height: 1362,
     },
-    note: "Biography is a placeholder pending approval.",
+    note: "",
   },
 ] as const;
 export const formContent = {
@@ -215,25 +263,27 @@ export const productPhotoShowcases: Record<string, readonly ProductShowcasePhoto
   ],
 };
 export const upcomingRange = {
-  eyebrow: "Coming soon",
-  title: "RB International: our own range",
-  description: "We are developing our own line of automation components and select belting products. Register interest with our team.",
-  linkLabel: "Register interest",
+  eyebrow: "In-House Range",
+  title: "RB International: Our Own Product Line",
+  description: "Select automation components and industrial belts designed, tested and supplied directly by RB International.",
+  linkLabel: "Enquire About Our Range",
   href: "/contact",
-  detailsTitle: "What we're developing",
+  detailsTitle: "Our Product Range",
   focusAreas: [
     {
-      title: "Automation components",
-      description: "A planned range for machinery and motion control applications.",
+      title: "Automation Components",
+      description: "Servo drives, controllers and motion components for CNC machines and industrial automation applications.",
     },
     {
-      title: "Selected belting products",
-      description: "Belting options for industrial equipment and maintenance needs.",
+      title: "Industrial Belts",
+      description: "Select belt profiles manufactured to our specifications for OEM and replacement requirements.",
     },
   ],
-  interestTitle: "Help shape the range",
-  interestDescription: "Share your application, required sizes and expected quantities when you register your interest.",
+  interestTitle: "Interested in distributing RB International products in your city?",
+  franchiseLabel: "Explore Franchise",
+  franchiseHref: "/franchise",
 };
+
 type BrandLogo = { src: string; fit?: "contain" | "cover"; position?: string; scale?: number; background?: string; stripFrame?: { width: number; height: number; viewBox: string } };
 export const brandLogos: Record<string, BrandLogo> = {
   "Gates": { src: "/brand-logos/gates.svg" },
@@ -282,6 +332,52 @@ const brandLogoAliases: Record<string, string> = {
   "Pidilite IBS": "Pidilite",
   "Bond Tide": "Bondtite",
 };
+// Describe the logo and its catalogue context without implying unverified authorization.
+export const brandLogoAltText: Record<string, string> = {
+  "Gates": "Gates logo — industrial drive belts",
+  "Fenner": "Fenner logo — V-belts and power transmission products",
+  "PIX": "PIX logo — industrial belts and belt maintenance tools",
+  "Pidilite": "Pidilite logo — adhesives and bonding products",
+  "Optibelt": "Optibelt logo — industrial power transmission belts",
+  "Goodyear": "Goodyear logo — industrial drive belts",
+  "Continental ContiTech": "Continental ContiTech logo — drive belts and conveyor belting",
+  "Megadyne": "Megadyne logo — timing belts and power transmission products",
+  "Carlisle": "Carlisle logo — industrial drive belts",
+  "Hutchinson": "Hutchinson logo — power transmission belts",
+  "Mitsuboshi": "Mitsuboshi logo — industrial belting",
+  "Polymaxx": "Polymaxx logo — industrial belts, motion components and adhesives",
+  "Loctite": "Loctite logo — threadlockers and industrial adhesives",
+  "3M": "3M logo — industrial adhesives and tapes",
+  "Anabond": "Anabond logo — threadlockers and silicone sealants",
+  "Araldite": "Araldite logo — structural and epoxy adhesives",
+  "Amico": "Amico logo — industrial adhesives",
+  "Speb 7": "Speb 7 logo — adhesives and maintenance chemicals",
+  "WD-40": "WD-40 logo — lubricants and maintenance products",
+  "Arofine Polymers": "Arofine Polymers logo — adhesives and maintenance chemicals",
+  "SAV Chemicals": "SAV Chemicals logo — industrial adhesives and chemicals",
+  "Atul": "Atul logo — industrial bonding products",
+  "Metlok": "Metlok logo — structural and epoxy adhesives",
+  "Bondtite": "Bondtite logo — structural bonding adhesives",
+  "Dr. Fixit": "Dr. Fixit logo — waterproofing and construction chemicals",
+  "Fevicol": "Fevicol logo — wood and general-purpose adhesives",
+  "Ecodrive": "Ecodrive logo — industrial products",
+  "Lapox": "Lapox logo — epoxy adhesives",
+  "Lord Adhesive": "Lord Adhesive logo — structural bonding adhesives",
+  "M-Seal": "M-Seal logo — repair putty and sealing compounds",
+  "MxBon": "MxBon logo — industrial bonding adhesives",
+  "Polygrip": "Polygrip logo — contact adhesives",
+  "Bando": "Bando logo — industrial belts",
+  "Nitta": "Nitta logo — industrial belting",
+  "Habasit": "Habasit logo — conveyor belting",
+  "TOCO": "TOCO logo — linear motion products",
+  "THK": "THK logo — linear motion products",
+  "HIWIN": "HIWIN logo — linear motion products",
+  "Rexroth": "Rexroth logo — industrial automation products",
+  "ROBOT": "ROBOT logo — linear motion technology",
+};
+export const getBrandLogoAlt = (brand: string) =>
+  brandLogoAltText[brandLogoAliases[brand] ?? brand] ?? `${brand} logo`;
+
 export const logoBrands = Object.keys(brandLogos);
 export type CertificateFrame = {
   width: number;
@@ -295,6 +391,7 @@ export type CertificateFrame = {
 };
 export type DealerCertificate = {
   id: string;
+  alt: string;
   brand: string;
   title: string;
   detail: string;
@@ -320,6 +417,7 @@ export const dealerRelationships = {
 export const dealerCertificates: readonly DealerCertificate[] = [
   {
     id: "sav-chemicals-mxbon-distributor",
+    alt: "SAV Chemicals certificate appointing RB Traders as an authorized MXBON distributor for Pune and PCMC",
     brand: "SAV Chemicals / MXBON",
     title: "Authorized distributor",
     detail: "RB Traders · MXBON products and services for Pune / PCMC",
@@ -330,6 +428,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "gates-2026",
+    alt: "Gates authorized distributor certificate for R.B. Traders, Pune, covering industrial power transmission products in 2026",
     straighten: true,
     brand: "Gates",
     title: "Authorized distributor",
@@ -346,6 +445,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "pix-2026-27",
+    alt: "PIX authorized business partner certificate for R B Traders, Chakan, for power transmission products, FY 2026–27",
     straighten: true,
     brand: "PIX",
     title: "Authorised business partner",
@@ -362,6 +462,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "pidilite-2027",
+    alt: "Pidilite channel partner certificate for R.B. Traders covering Pune, Chakan and Talegaon, valid to 31 March 2027",
     brand: "Pidilite / WD-40",
     title: "Authorized channel partner",
     detail: "Valid to 31 March 2027 · Pune, Chakan & Talegaon",
@@ -372,6 +473,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "jk-fenner-2025-26",
+    alt: "JK Fenner V-belt dealer certificate for R.B. Traders, Chakan, for April 2025–March 2026",
     brand: "JK Fenner",
     title: "Authorised dealer",
     detail: "April 2025–March 2026 · V-belt range",
@@ -382,6 +484,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "pidilite-ibs-2014-15",
+    alt: "Pidilite IBS authorized reseller certificate for R B Traders, Chakan, Pune, for April 2014–March 2015",
     brand: "Pidilite IBS",
     title: "Authorised reseller",
     detail: "April 2014–March 2015 · Chakan, Pune",
@@ -398,6 +501,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "wd40-platinum-2022-23",
+    alt: "WD-40 and Pidilite Platinum Club certificate recognizing R.B. Traders for qualification in FY 2022–23",
     straighten: true,
     brand: "WD-40 / Pidilite",
     title: "Platinum Club certificate",
@@ -414,6 +518,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "3m-appreciation",
+    alt: "3M certificate of appreciation awarded to R B Traders for promoting safety culture in India",
     straighten: true,
     brand: "3M",
     title: "Certificate of appreciation",
@@ -430,6 +535,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "indiamart-trust-seal",
+    alt: "IndiaMART Trust Seal certificate for R B Traders, Maharashtra, issued January 2026 and valid through August 2027",
     brand: "IndiaMART",
     title: "Trust Seal certificate",
     detail: "January 2026–August 2027 · Certificate ID 68585",
@@ -440,6 +546,7 @@ export const dealerCertificates: readonly DealerCertificate[] = [
   },
   {
     id: "wd40-platinum-recognition",
+    alt: "Award recipient holding a WD-40 Platinum Club certificate and trophy at a recognition event",
     brand: "WD-40",
     title: "Platinum Club recognition",
     detail: "Award presentation photograph",
@@ -846,3 +953,86 @@ export const industryProductLinks = {
   belting: [{name: "V-Belts", to: "/power-transmission/v-belts"}, {name: "Conveyor Belts", to: "/power-transmission/conveyor-belts"}],
   automation: [{name: "Linear Motion Systems", to: "/automation/linear-motion"}, {name: "Motors & Drives", to: "/automation/motors-and-drives"}],
 } as const;
+
+export const contactFaqs = [
+  {
+    question: "What details should I share for a fast quotation?",
+    answer:
+      "Share the product type, brand preference, size or part number, quantity, machine application and delivery location. Photos of existing markings or drawings help our team identify the correct option faster.",
+  },
+  {
+    question: "Do you supply outside Pune?",
+    answer:
+      "Yes. We supply PAN India with same-day dispatch from Pune. We also export to Middle East, Europe, Australia and Southeast Asia.",
+  },
+  {
+    question: "Can you help if I do not know the exact product code?",
+    answer:
+      "Yes. Send the application, current product photo, size, pulley or machine details, and our team will help shortlist suitable belting, automation or adhesive options.",
+  },
+  {
+    question: "Are you authorized dealers for Gates and Fenner belts?",
+    answer:
+      "Yes. We are authorized dealers for Gates, Fenner, PIX, Optibelt, Loctite, Pidilite, 3M, WD-40 and other leading industrial brands. All products are genuine with manufacturer warranty.",
+  },
+  {
+    question: "How quickly will your team respond?",
+    answer:
+      "Enquiries received during working hours typically get a response within 2-4 hours via phone, email or WhatsApp.",
+  },
+  {
+    question: "What is the minimum order quantity?",
+    answer: "No fixed MOQ for most stocked products. For custom or bulk orders, quantities may vary by product and brand. Contact us with your requirement for exact details.",
+  },
+];
+
+export const mainPageSeo = {
+  "/": {
+    title: "RB International | Industrial Belts, Automation & Exports India",
+    description: "Leading supplier & exporter of industrial belts, automation components, and adhesives serving Pan-India industrial zones, SEZs, and global markets.",
+  },
+  "/about": {
+    title: "About RB International | Pan-India Industrial Supplier & Exporter",
+    description: "Discover RB International. We deliver reliable power transmission, automation, and chemical solutions to Indian SEZs, OEMs, and export clients worldwide.",
+  },
+  "/power-transmission": {
+    title: "Power Transmission, V-Belts & Conveyor Belts Exporter India",
+    description: "Source high-performance V-belts, timing belts, and conveyor belts in bulk from RB International. Trusted supplier for Indian industrial hubs, SEZs & exports.",
+  },
+  "/automation": {
+    title: "Industrial Automation & Motion Control Supplier India & SEZ",
+    description: "Upgrade factory efficiency with precision automation and motion control components. Fast Pan-India delivery across industrial corridors, SEZs and exports.",
+  },
+  "/adhesives": {
+    title: "Industrial Adhesives & Specialty Chemicals Supplier India",
+    description: "High-strength industrial adhesives, sealants, and specialty chemicals for manufacturing units, SEZs, and bulk export orders across India and overseas.",
+  },
+  "/contact": {
+    title: "Contact RB International | Pan-India & Export Inquiries",
+    description: "Connect with RB International for bulk quotes, technical support, and export logistics across Pan-India industrial zones, SEZs, and global destinations.",
+  },
+  "/franchise": {
+    title: "Industrial Supply & Automation Franchise Opportunities India",
+    description: "Partner with RB International to distribute industrial belts, automation, and adhesives in fast-growing Indian industrial corridors and upcoming SEZs.",
+  },
+} as const;
+
+// Only named catalogue items opt into Product markup; family pages stay collections.
+export const catalogueProductModels = [
+  { path: "/power-transmission/timing-belts", name: "Gates Polychain GT Carbon", brand: "Gates" },
+  { path: "/power-transmission/accessories", name: "PIX Service Kit", brand: "PIX" },
+  { path: "/power-transmission/accessories", name: "PIX Belt Kit", brand: "PIX" },
+] as const;
+
+// Public-site crawl policy includes AI search, user retrieval and model-training bots.
+export const aiCrawlerUserAgents = [
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "ClaudeBot",
+  "PerplexityBot",
+  "Perplexity-User",
+  "Google-Extended",
+] as const;

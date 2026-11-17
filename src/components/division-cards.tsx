@@ -13,6 +13,7 @@ import {
   divisionCards,
   pillarList,
   responsiveProductImage,
+  getImageAlt,
   type DivisionCardPhoto,
 } from "@/lib/site-data";
 
@@ -88,7 +89,7 @@ function DivisionPhotos({ name, photos }: { name: string; photos: readonly Divis
               <img
                 src={photo.src}
                 {...responsiveProductImage(photo.src)}
-                alt={photo.alt}
+                alt={getImageAlt(photo.src, photo.alt)}
                 width={960}
                 height={600}
                 loading={index <= 1 ? "eager" : "lazy"}
@@ -139,7 +140,7 @@ export function PillarCards() {
                   <Link
                     to={`/${pillar.key}` as "/power-transmission" | "/automation" | "/adhesives"}
                   >
-                    {divisionCardContent.linkLabel}
+                    {card.linkLabel}
                     <ArrowRight />
                   </Link>
                 </Button>

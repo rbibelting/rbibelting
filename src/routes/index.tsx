@@ -6,21 +6,22 @@ import {
   Handshake,
   MessageSquareText,
   PackageCheck,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandStrip, PillarCards, SectionHeading } from "@/components/page-sections";
 import { EnquiryDialog } from "@/components/enquiry";
 import { DealerRelationships } from "@/components/dealer-relationships";
 import { IndustryShowcase } from "@/components/industry-showcase";
-import { allBrands, brandPartnersContent, logoBrands, serviceBenefits, upcomingRange } from "@/lib/site-data";
+import {mainPageSeo,  allBrands, brandPartnersContent, getImageAlt, homeHeroContent, logoBrands, serviceBenefits, upcomingRange } from "@/lib/site-data";
 import { pageHead } from "@/lib/seo";
 import hero from "@/assets/factory-hero.jpg";
 
 const stats = [
   ["23+", "Years in industry"],
   ["500+", "Active clients"],
-  ["50+", "Brand partnerships"],
-  ["PAN India", "+ Export service"],
+  ["50+", "Brands Stocked"],
+  ["10+ States Served", "PAN Indian + Export"],
 ];
 
 const brandThemes = [
@@ -32,8 +33,8 @@ const brandThemes = [
 export const Route = createFileRoute("/")({
   head: () =>
     pageHead(
-      "Industrial Belts, Automation & Adhesives | RB International Pune",
-      "RB International supplies power transmission belts, automation components and industrial adhesives from Pune to 500+ manufacturers across India and export markets.",
+      mainPageSeo["/"].title,
+      mainPageSeo["/"].description,
       "/",
     ),
   component: Home,
@@ -47,7 +48,7 @@ function Home() {
       <section className="home-hero">
         <img
           src={hero}
-          alt="Modern Indian factory floor with CNC machinery and production lines"
+          alt={getImageAlt(hero, "Factory production floor")}
           width={1600}
           height={912}
           fetchPriority="high"
@@ -56,19 +57,17 @@ function Home() {
         <div className="site-container relative flex items-start py-8 text-background md:min-h-[calc(100svh-5rem-1px)] md:items-center md:py-10">
           <div className="w-full max-w-6xl">
             <div className="max-w-5xl">
-              <p className="eyebrow text-primary-soft">Powering industry since 2003</p>
-              <h1 className="mt-5 text-4xl font-black leading-[1.08] md:text-[clamp(2rem,4vw,3.5rem)]">
-                <span className="md:block md:whitespace-nowrap">India's trusted partner in</span>{" "}
-                <span className="md:block md:whitespace-nowrap">power transmission,</span>{" "}
-                <span className="md:block md:whitespace-nowrap">automation &amp; industrial adhesives</span>
+              <p className="eyebrow text-primary-soft">{homeHeroContent.eyebrow}</p>
+              <h1 className="mt-5 text-balance text-4xl font-black leading-[1.08] md:text-[clamp(2rem,4vw,3.5rem)]">
+                {homeHeroContent.title}
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-background/80">
-                Supplying critical belts, automation components and MRO adhesives from Pune to manufacturers across India and export markets.
+                {homeHeroContent.description}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" className="h-12">
                   <a href="#divisions">
-                    Explore our range <ArrowRight />
+                    {homeHeroContent.productsLabel} <ArrowRight />
                   </a>
                 </Button>
                 <Button
@@ -89,7 +88,7 @@ function Home() {
                   key={label}
                   className="border-b border-r border-background/25 px-3 py-5 text-center last:border-r-0 [&:nth-child(even)]:border-r-0 lg:border-b-0 lg:[&:nth-child(even)]:border-r lg:last:border-r-0"
                 >
-                  <strong className="block text-2xl font-black text-primary-soft md:text-3xl">{number}</strong>
+                  <strong className={`block font-black text-primary-soft ${number === "10+ States Served" ? "whitespace-nowrap text-[clamp(.75rem,3.6vw,1.5rem)] lg:text-[clamp(.75rem,2.1vw,1.5rem)]" : "text-2xl md:text-3xl"}`}>{number}</strong>
                   <span className="mt-1 block text-xs font-bold uppercase text-background/75">{label}</span>
                 </div>
               ))}
@@ -102,7 +101,8 @@ function Home() {
         <div className="site-container">
           <SectionHeading
             eyebrow="Complete industrial supply"
-            title="Three divisions. One trusted source."
+            wide
+            title={<span className="text-[clamp(2rem,3.3vw,3rem)]">{homeHeroContent.divisionsTitleLines.map((line, index) => <span key={line} className="lg:block">{index > 0 && <span className="lg:hidden"> </span>}{line}</span>)}</span>}
             text="Choose the product family you need or send the exact code, size or application directly to our team."
           />
           <PillarCards />
@@ -139,9 +139,9 @@ function Home() {
               </>
             }
           />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {serviceBenefits.map(({ title, description }, index) => {
-              const Icon = [PackageCheck, MessageSquareText, Handshake][index] ?? Handshake;
+              const Icon = [PackageCheck, MessageSquareText, Handshake, ShieldCheck][index] ?? Handshake;
               return (
               <article key={title} className="border-t-4 border-primary bg-background p-7">
                 <Icon className="text-primary" />
@@ -229,7 +229,9 @@ function Home() {
             </div>
             <div className="mt-5 border-t border-border pt-4">
               <h4 className="text-sm font-black text-primary">{upcomingRange.interestTitle}</h4>
-              <p className="mt-1 text-sm leading-6 text-muted-foreground">{upcomingRange.interestDescription}</p>
+              <Button asChild variant="outline" className="mt-3">
+                <a href={upcomingRange.franchiseHref}>{upcomingRange.franchiseLabel} <ArrowRight /></a>
+              </Button>
             </div>
           </aside>
         </div>

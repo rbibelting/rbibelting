@@ -31,3 +31,22 @@
 .content-surface [class*="border-background/"],.content-surface .brand-chip{border-color:var(--border)}
 .content-surface .brand-chip{color:var(--foreground)}
 .content-surface [class*="bg-background/"]{background-color:var(--background)}
+
+/* Mobile browser chrome, safe areas and touch controls. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(6rem + env(safe-area-inset-top))}
+.site-container{padding-left:max(clamp(1rem,4vw,3rem),env(safe-area-inset-left));padding-right:max(clamp(1rem,4vw,3rem),env(safe-area-inset-right))}
+.site-header{padding-top:env(safe-area-inset-top)}
+.quick-enquiry{left:max(1.25rem,env(safe-area-inset-left));bottom:calc(1.25rem + env(safe-area-inset-bottom))}
+.whatsapp-float{right:max(1.25rem,env(safe-area-inset-right));bottom:calc(1.25rem + env(safe-area-inset-bottom))}
+@media(max-width:639px){
+ .home-hero h1{font-size:clamp(1.875rem,7vw,2.25rem);line-height:1.12}
+ .section-title{font-size:clamp(1.625rem,6.5vw,2rem)}
+ main section.py-20{padding-block:3rem}
+ .category-card,.product-type{padding:1.25rem}
+}
+@media(pointer:coarse){
+ input,select,textarea{font-size:16px!important}
+ input,select,textarea{scroll-margin-block:6rem}
+ .footer-link{display:flex;align-items:center;min-height:44px}
+ footer a[href^="tel:"],footer a[href^="mailto:"]{min-height:44px;align-items:center}
+}

@@ -1,6 +1,7 @@
 import logo from "@/assets/rb-logo.jpeg";
 import {
   footerContact,
+  catalogueProductModels,
   pillarList,
   describeType,
   productTypeAnchor,
@@ -115,6 +116,19 @@ export function pageStructuredData(title: string, description: string, path: str
     nodes.push(categoryList(pillar, url));
     page["mainEntity"] = reference(`${url}#products`);
   } else if (pillar && sub) {
+    const products = catalogueProductModels.filter(product => product.path === path && sub.types.includes(product.name));
+    const productIds = new Map<string, string>(products.map(product => [product.name, `${url}#product-${productTypeAnchor(product.name)}`]));
+    nodes.push(...products.map(product => ({
+      "@type": "Product",
+      "@id": productIds.get(product.name),
+      name: product.name,
+      description: describeType(product.name),
+      category: sub.name,
+      brand: { "@type": "Brand", name: product.brand },
+      url: `${url}#${productTypeAnchor(product.name)}`,
+      mainEntityOfPage: reference(`${url}#webpage`),
+    })));
+
     nodes.push({
       "@type": "ItemList",
       "@id": `${url}#product-types`,
@@ -123,7 +137,9 @@ export function pageStructuredData(title: string, description: string, path: str
       itemListElement: sub.types.map((name, index) => ({
         "@type": "ListItem", position: index + 1, name,
         url: `${url}#${productTypeAnchor(name)}`,
-        item: { "@type": "Thing", name, description: describeType(name), url: `${url}#${productTypeAnchor(name)}` },
+        item: productIds.has(name)
+          ? reference(productIds.get(name)!)
+          : { "@type": "Thing", name, description: describeType(name), url: `${url}#${productTypeAnchor(name)}` },
       })),
     });
     page["mainEntity"] = reference(`${url}#product-types`);

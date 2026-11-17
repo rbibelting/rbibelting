@@ -1,5 +1,5 @@
  import { useEffect, useState } from "react";
-import { companyHistory } from "@/lib/site-data";
+import { companyHistory, websiteIdentity } from "@/lib/site-data";
 import { SectionHeading } from "@/components/page-sections";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 
@@ -38,7 +38,7 @@ export function CompanyTimeline() {
   return (
     <section className="pattern-shared py-20" aria-label="Company milestones">
       <div className="site-container">
-        <SectionHeading eyebrow={companyHistory.eyebrow} title={companyHistory.title} text={companyHistory.description} />
+        <SectionHeading eyebrow={companyHistory.eyebrow} title={companyHistory.title} />
         <Carousel
           opts={{ align: "start", loop: true, slidesToScroll: 1, dragFree: false, skipSnaps: false, duration: 35 }}
           setApi={setApi}
@@ -54,7 +54,7 @@ export function CompanyTimeline() {
               <CarouselItem key={milestone.year} className="flex basis-[85%] pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" aria-label={`${milestone.year}: ${milestone.description}`}>
                 <article className="flex w-full flex-col rounded-sm border border-border border-t-4 border-t-primary bg-background p-5 shadow-sm">
                   <h3 className="text-4xl font-black leading-none tracking-tight text-primary"><time dateTime={milestone.year}>{milestone.year}</time></h3>
-                  <p className="mt-5 border-t border-border pt-4 text-sm leading-6 text-foreground/80">{milestone.description}</p>
+                  <p className="mt-5 border-t border-border pt-4 text-sm leading-6 text-foreground/80">{milestone.description.split(/(rbibelting\.com)/).map((part, index) => part === "rbibelting.com" ? <a key={index} href={`${websiteIdentity.url}/`} className="font-bold text-primary underline-offset-4 hover:underline focus-visible:underline">{part}</a> : part)}</p>
                 </article>
               </CarouselItem>
             ))}

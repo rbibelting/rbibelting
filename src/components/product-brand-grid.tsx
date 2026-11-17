@@ -1,4 +1,4 @@
-import { getBrandLogo, productRangeContent } from "@/lib/site-data";
+import { getBrandLogoAlt, getBrandLogo, productRangeContent } from "@/lib/site-data";
 
 export function ProductBrandGrid({ brands }: { brands: readonly string[] }) {
   return (
@@ -17,7 +17,7 @@ export function ProductBrandGrid({ brands }: { brands: readonly string[] }) {
                 viewBox={logo.stripFrame.viewBox}
                 preserveAspectRatio="xMidYMid meet"
                 role="img"
-                aria-label={`${brand} logo`}
+                aria-label={getBrandLogoAlt(brand)}
                 className="size-full"
               >
                 <image
@@ -29,7 +29,7 @@ export function ProductBrandGrid({ brands }: { brands: readonly string[] }) {
             ) : logo ? (
               <img
                 src={logo.src}
-                alt={`${brand} logo`}
+                alt={getBrandLogoAlt(brand)}
                 width={210}
                 height={96}
                 draggable={false}
