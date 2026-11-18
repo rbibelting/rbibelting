@@ -171,7 +171,7 @@ function Home() {
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div>
               <p className="eyebrow">Brand network</p>
-              <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">Brands associated with RBI Belting</h2>
+              <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">Brands associated with RB International Belting &amp; Automation</h2>
               <p className="mt-4 leading-7 text-muted-foreground">
                 A broad supply network for belts, motion control, adhesives, maintenance chemicals and industrial MRO requirements.
               </p>

@@ -46,7 +46,7 @@ function About() {
               return (
                 <article key={title} className="bg-background p-6">
                   <Icon className="text-primary" />
-                  <h3 className="mt-4 font-black">{title}</h3>
+                  <h3 className="mt-4 text-xl font-black leading-tight">{title}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
                 </article>
               );

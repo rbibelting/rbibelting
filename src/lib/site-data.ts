@@ -6,6 +6,7 @@ import coggedDivisionPhoto from "@/assets/v-belts/cogged-clean.jpg";
 import factoryPhoto from "@/assets/factory-hero.jpg";
 import bandedPhoto from "@/assets/v-belts/banded-clean.jpg";
 import narrowPhoto from "@/assets/v-belts/narrow-clean.jpg";
+import rbInternationalLogo from "@/assets/rb-logo.jpeg";
 
 const imageDescriptions: Record<string, string> = {
   [factoryPhoto]: "Industrial factory floor with CNC machines and component assembly lines",
@@ -137,13 +138,17 @@ export const footerProductLinks = [
   [{ label: "Servo Motors & Drives", to: "/automation/motors-and-drives" }],
   [{ label: "Loctite, Pidilite & 3M Adhesives", to: "/adhesives" }],
 ];
+export const brochureDownloads: Record<string, string> = {
+  PIX: "/catalogues/pix-catalogue.pdf",
+  TOCO: "/catalogues/toco-catalogue.pdf",
+};
 // Verified public company details shared by structured data. Placeholder social links are excluded.
 export const websiteIdentity = {
   url: "https://www.rbibelting.com",
   name: "RB International Belting & Automation",
   description: "Industrial power transmission products, automation components and industrial adhesives supplied from Pune across India and export markets.",
   telephone: ["+918788195839", "+919890961752"] as const,
-  email: ["response@rbibelting.in", footerContact.email] as const,
+  email: [footerContact.email] as const,
   socialProfiles: ["https://www.instagram.com/rbibelting/"],
   address: {
     streetAddress: "Shop No 5, Kamath Complex, Telco Road, Landewadi, Bhosari Industrial Estate",
@@ -172,7 +177,7 @@ export const companyHistory = {
   milestones: [
     { year: "2003", description: "Founded in Bhosari, Pune as a belting supply firm." },
     { year: "2006", description: "Built authorized dealer relationships with major belting brands." },
-    { year: "2010", description: "Expanded into industrial adhesives through RB Adhesive Company." },
+    { year: "2010", description: "Expanded into industrial adhesives by adding a dedicated division at RB International Belting & Automation." },
     { year: "2014", description: "Added automation and motion control products." },
     { year: "2018", description: "Crossed 300 active client accounts across Maharashtra." },
     { year: "2020", description: "Expanded service to PAN India and international markets." },
@@ -196,7 +201,7 @@ export const companyLeadership = [
   {
     name: "Mr. Omprakash D. Rokhade",
     role: "Partner",
-    description: "Mr. Omprakash has led RB International’s operational expansion and client relationships from the start. His focus on inventory management, supply chain reliability and customer service has enabled the company to serve 500+ active accounts across India.",
+    description: "Mr. Omprakash has led RB International Belting & Automation’s operational expansion and client relationships from the start. His focus on inventory management, supply chain reliability and customer service has enabled the company to serve 500+ active accounts across India.",
     portrait: {
       src: "/team/omprakash-rokhade.jpeg",
       width: 1155,
@@ -207,7 +212,7 @@ export const companyLeadership = [
 ] as const;
 export const formContent = {
   categoryPlaceholder: "Select a category",
-  contactDisclaimer: "By submitting, you agree to be contacted by RB International regarding your enquiry.",
+  contactDisclaimer: "By submitting, you agree to be contacted by RB International Belting & Automation regarding your enquiry.",
   generalTitle: "General enquiry",
   careersCategory: "Careers / Join our team",
   requirementPlaceholder: "Part number, size, brand, application or quantity",
@@ -253,19 +258,36 @@ export const productVideoShowcases: Record<string, readonly ProductVideo[]> = {
     },
   ],
 };
-export type ProductShowcasePhoto = { image: string; title: string; note: string };
+export type ProductShowcasePhoto = { image: string; title: string; note: string; alt?: string };
 export const productPhotoShowcases: Record<string, readonly ProductShowcasePhoto[]> = {
+  "power-transmission/v-belts": [
+    { image: "/product-images/v-belts/banded-v-belts.png", title: "Banded V-Belts", note: "", alt: "Three joined black V-belts shown from the inner cogged side, with reinforcing cords visible at the cut ends." },
+    { image: "/product-images/v-belts/classical-v-belts.jpg", title: "Classical V-Belts", note: "", alt: "Looped black classical V-belts arranged in nested circles, with a trapezoidal cross-section visible at the cut end." },
+    { image: "/product-images/v-belts/cogged-v-belts.png", title: "Cogged V-Belts", note: "", alt: "Black cogged V-belt curved into a loop, showing transverse notches along its inner surface." },
+    { image: "/product-images/v-belts/link-nutlink-v-belts.jpg", title: "Link/Nutlink V-Belts", note: "", alt: "Orange interlocking link belt arranged in a loop, with metal connector pins visible between links." },
+    { image: "/product-images/v-belts/micro-v-belts.jpg", title: "Micro V-Belts", note: "", alt: "Black multi-rib micro V-belts shown with the narrow longitudinal ribs visible in cross-section." },
+    { image: "/product-images/v-belts/narrow-v-belts.png", title: "Narrow V-Belts", note: "", alt: "Long black narrow-section V-belt arranged in an oval loop, with printed belt markings." },
+    { image: "/product-images/v-belts/variable-speed-belts.png", title: "Variable Speed Belts", note: "", alt: "Black variable-speed belt loop showing its toothed inner face and printed belt markings." },
+  ],
   "power-transmission/conveyor-belts": [
-    { image: "/product-images/conveyor-belts/pu-pvc-conveyor-belt.png", title: "PU / PVC conveyor belt", note: "" },
-    { image: "/product-images/conveyor-belts/plastic-modular-conveyor-belt.png", title: "Plastic modular conveyor belt", note: "" },
-    { image: "/product-images/conveyor-belts/rubber-conveyor-belt.png", title: "Rubber conveyor belt", note: "" },
-    { image: "/product-images/conveyor-belts/cleated-conveyor-belt.png", title: "Cleated conveyor belt", note: "" },
+    { image: "/product-images/conveyor-belts/general-purpose-conveyor-belt.jpg", title: "General Purpose Conveyor Belts", note: "", alt: "Roll of black multi-ply general purpose conveyor belting with a cut end showing its layered construction." },
+    { image: "/product-images/conveyor-belts/pvc-conveyor-belts.jpg", title: "PVC Conveyor Belts", note: "", alt: "Roll of green PVC conveyor belting with a smooth top cover and visible fabric reinforcement underneath." },
+    { image: "/product-images/conveyor-belts/pu-conveyor-belts.jpg", title: "PU Conveyor Belts", note: "", alt: "Roll of white polyurethane conveyor belting with a pale smooth top surface and fabric backing." },
+    { image: "/product-images/conveyor-belts/both-side-fabric-conveyor-belt.jpg", title: "Both Side Fabric Conveyor Belts", note: "", alt: "Gray woven conveyor belt roll with fabric texture visible on both belt surfaces." },
+    { image: "/product-images/conveyor-belts/cleated-sidewall-conveyor-belt.jpg", title: "Cleated & Sidewall Conveyor Belts", note: "", alt: "Black conveyor belt with raised transverse cleats and a raised sidewall profile, shown rolled out." },
+    { image: "/product-images/conveyor-belts/diamond-pvc-conveyor-belt.jpg", title: "Diamond PVC Conveyor Belts", note: "", alt: "Green PVC conveyor belt roll with a raised diamond-pattern surface and fabric backing." },
+    { image: "/product-images/conveyor-belts/ruff-tuff-conveyor-belt.jpg", title: "Ruff-Tuff Conveyor Belts", note: "", alt: "Black rough-top conveyor belt roll with a coarse textured carrying surface and fabric backing." },
+    { image: "/product-images/conveyor-belts/cotton-conveyor-belts.jpg", title: "Cotton Conveyor Belts", note: "", alt: "Roll of light-colored woven cotton conveyor belting with its textile surface visible." },
+    { image: "/product-images/conveyor-belts/teflon-conveyor-belts.png", title: "Teflon Conveyor Belts", note: "", alt: "Tan PTFE-coated fabric conveyor belts shown as several rolled and folded lengths." },
+    { image: "/product-images/conveyor-belts/rubber-conveyor-belt.jpg", title: "Rubber Conveyor Belts", note: "", alt: "Roll of black rubber conveyor belting with a cut end showing multiple reinforcement layers." },
+    { image: "/product-images/conveyor-belts/alligator-joint-conveyor-belt.jpg", title: "Alligator Joint Belts", note: "", alt: "Black conveyor belt roll with a metal alligator-laced mechanical fastener across the cut end." },
+    { image: "/product-images/conveyor-belts/bucket-elevator-belts.jpg", title: "Bucket Elevator Belts", note: "", alt: "Bucket elevator belt system showing attached elevator buckets traveling around a pulley." },
   ],
 };
 export const upcomingRange = {
   eyebrow: "In-House Range",
-  title: "RB International: Our Own Product Line",
-  description: "Select automation components and industrial belts designed, tested and supplied directly by RB International.",
+  title: "RB International Belting & Automation: Our Own Product Line",
+  description: "Select automation components and industrial belts designed, tested and supplied directly by RB International Belting & Automation.",
   linkLabel: "Enquire About Our Range",
   href: "/contact",
   detailsTitle: "Our Product Range",
@@ -279,7 +301,7 @@ export const upcomingRange = {
       description: "Select belt profiles manufactured to our specifications for OEM and replacement requirements.",
     },
   ],
-  interestTitle: "Interested in distributing RB International products in your city?",
+  interestTitle: "Interested in distributing RB International Belting & Automation products in your city?",
   franchiseLabel: "Explore Franchise",
   franchiseHref: "/franchise",
 };
@@ -297,7 +319,6 @@ export const brandLogos: Record<string, BrandLogo> = {
   "Carlisle": { src: "/brand-logos/carlisle.jpg" },
   "Hutchinson": { src: "/brand-logos/hutchinson.jpg", fit: "cover" },
   "Mitsuboshi": { src: "/brand-logos/mitsuboshi.png" },
-  "Mitsubishi": { src: "/brand-logos/mitsubishi-electric.svg" },
   "Polymaxx": { src: "/brand-logos/polymaxx.png" },
   "Loctite": { src: "/brand-logos/loctite.png", fit: "cover" },
   "3M": { src: "/brand-logos/3m.png", fit: "cover" },
@@ -327,6 +348,7 @@ export const brandLogos: Record<string, BrandLogo> = {
   "HIWIN": { src: "/brand-logos/hiwin.png" },
   "Rexroth": { src: "/brand-logos/rexroth.png" },
   "ROBOT": { src: "/brand-logos/robot.jpeg", scale: 1.65 },
+  "RB International Belting & Automation": { src: rbInternationalLogo },
 };
 const brandLogoAliases: Record<string, string> = {
   "Goodyear Eagle NRG": "Goodyear",
@@ -346,7 +368,6 @@ export const brandLogoAltText: Record<string, string> = {
   "Carlisle": "Carlisle logo — industrial drive belts",
   "Hutchinson": "Hutchinson logo — power transmission belts",
   "Mitsuboshi": "Mitsuboshi logo — industrial belting",
-  "Mitsubishi": "Mitsubishi Electric logo — industrial automation and motion control",
   "Polymaxx": "Polymaxx logo — industrial belts, motion components and adhesives",
   "Loctite": "Loctite logo — threadlockers and industrial adhesives",
   "3M": "3M logo — industrial adhesives and tapes",
@@ -376,6 +397,7 @@ export const brandLogoAltText: Record<string, string> = {
   "HIWIN": "HIWIN logo — linear motion products",
   "Rexroth": "Rexroth logo — industrial automation products",
   "ROBOT": "ROBOT logo — linear motion technology",
+  "RB International Belting & Automation": "RB International Belting & Automation logo",
 };
 export const getBrandLogoAlt = (brand: string) =>
   brandLogoAltText[brandLogoAliases[brand] ?? brand] ?? `${brand} logo`;
@@ -611,7 +633,7 @@ export const reviewPlatforms = [
     description: "Read customer feedback and share your experience on Google.",
     listingUrl: "https://www.google.com/maps/place/R+B+International+Belting/@18.6224152,73.8385942,17z/data=!4m8!3m7!1s0x3bc2b87e4ebf7891:0x9d55af8e16815d4c!8m2!3d18.6224152!4d73.8385942!9m1!1b1!16s%2Fg%2F11f52g4513",
     linkLabel: "Read reviews",
-    linkAccessibleLabel: "View RB International on Google Maps",
+    linkAccessibleLabel: "View RB International Belting & Automation on Google Maps",
     rating: 4.9,
     reviewCount: 1021,
     reviewCountLabel: "reviews",
@@ -645,21 +667,21 @@ const typeDescriptions: Record<string,string> = {
 export const describeType=(name:string)=>typeDescriptions[name] ?? `${name} for industrial equipment, replacement, maintenance and new machine builds. Ask our team for brand, size and application guidance.`;
 const sub=(slug:string,name:string,short:string,types:string[],brands:string[],applications:string):SubCategory=>({slug,name,short,types,brands,applications});
 export const pillars: Record<PillarKey,Pillar> = {
- "power-transmission": { key:"power-transmission",name:"Power Transmission",kicker:"Belts & Drives",image:"power",description:"Belts, pulleys, couplings and tools that keep production lines moving, from one-off replacements to complete drive packages.",brands:["Fenner","Gates","Optibelt","Goodyear Eagle NRG","Continental ContiTech","Megadyne","Carlisle","PIX","Hutchinson","Mitsubishi","Polymaxx"],subcategories:[
-  sub("v-belts","V-Belts","Classical, narrow, cogged, banded and variable speed V-belts for industrial drives.",["Classical V-Belts","Narrow V-Belts","Micro V-Belts","Banded V-Belts","Variable Speed Belts","Link/Nutlink V-Belts","Cogged V-Belts"],["Fenner","Gates","Optibelt","PIX","Continental ContiTech","Carlisle","Hutchinson","Goodyear"],"Air Compressors | Centrifugal Pumps | Submersible Pumps | Blowers & Exhaust Fans | Lathe Machines | Milling Machines | Grinding Machines | Textile Looms | Packaging Machines | Conveyor Drives | Crushers & Mixers | HVAC Units | Diesel Generators | Printing Machines | Rice Mill Equipment | Sugar Cane Crushers | Flour Mill Machines"),
-  sub("timing-belts","Timing Belts","Rubber, PU, coated and carbon-fibre synchronous belts for accurate power transfer.",["Rubber Timing Belts","PU Timing Belts","PU Coated Timing Belts","Eagle PD Timing Belts","Gates Polychain GT Carbon","Gates Polyflex JB","HTD Belts","Special Timing Belts"],["Gates","Megadyne","Optibelt","Continental ContiTech","Goodyear"],"CNC Routers & Machines | Pick-and-Place Systems | Packaging Lines | Labelling Machines | Printing Presses | Bottling & Filling Lines | Paper Converting Machines | Textile Spinning Frames | Injection Moulding Machines | Medical Diagnostic Equipment | 3D Printers | Laser Cutting Machines | Automatic Doors & Gates | Vending Machines"),
-  sub("conveyor-belts","Conveyor Belts","PU, PVC, modular, rubber and food-grade belts for material movement.",["General Purpose Conveyor Belts","PVC Conveyor Belts","PU Conveyor Belts","Both Side Fabric Conveyor Belts","Cleated & Sidewall Conveyor Belts","Diamond PVC Conveyor Belts","Ruff-Tuff Conveyor Belts","PVC V-Guide Center Profile","Cotton Conveyor Belts","Teflon Conveyor Belts","Rubber Conveyor Belts","Sugar Boiler Belts","Stone Crusher Belts","Bucket Elevator Belts","Alligator Joint Belts"],["Megadyne","Habasit","Polymaxx","Continental ContiTech"],"Food Processing Lines | Pharmaceutical Conveyance | Airport Baggage Handling | Warehouse Sorting | Bottling Plants | Cement & Mining Transport | Packaging End-of-Line | Logistics & Distribution | Grain & Agro Processing"),
-  sub("caterpillar-belts","Caterpillar Belts","Caterpillar haul-off belts for gripping and pulling extruded products through production lines.",["Caterpillar Haul-Off Belts"],[],"Pipe Extrusion Lines | Cable Extrusion Lines | Profile Extrusion Lines"),
+ "power-transmission": { key:"power-transmission",name:"Power Transmission",kicker:"Belts & Drives",image:"power",description:"Belts, pulleys, couplings and tools that keep production lines moving, from one-off replacements to complete drive packages.",brands:["Fenner","Gates","Optibelt","Goodyear Eagle NRG","Continental ContiTech","Megadyne","Carlisle","PIX","Hutchinson","Mitsuboshi","Bando","Nitta","Habasit"],subcategories:[
+  sub("v-belts","V-Belts","Classical, narrow, cogged, banded and variable speed V-belts for industrial drives.",["Classical V-Belts","Narrow V-Belts","Micro V-Belts","Banded V-Belts","Variable Speed Belts","Link/Nutlink V-Belts","Cogged V-Belts"],["Fenner","Gates","Optibelt","PIX","Continental ContiTech","Carlisle","Hutchinson","Goodyear","Bando","Megadyne"],"Air Compressors | Centrifugal Pumps | Submersible Pumps | Blowers & Exhaust Fans | Lathe Machines | Milling Machines | Grinding Machines | Textile Looms | Packaging Machines | Conveyor Drives | Crushers & Mixers | HVAC Units | Diesel Generators | Printing Machines | Rice Mill Equipment | Sugar Cane Crushers | Flour Mill Machines | CNC/VMC/SPM Machines"),
+  sub("timing-belts","Timing Belts","Rubber, PU, coated and carbon-fibre synchronous belts for accurate power transfer.",["Rubber Timing Belts","PU Timing Belts","PU Coated Timing Belts","Eagle PD Timing Belts","Gates Polychain GT Carbon","Gates Polyflex JB","HTD Belts","Special Timing Belts"],["Gates","Megadyne","Optibelt","Continental ContiTech","Goodyear","Bando"],"CNC Routers & Machines | Pick-and-Place Systems | Packaging Lines | Labelling Machines | Printing Presses | Bottling & Filling Lines | Paper Converting Machines | Textile Spinning Frames | Injection Moulding Machines | Medical Diagnostic Equipment | 3D Printers | Laser Cutting Machines | Automatic Doors & Gates | Vending Machines | CNC/VMC/SPM Machines"),
+  sub("conveyor-belts","Conveyor Belts","PU, PVC, modular, rubber and food-grade belts for material movement.",["General Purpose Conveyor Belts","PVC Conveyor Belts","PU Conveyor Belts","Both Side Fabric Conveyor Belts","Cleated & Sidewall Conveyor Belts","Diamond PVC Conveyor Belts","Ruff-Tuff Conveyor Belts","PVC V-Guide Center Profile","Cotton Conveyor Belts","Teflon Conveyor Belts","Rubber Conveyor Belts","Sugar Boiler Belts","Stone Crusher Belts","Bucket Elevator Belts","Alligator Joint Belts"],["Megadyne","Habasit","Polymaxx","Continental ContiTech"],"Food Processing Lines | Pharmaceutical Conveyance | Airport Baggage Handling | Warehouse Sorting | Bottling Plants | Cement & Mining Transport | Packaging End-of-Line | Logistics & Distribution | Grain & Agro Processing | Solar Panel Manufacturing | Automotive Assembly Lines | Electronics & PCB Assembly | Beverage & Dairy Canning | Bakery & Confectionery Lines | Seafood & Meat Processing | Corrugated Box & Paper | Textile & Garment Handling | E-Commerce Parcel Sorting | Tyre & Rubber Plants"),
+  sub("caterpillar-belts","Caterpillar Belts","Caterpillar haul-off belts for gripping and pulling extruded products through production lines.",["Flat Caterpillar / Feeder Belts","Grooved / Dual-Sided Grooved Belts","Ribbed Caterpillar Belts","Chain Conveyor / Ribbed Caterpillar Belts"],[],"Plastic Pipe & Tube Extrusion | Internet Optic Fibre | Drip Irrigation Systems | Wire & Cable Manufacturing | Aluminium & Steel Profile Extrusion | Rubber Hose & Profile Lines | Wood-Plastic Composite & PVC Profiles | Packaging & Sheet Extrusion Lines"),
   sub("flat-belts","Flat Belts","High-efficiency flat transmission, steel cord, round PU and woven belts.",["Flat Transmission Belts","Steel Cord Flat Belts","Round PU Cords/Belts","Woven Belts"],["Megadyne","Hutchinson","Polymaxx"],"High-Speed Spindle Drives | Woodworking Planers & Saws | Textile Ring Frames | Paper Mill Rollers | Polishing & Buffing Machines | Leather Processing Equipment | Card Clothing Machines | Light-Duty Conveying | Envelope & Stationery Machines | Tobacco Processing Equipment"),
-  sub("pulleys-and-bushes","V-Pulleys & Bushes","Precision timing and V-pulleys with taper lock and keyless bushes.",["Timing Pulleys","CI Timing Pulleys","V-Pulleys","Taper Lock Bushes","Keyless Bushes"],["Fenner","Gates","PIX"],"All V-Belt Driven Equipment | All Timing Belt Driven Equipment | Motor-to-Shaft Power Transmission | Speed Reduction/Increase Assemblies | Conveyor Head & Tail Drums | Machine Tool Spindles | Pump Drive Assemblies | Fan & Blower Shaft Assemblies"),
+  sub("pulleys-and-bushes","Timing Pulleys, V-Pulleys & Bushes","Precision timing and V-pulleys with taper lock and keyless bushes.",["Timing Pulleys","CI Timing Pulleys","V-Pulleys","Taper Lock Bushes","Keyless Bushes"],["Fenner","Gates","PIX"],"HVAC Blowers & Exhaust Fans | Industrial Air Compressors | Centrifugal & Process Pumps | Conveyor Head & Tail Drives | CNC & Machine Tool Spindles | Packaging & Indexing Machinery | Crushers & Vibrating Screens | Textile Spinning & Weaving Looms | High-Torque Gearbox Reducers | Automated Robotics & Linear Actuators"),
   sub("couplings","Couplings","Flexible, servo and encoder couplings for reliable shaft connection.",["Eurogrip Flexible Couplings","Servo Couplings","Encoder Couplings","Star Couplings","S-P Wrap Flex / Spider Couplings","Cushion Star Couplings","HRC Couplings","Pin-bush Couplings","Tyre Couplings","Gear Couplings","Resilient Grid Couplings"],["Gates","Fenner","Polymaxx"],"Motor-to-Gearbox Connections | Servo Motor Shaft Linkage | Encoder Feedback Systems | CNC Spindle Drives | Pump-to-Motor Coupling | Conveyor Drive Units | Stepper Motor Assemblies | Precision Positioning Systems"),
   sub("accessories","Accessories & Tools","Tension testers, maintenance tools, cleaners and rust preventives.",["Belt Tension Testers","Maintenance Tools","Rust Preventives & Cleaners","Digital Tension Meter","X’Align Laser-guided Pulley Alignment Tool","PIX Service Kit","Collapsible Belt Length Measure","Belt Length Measurer","Analog Tension Tester","Belt Profile Gauge","PIX Belt Kit","Pulley Gauges","PIX Pentagon (Poly-V Belt Gauge)","PIX Pentagon (Timing Belt Gauges)","Banded Pulley Gauges"],["Gates","Fenner","WD-40","CRC"],"Belt Tension Measurement (all belt types) | Preventive Maintenance Checks | Belt Installation & Alignment | Rust Prevention on Shafts, Pulleys & Machine Surfaces | Bearing & Coupling Cleanup | Drive System Inspection") ]},
- automation:{key:"automation",name:"Automation & Motion Control",kicker:"Precision components",image:"automation",description:"Linear motion, robotics, motors and controllers for machine builders and production teams upgrading speed, accuracy and repeatability.",brands:["Gates","Megadyne","Polymaxx","Mitsubishi"],subcategories:[
-  sub("linear-motion","Linear Motion Systems","Ball screws, guideways, shafts and rack systems for accurate movement.",["Ball Screws","Ball Screw Support Units","Linear Guideways","Linear Shafts","Racks & Pinions"],["Mitsubishi","Polymaxx"],"CNC Milling Machines | CNC Routers (Wood, Stone, Metal) | Laser Cutting Machines | Plasma Cutting Tables | 3D Printers (Industrial) | Pick-and-Place Gantries | Wafer Handling (Electronics) | PCB Drilling Machines | Coordinate Measuring Machines (CMM) | Engraving Machines | Glass Cutting Tables | Die Cutting Machines"),
-  sub("robotics","Robotics & Actuators","Gantry robots, XYTH systems and mono stages for automated handling.",["Gantry Robots/Actuators","XYTH Series","Mono Stage Systems"],["Mitsubishi","Polymaxx"],"Automated Assembly Lines | Material Handling Gantries | Palletizing Systems | Cartesian Pick-and-Place | Dispensing & Gluing Systems | Welding Automation | Sorting & Grading Lines | Vision-Guided Inspection Stations | Loading/Unloading Automation | Multi-Axis Positioning Systems"),
-  sub("motors-and-drives","Motors & Drives","Servo, stepper and precision gearbox solutions for controlled motion.",["Servo Motors & Drives","Stepper Motors","Gearbox PAB/PPG/PPGA Series"],["Mitsubishi","Polymaxx"],"CNC Machine Spindles | Robotic Arm Joints | Conveyor Speed Control | Packaging Machine Indexing | Textile Winding Machines | Label Applicators | Rotary Tables | Automatic Sliding Doors | Semiconductor Equipment | Pump & Fan Variable Speed Control | Elevator & Lift Systems"),
-  sub("controllers","Controllers","CNC and DSP controllers for coordinated industrial machine control.",["CNC Controllers","DSP Controllers"],["Mitsubishi","Polymaxx"],"CNC Router Control (3-axis, 4-axis) | CNC Engraving Machines | Woodworking CNC Centres | Stone Cutting CNC | Mould Processing CNC | Manual Pulse Generator (MPG) Handwheels for CNC | DSP Offline Control Units | Motion Control Interface Boards") ]},
- adhesives:{key:"adhesives",name:"Industrial Adhesives & Chemicals",kicker:"RB Adhesive Company",image:"adhesives",description:"A complete MRO range covering threadlocking, sealing, structural bonding, tapes, cleaners and specialty maintenance chemicals.",brands:["Pidilite","Loctite","3M","Anabond","Araldite","Amico","Polymaxx","Speb 7","WD-40","Arofine Polymers","SAV Chemicals","Atul","Metlok"],subcategories:[
+ automation:{key:"automation",name:"Automation & Motion Control",kicker:"Precision components",image:"automation",description:"Linear motion, robotics, motors and controllers for machine builders and production teams upgrading speed, accuracy and repeatability.",brands:["TOCO","THK","HIWIN","ROBOT","RB International Belting & Automation"],subcategories:[
+  sub("linear-motion","Linear Motion Systems","Ball screws, guideways, shafts and rack systems for accurate movement.",["Ball Screws","Ball Screw Support Units","Linear Guideways","Linear Shafts","Racks & Pinions"],["Mitsubishi","Polymaxx","RB International Belting & Automation"],"CNC Milling Machines | CNC Routers (Wood, Stone, Metal) | Laser Cutting Machines | Plasma Cutting Tables | 3D Printers (Industrial) | Pick-and-Place Gantries | Wafer Handling (Electronics) | PCB Drilling Machines | Coordinate Measuring Machines (CMM) | Engraving Machines | Glass Cutting Tables | Die Cutting Machines"),
+  sub("robotics","Gantry Robots & Actuators","Gantry robot systems and linear actuators for automated handling.",["TGP Series","XYTH Series","TGH Series","TGPS Series","TGB Series","Mono Stage Systems"],["Mitsubishi","Polymaxx","RB International Belting & Automation"],"Automated Assembly Lines | Material Handling Gantries | Palletizing Systems | Cartesian Pick-and-Place | Dispensing & Gluing Systems | Welding Automation | Sorting & Grading Lines | Vision-Guided Inspection Stations | Loading/Unloading Automation | Multi-Axis Positioning Systems"),
+  sub("motors-and-drives","Motors & Drives","Servo, stepper and precision gearbox solutions for controlled motion.",["Servo Motors & Drives","Stepper Motors","Gearbox PAB/PPG/PPGA Series"],["Mitsubishi","Polymaxx","RB International Belting & Automation"],"CNC Machine Spindles | Robotic Arm Joints | Conveyor Speed Control | Packaging Machine Indexing | Textile Winding Machines | Label Applicators | Rotary Tables | Automatic Sliding Doors | Semiconductor Equipment | Pump & Fan Variable Speed Control | Elevator & Lift Systems"),
+  sub("controllers","Controllers","CNC and DSP controllers for coordinated industrial machine control.",["CNC Controllers","DSP Controllers"],["Mitsubishi","Polymaxx","RB International Belting & Automation"],"CNC Router Control (3-axis, 4-axis) | CNC Engraving Machines | Woodworking CNC Centres | Stone Cutting CNC | Mould Processing CNC | Manual Pulse Generator (MPG) Handwheels for CNC | DSP Offline Control Units | Motion Control Interface Boards") ]},
+ adhesives:{key:"adhesives",name:"Industrial Adhesives & Chemicals",kicker:"RB International Belting & Automation",image:"adhesives",description:"A complete MRO range covering threadlocking, sealing, structural bonding, tapes, cleaners and specialty maintenance chemicals.",brands:["Pidilite","Loctite","3M","Anabond","Araldite","Amico","Polymaxx","Speb 7","WD-40","Arofine Polymers","SAV Chemicals","Atul","Metlok"],subcategories:[
   sub("threadlockers","Threadlockers & Retaining Compounds","Lock fasteners and secure cylindrical assemblies against vibration.",["Medium Strength Threadlockers","High Strength Threadlockers","Bearing Retainers","Flange Sealants"],["Loctite","Anabond","3M"],"Bolt & Nut Assemblies (all machinery) | Stud Locking on Engines & Pumps | Bearing Retaining on Shafts | Cylindrical Part Fixing | Set Screw Locking | Hydraulic Fitting Sealing | Electrical Panel Fastener Locking"),
   sub("sealants","Silicone Sealants & Gasket Makers","Flexible sealing and formed-in-place gasketing for industrial assemblies.",["RTV Silicone Sealants","Gasket Makers","High Temperature Sealants"],["Boss Silicone","Anabond","Polymaxx"],"Flange Sealing on Pumps & Compressors | Gearbox Gasket Replacement | Engine Covers & Oil Pans | HVAC Duct Sealing | Electrical Enclosure Sealing | Pipe Joint Sealing | Windshield & Glass Bonding | Cold Room & Clean Room Sealing"),
   sub("structural","Structural & Epoxy Adhesives","High-strength bonding for metal, composite, plastic and repair work.",["Two-Part Epoxies","Structural Acrylics","Metal Repair Compounds","Industrial Bonding Adhesives"],["Araldite","Lapox","Loctite","Lord Adhesive","Bond Tide","Metlok","MxBon"],"Metal-to-Metal Bonding | Broken Part Repair | Fixture & Jig Assembly | Machine Base Grouting & Levelling | Crack Filling in Castings | Composite Material Bonding | Tool & Die Repair | Pipe & Tank Leak Repair"),
@@ -675,15 +697,15 @@ export const industryCoverage = {
   instruction: "Select an industry to explore how we support your production.",
 };
 export const industries = [
-  { name: "Automotive & Auto Components", image: "factory", description: "Belts, drives and motion components for assembly lines and automotive production equipment." },
-  { name: "Food & Beverage Processing", image: "belting", description: "Conveyor and drive belt selection for processing, bottling and handling equipment." },
-  { name: "Packaging & Printing", image: "automation", description: "Timing belts, motion components and adhesives for packaging and printing machinery." },
-  { name: "Pharmaceuticals", image: "automation", description: "Belting and motion components for filling, labelling and packaging equipment." },
-  { name: "Textiles & Garments", image: "belting", description: "Drive belts and transmission components for spinning, weaving and textile processing machinery." },
-  { name: "Cement, Mining & Heavy Industries", image: "belting", description: "Belts, pulleys and couplings for demanding drives and bulk material handling equipment." },
-  { name: "Logistics, Warehousing & Material Handling", image: "automation", description: "Conveyor belts and motion components for sorting, conveying and warehouse handling systems." },
-  { name: "OEM & Machine Building", image: "automation", description: "Belting, linear motion and drive components for new machines and equipment upgrades." },
-  { name: "General Manufacturing & Job Shops", image: "factory", description: "Replacement belts, maintenance adhesives and drive components for everyday workshop needs." },
+  { name: "Automotive & Auto Components", image: "factory", description: "High-torque drive belts, precision linear motion, and structural adhesives for automotive assembly lines." },
+  { name: "Food & Beverage Processing", image: "belting", description: "Washdown-ready PU/PVC conveyor belts, timing drives, and food-safe sealants for hygienic processing lines." },
+  { name: "Packaging & Printing", image: "automation", description: "Precision timing belts, servo motion systems, and fast-curing adhesives for continuous packaging and print runs." },
+  { name: "Pharmaceuticals", image: "automation", description: "Contamination-free conveyor belts, compact linear actuators, and cleanroom MRO solutions for pharma plants." },
+  { name: "Textiles & Garments", image: "belting", description: "High-grip flat belts, multi-ribbed V-belts, and drive pulleys built for continuous 24/7 textile mill operation." },
+  { name: "Cement, Mining & Heavy Industries", image: "belting", description: "Abrasion-resistant rubber conveyor belts, heavy V-drives, and high-load couplings for bulk material handling." },
+  { name: "Logistics, Warehousing & Material Handling", image: "automation", description: "High-friction incline conveyor belts, geared motors, and roller-drive components for automated sorting hubs." },
+  { name: "OEM & Machine Building", image: "automation", description: "Complete motion control packages, synchronous drives, and threadlockers for custom machine builders." },
+  { name: "General Manufacturing & Job Shops", image: "factory", description: "Everyday replacement V-belts, taper-lock pulleys, and industrial MRO adhesives for rapid plant maintenance." },
 ] as const;
 export const navItems=[{label:"Home",to:"/"},{label:"About",to:"/about"},{label:"Power Transmission",to:"/power-transmission"},{label:"Automation",to:"/automation"},{label:"Adhesives",to:"/adhesives"},{label:"Contact",to:"/contact"},{label:"Franchise",to:"/franchise"}] as const;
 export const productTypeAnchor = (name: string) => `type-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
@@ -951,9 +973,51 @@ export const rangeGuidanceContent = {
 };
 
 export const industryProductLinks = {
-  factory: [{name: "Conveyor Belts", to: "/power-transmission/conveyor-belts"}, {name: "Couplings", to: "/power-transmission/couplings"}],
-  belting: [{name: "V-Belts", to: "/power-transmission/v-belts"}, {name: "Conveyor Belts", to: "/power-transmission/conveyor-belts"}],
-  automation: [{name: "Linear Motion Systems", to: "/automation/linear-motion"}, {name: "Motors & Drives", to: "/automation/motors-and-drives"}],
+  "Automotive & Auto Components": [
+    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "Robotics & Actuators", to: "/automation/robotics" },
+    { name: "Structural & Epoxy Adhesives", to: "/adhesives/structural" },
+  ],
+  "Food & Beverage Processing": [
+    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
+    { name: "Timing Belts", to: "/power-transmission/timing-belts" },
+    { name: "Silicone Sealants & Gasket Makers", to: "/adhesives/sealants" },
+  ],
+  "Packaging & Printing": [
+    { name: "Timing Belts", to: "/power-transmission/timing-belts" },
+    { name: "Linear Motion Systems", to: "/automation/linear-motion" },
+    { name: "Industrial Tapes & Compounds", to: "/adhesives/tapes" },
+  ],
+  Pharmaceuticals: [
+    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
+    { name: "Linear Motion Systems", to: "/automation/linear-motion" },
+    { name: "Specialty Chemicals & MRO", to: "/adhesives/specialty" },
+  ],
+  "Textiles & Garments": [
+    { name: "Flat Belts", to: "/power-transmission/flat-belts" },
+    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
+  ],
+  "Cement, Mining & Heavy Industries": [
+    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
+    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "Couplings", to: "/power-transmission/couplings" },
+  ],
+  "Logistics, Warehousing & Material Handling": [
+    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
+    { name: "Motors & Drives", to: "/automation/motors-and-drives" },
+    { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
+  ],
+  "OEM & Machine Building": [
+    { name: "Linear Motion Systems", to: "/automation/linear-motion" },
+    { name: "Controllers", to: "/automation/controllers" },
+    { name: "Threadlockers & Retaining Compounds", to: "/adhesives/threadlockers" },
+  ],
+  "General Manufacturing & Job Shops": [
+    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
+    { name: "Specialty Chemicals & MRO", to: "/adhesives/specialty" },
+  ],
 } as const;
 
 export const contactFaqs = [
@@ -990,16 +1054,16 @@ export const contactFaqs = [
 
 export const mainPageSeo = {
   "/": {
-    title: "RB International | Industrial Belts, Automation & Exports India",
+    title: "RB International Belting & Automation | Industrial Belts, Automation & Exports India",
     description: "Leading supplier & exporter of industrial belts, automation components, and adhesives serving Pan-India industrial zones, SEZs, and global markets.",
   },
   "/about": {
-    title: "About RB International | Pan-India Industrial Supplier & Exporter",
-    description: "Discover RB International. We deliver reliable power transmission, automation, and chemical solutions to Indian SEZs, OEMs, and export clients worldwide.",
+    title: "About RB International Belting & Automation | Pan-India Industrial Supplier & Exporter",
+    description: "Discover RB International Belting & Automation. We deliver reliable power transmission, automation, and chemical solutions to Indian SEZs, OEMs, and export clients worldwide.",
   },
   "/power-transmission": {
     title: "Power Transmission, V-Belts & Conveyor Belts Exporter India",
-    description: "Source high-performance V-belts, timing belts, and conveyor belts in bulk from RB International. Trusted supplier for Indian industrial hubs, SEZs & exports.",
+    description: "Source high-performance V-belts, timing belts, and conveyor belts in bulk from RB International Belting & Automation. Trusted supplier for Indian industrial hubs, SEZs & exports.",
   },
   "/automation": {
     title: "Industrial Automation & Motion Control Supplier India & SEZ",
@@ -1010,12 +1074,12 @@ export const mainPageSeo = {
     description: "High-strength industrial adhesives, sealants, and specialty chemicals for manufacturing units, SEZs, and bulk export orders across India and overseas.",
   },
   "/contact": {
-    title: "Contact RB International | Pan-India & Export Inquiries",
-    description: "Connect with RB International for bulk quotes, technical support, and export logistics across Pan-India industrial zones, SEZs, and global destinations.",
+    title: "Contact RB International Belting & Automation | Pan-India & Export Inquiries",
+    description: "Connect with RB International Belting & Automation for bulk quotes, technical support, and export logistics across Pan-India industrial zones, SEZs, and global destinations.",
   },
   "/franchise": {
     title: "Industrial Supply & Automation Franchise Opportunities India",
-    description: "Partner with RB International to distribute industrial belts, automation, and adhesives in fast-growing Indian industrial corridors and upcoming SEZs.",
+    description: "Partner with RB International Belting & Automation to distribute industrial belts, automation, and adhesives in fast-growing Indian industrial corridors and upcoming SEZs.",
   },
 } as const;
 

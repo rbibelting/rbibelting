@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { EnquiryForm } from "@/components/enquiry";
 import { PageHero } from "@/components/page-sections";
 import { breadcrumbSchema, pageHead } from "@/lib/seo";
-import {mainPageSeo,  contactFaqs, footerContact, formContent, websiteIdentity } from "@/lib/site-data";
+import {mainPageSeo,  contactFaqs, footerContact, formContent } from "@/lib/site-data";
 import hero from "@/assets/factory-hero.jpg";
 
 export const faqs = contactFaqs;
@@ -60,8 +60,6 @@ function Contact() {
               </div>
             </ContactItem>
             <ContactItem Icon={Mail} title="Email">
-              <a href={`mailto:${websiteIdentity.email[0]}`}>{websiteIdentity.email[0]}</a>
-              <br />
               <a href={`mailto:${footerContact.email}`}>{footerContact.email}</a>
             </ContactItem>
             <ContactItem Icon={Clock} title="Working hours">
@@ -78,7 +76,7 @@ function Contact() {
             <p className="eyebrow">FAQ</p>
             <h2 className="section-title mt-3">Before you send an enquiry</h2>
             <p className="mt-5 leading-7 text-muted-foreground">
-              Quick answers for product identification, dispatch and support from the RB International team.
+              Quick answers for product identification, dispatch and support from the RB International Belting & Automation team.
             </p>
           </div>
           <div className="border-t border-border">

@@ -51,8 +51,8 @@ export function IndustryShowcase() {
               <span className="mb-4 h-1 w-12 bg-primary-soft" aria-hidden="true" />
               <h3 id="industry-preview-title" className="text-2xl font-black leading-tight sm:text-3xl">{activeIndustry.name}</h3>
               <p className="mt-3 max-w-md text-sm leading-6 text-background/85 sm:text-base sm:leading-7">{activeIndustry.description}</p>
-              <nav aria-label={`${activeIndustry.name} product ranges`} className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-                {industryProductLinks[activeIndustry.image].map(item => <a key={item.to} href={item.to} className="text-sm font-bold text-background underline underline-offset-4">{item.name}</a>)}
+              <nav aria-label={`${activeIndustry.name} product ranges`} className="mt-4 flex flex-wrap gap-2">
+                {industryProductLinks[activeIndustry.name].map(item => <a key={item.to} href={item.to} className="inline-flex items-center gap-1.5 rounded border border-white/20 bg-white/[0.12] px-3 py-1.5 text-sm font-bold text-background transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background">{item.name}<ArrowUpRight className="size-3.5" aria-hidden="true" /></a>)}
               </nav>
             </figcaption>
           </figure>

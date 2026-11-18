@@ -5,7 +5,7 @@ export function Brand({ compact = false }: { compact?: boolean }) {
     <div className="flex min-w-0 items-center gap-2 sm:gap-3">
       <img
         src={logo}
-        alt="RB International Belting and Automation logo"
+        alt="RB International Belting & Automation logo"
         width={56}
         height={56}
         className="size-12 shrink-0 rounded-full object-contain sm:size-14"

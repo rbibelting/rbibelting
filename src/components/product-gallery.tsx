@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/carousel";
 import { ProductPhoto } from "@/components/product-photo";
 
-type ProductGalleryPhoto = { image: string; title: string; note: string };
+type ProductGalleryPhoto = { image: string; title: string; note: string; alt?: string };
 
 export function ProductGallery({
   photos,
@@ -94,7 +94,7 @@ export function ProductGallery({
               aria-label={`${index + 1} of ${photos.length}: ${item.title}`}
             >
               <div className="absolute inset-0">
-                <ProductPhoto src={item.image} alt={item.title} fit="contain" />
+                <ProductPhoto src={item.image} alt={item.alt ?? item.title} fit="contain" />
               </div>
             </CarouselItem>
           ))}

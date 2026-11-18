@@ -2,17 +2,9 @@ import { Gauge, MessageSquareText, Ruler, Settings2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductGallery } from "@/components/product-gallery";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import classicalImg from "@/assets/v-belts/classical-clean.jpg";
-import coggedImg from "@/assets/v-belts/cogged-clean.jpg";
-import bandedImg from "@/assets/v-belts/banded-clean.jpg";
-import narrowImg from "@/assets/v-belts/narrow-clean.jpg";
+import { productPhotoShowcases } from "@/lib/site-data";
 
-const slides = [
-  { image: classicalImg, title: "Classical wrapped belts", note: "General-purpose drive profiles for dependable plant maintenance." },
-  { image: coggedImg, title: "Raw-edge cogged belts", note: "Flexible profiles designed for compact drives and improved heat dissipation." },
-  { image: bandedImg, title: "Banded drive systems", note: "Joined-belt construction for demanding, shock-loaded applications." },
-  { image: narrowImg, title: "Narrow and variable-speed profiles", note: "Compact section options for high-power and adjustable-speed drives." },
-];
+const slides = productPhotoShowcases["power-transmission/v-belts"];
 
 const specifications: Record<string, { models: string; sizes: string; construction: string; duty: string }> = {
   "Classical V-Belts": { models: "Z, A, B, C, D, E", sizes: "Section dependent; matched sets available", construction: "Wrapped rubber with tensile cord", duty: "General industrial drives" },

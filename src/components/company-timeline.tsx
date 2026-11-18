@@ -1,4 +1,4 @@
- import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { companyHistory, websiteIdentity } from "@/lib/site-data";
 import { SectionHeading } from "@/components/page-sections";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
@@ -27,7 +27,7 @@ export function CompanyTimeline() {
   useEffect(() => {
     if (!api || keyboardFocused || dragging) return;
     const timer = window.setInterval(() => {
-      if (document.hidden) return;
+      if (document.hidden || !api.canScrollNext()) return;
       const bounds = api.rootNode().getBoundingClientRect();
       if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) return;
       api.scrollNext();
@@ -40,7 +40,7 @@ export function CompanyTimeline() {
       <div className="site-container">
         <SectionHeading eyebrow={companyHistory.eyebrow} title={companyHistory.title} />
         <Carousel
-          opts={{ align: "start", loop: true, slidesToScroll: 1, dragFree: false, skipSnaps: false, duration: 35 }}
+          opts={{ align: "start", loop: false, slidesToScroll: 1, dragFree: false, skipSnaps: false, duration: 35 }}
           setApi={setApi}
           className="min-w-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
           aria-label="Company history timeline"
