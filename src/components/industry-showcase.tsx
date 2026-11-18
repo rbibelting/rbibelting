@@ -1,21 +1,11 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { getImageAlt, industries, industryCoverage, industryProductLinks } from "@/lib/site-data";
+import { industries, industryCoverage, industryProductLinks } from "@/lib/site-data";
 import { SectionHeading } from "@/components/page-sections";
-import factory from "@/assets/factory-hero.jpg";
-import automation from "@/assets/automation.jpg";
-import belting from "@/assets/power-transmission.jpg";
-
-const photos = {
-  factory: { src: factory, alt: "Industrial production floor with CNC machines and component assembly lines" },
-  automation: { src: automation, alt: "Automated production equipment with linear motion and conveyor systems" },
-  belting: { src: belting, alt: "Industrial drive belts and pulleys installed on production machinery" },
-};
 
 export function IndustryShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndustry = industries[activeIndex] ?? industries[0];
-  const photo = photos[activeIndustry.image];
 
   return (
     <section id="industry-coverage" aria-label={industryCoverage.eyebrow} className="pattern-shared pb-20 pt-6">
@@ -45,7 +35,7 @@ export function IndustryShowcase() {
             </div>
           </div>
           <figure id="industry-preview" aria-labelledby="industry-preview-title" className="relative min-w-0 overflow-hidden bg-foreground text-background">
-            <img src={photo.src} alt={getImageAlt(photo.src, photo.alt)} width={1408} height={912} loading="lazy" decoding="async" className="h-auto w-full lg:absolute lg:inset-0 lg:size-full lg:object-cover" />
+            <img src={activeIndustry.image} alt={activeIndustry.imageAlt} width={activeIndustry.imageWidth} height={activeIndustry.imageHeight} loading="lazy" decoding="async" className="h-auto w-full lg:absolute lg:inset-0 lg:size-full lg:object-cover" />
             <div className="absolute inset-0 hidden bg-gradient-to-t from-black/90 via-black/15 to-transparent lg:block" />
             <figcaption aria-live="polite" aria-atomic="true" className="relative flex flex-col justify-end p-6 sm:p-8 lg:h-full">
               <span className="mb-4 h-1 w-12 bg-primary-soft" aria-hidden="true" />
