@@ -13,16 +13,16 @@ const ENQUIRY_NEXT_AT="rb-enquiry-popup-next-at";
 export function SiteShell({children}:{children:React.ReactNode}){const footerRef=useRef<HTMLElement>(null);const searchTriggerRef=useRef<HTMLButtonElement>(null);const [footerVisible,setFooterVisible]=useState(false);const path=useRouterState({select:s=>s.location.pathname});const [menu,setMenu]=useState(false),[search,setSearch]=useState(false),[query,setQuery]=useState(""),[enquiry,setEnquiry]=useState(false),[seed,setSeed]=useState<EnquirySeed>({}),[top,setTop]=useState(false),[preload,setPreload]=useState(false),[introReady,setIntroReady]=useState(false);
 useEffect(()=>{setMenu(false);setSearch(false)},[path]);useEffect(()=>{const seen=sessionStorage.getItem("rb-intro");if(seen){setPreload(false);setIntroReady(true);return}setPreload(true);const timer=setTimeout(()=>{sessionStorage.setItem("rb-intro","1");setPreload(false);setIntroReady(true)},2400);return()=>clearTimeout(timer)},[]);useEffect(()=>{const f=()=>setTop(window.scrollY>700);addEventListener("scroll",f,{passive:true});return()=>removeEventListener("scroll",f)},[]);
 useEffect(()=>{
-  const isImageTarget=(event:Event)=>{
+  const preventContextMenu=(event:Event)=>event.preventDefault();
+  const preventImageDrag=(event:Event)=>{
     const target=event.target;
-    return target instanceof Element && !!target.closest("img,canvas,svg image");
+    if(target instanceof Element && target.closest("img,canvas,svg image"))event.preventDefault();
   };
-  const preventImageAction=(event:Event)=>{if(isImageTarget(event))event.preventDefault()};
-  document.addEventListener("contextmenu",preventImageAction,true);
-  document.addEventListener("dragstart",preventImageAction,true);
+  document.addEventListener("contextmenu",preventContextMenu,true);
+  document.addEventListener("dragstart",preventImageDrag,true);
   return()=>{
-    document.removeEventListener("contextmenu",preventImageAction,true);
-    document.removeEventListener("dragstart",preventImageAction,true);
+    document.removeEventListener("contextmenu",preventContextMenu,true);
+    document.removeEventListener("dragstart",preventImageDrag,true);
   };
 },[]);
 const context=path.split("/").filter(Boolean).map(x=>x.replaceAll("-"," ")).join(" / ");const matches=searchProducts(query);const open=(s:EnquirySeed={})=>{sessionStorage.setItem(ENQUIRY_NEXT_AT,String(Date.now()+ENQUIRY_INTERVAL));setSeed(s);setEnquiry(true)};

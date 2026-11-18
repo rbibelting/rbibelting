@@ -58,7 +58,7 @@ function Home() {
           <div className="w-full max-w-6xl">
             <div className="max-w-5xl text-center md:text-left">
               <p className="eyebrow text-primary-soft">{homeHeroContent.eyebrow}</p>
-              <h1 className="mt-5 text-center text-balance text-4xl font-black leading-[1.08] md:text-left md:text-[clamp(2rem,4vw,3.5rem)]">
+              <h1 className="mt-5 text-center text-balance text-4xl font-black leading-[1.08] md:text-left md:text-[clamp(2rem,3.5vw,3rem)]">
                 {homeHeroContent.title}
               </h1>
               <p className="mt-6 mx-auto max-w-3xl text-center text-lg leading-8 text-background/80 md:mx-0 md:text-left">
