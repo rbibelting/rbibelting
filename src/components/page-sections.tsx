@@ -7,7 +7,8 @@ import { ProductRangeDialog } from "@/components/product-range-dialog";
 import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { EMAIL,EnquiryForm,EnquiryDialog } from "@/components/enquiry";
+import { EnquiryForm,EnquiryDialog } from "@/components/enquiry";
+import { submitWeb3Form } from "@/lib/web3forms";
 import { SectionHeading } from "@/components/section-heading";
 import { describeType,productTypeAnchor,formContent,brochureDownloads,getBrandLogoAlt,getBrandLogo,getImageAlt,productPhotoShowcases,type Pillar,type SubCategory } from "@/lib/site-data";
 import powerImg from "@/assets/power-transmission.jpg";import automationImg from "@/assets/automation.jpg";import adhesivesImg from "@/assets/adhesives.jpg";
@@ -52,8 +53,125 @@ const objects=["<< /Type /Catalog /Pages 2 0 R >>","<< /Type /Pages /Kids [3 0 R
 let pdf="%PDF-1.4\n";const offsets=[0];objects.forEach((object,index)=>{offsets[index+1]=pdf.length;pdf+=`${index+1} 0 obj\n${object}\nendobj\n`});const xref=pdf.length;pdf+=`xref\n0 ${objects.length+1}\n0000000000 65535 f \n${offsets.slice(1).map(offset=>`${String(offset).padStart(10,"0")} 00000 n `).join("\n")}\ntrailer\n<< /Size ${objects.length+1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`;
 const url=URL.createObjectURL(new Blob([pdf],{type:"application/pdf"}));const link=document.createElement("a");link.href=url;link.download=`${brochureSafe(brand) || "rb-international-belting-automation"}-product-information.pdf`;document.body.appendChild(link);link.click();link.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-function BrochureRequestDialog({brand,open,onOpenChange}:{brand:string|null;open:boolean;onOpenChange:(open:boolean)=>void}){const [errors,setErrors]=useState<Partial<Record<BrochureField,string>>>({});
-useEffect(()=>{setErrors({})},[open,brand]);if(!brand)return null;const submit=(form:HTMLFormElement)=>{const data=new FormData(form);const name=String(data.get("name")||"").trim();const phone=String(data.get("phone")||"").trim();const email=String(data.get("email")||"").trim();const company=String(data.get("company")||"").trim();const nextErrors=validateBrochure({name,phone,email,company});setErrors(nextErrors);const firstError=(Object.keys(nextErrors) as BrochureField[])[0];if(firstError){form.querySelector<HTMLInputElement>(`[name="${firstError}"]`)?.focus();return}const message=`PDF download request\nBrand: ${brand}\nName: ${name}\nCompany: ${company || "-"}\nPhone: ${phone}\nEmail: ${email}`;window.location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(`PDF request: ${brand}`)}&body=${encodeURIComponent(message)}`;window.setTimeout(()=>{const pdf=brochureDownloads[brand];if(pdf){const link=document.createElement("a");link.href=pdf;link.download=`${brand} Catalogue.pdf`;document.body.appendChild(link);link.click();link.remove()}else downloadBrochurePdf(brand);onOpenChange(false)},700)};return <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="max-h-[92dvh] overflow-y-auto sm:max-w-2xl"><DialogHeader><p className="eyebrow">Download PDF</p><DialogTitle className="text-2xl">{brand}</DialogTitle><DialogDescription className="sr-only">Download the selected brand PDF.</DialogDescription></DialogHeader><form noValidate className="space-y-4" onSubmit={(event)=>{event.preventDefault();submit(event.currentTarget)}}><div className="grid gap-4 sm:grid-cols-2"><div><Label htmlFor="br-name">Name *</Label><Input id="br-name" name="name" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name?"br-name-error":undefined} onChange={()=>setErrors(current=>{const next={...current};delete next.name;return next})} required maxLength={100} className="mt-1 h-12"/>{errors.name&&<p id="br-name-error" role="alert" className="mt-1 text-sm text-destructive">{errors.name}</p>}</div><div><Label htmlFor="br-company">Company</Label><Input id="br-company" name="company" autoComplete="organization" aria-invalid={!!errors.company} aria-describedby={errors.company?"br-company-error":undefined} onChange={()=>setErrors(current=>{const next={...current};delete next.company;return next})} maxLength={120} className="mt-1 h-12"/>{errors.company&&<p id="br-company-error" role="alert" className="mt-1 text-sm text-destructive">{errors.company}</p>}</div><div><Label htmlFor="br-phone">Phone *</Label><Input id="br-phone" name="phone" autoComplete="tel" aria-invalid={!!errors.phone} aria-describedby={errors.phone?"br-phone-error":undefined} onChange={event=>{const error=validateBrochurePhone(event.currentTarget.value);setErrors(current=>{const next={...current};if(error)next.phone=error;else delete next.phone;return next})}} onBlur={event=>{const error=validateBrochurePhone(event.currentTarget.value);setErrors(current=>{const next={...current};if(error)next.phone=error;else delete next.phone;return next})}} type="tel" inputMode="tel" required maxLength={20} className={`mt-1 h-12 ${errors.phone?"border-destructive focus-visible:ring-destructive":""}`}/><p id="br-phone-error" aria-live="polite" className={errors.phone?"mt-1 text-sm font-medium text-destructive":"sr-only"}>{errors.phone??""}</p></div><div><Label htmlFor="br-email">Email *</Label><Input id="br-email" name="email" onBlur={event=>{const email=event.currentTarget.value;const error=validateBrochureEmail(email);setErrors(current=>{const next={...current};if(error)next.email=error;else delete next.email;return next})}} autoComplete="email" aria-invalid={!!errors.email} aria-describedby="br-email-error" onChange={event=>{const error=validateBrochureEmail(event.currentTarget.value);event.currentTarget.setCustomValidity(error??"");setErrors(current=>{const next={...current};if(error)next.email=error;else delete next.email;return next})}} type="email" inputMode="email" required maxLength={200} className={`mt-1 h-12 ${errors.email?"border-destructive focus-visible:ring-destructive":""}`}/><p id="br-email-error" aria-live="polite" aria-atomic="true" className={errors.email?"mt-1 text-sm font-medium text-destructive":"sr-only"}>{errors.email??""}</p></div></div><p className="text-xs leading-5 text-muted-foreground">{formContent.contactDisclaimer}</p><Button type="submit" size="lg" className="h-12 w-full"><Download/>Download PDF</Button></form></DialogContent></Dialog>}
+function BrochureRequestDialog({
+  brand,
+  open,
+  onOpenChange,
+}: {
+  brand: string | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const [errors, setErrors] = useState<Partial<Record<BrochureField, string>>>({});
+  const [submissionError, setSubmissionError] = useState("");
+  const [sending, setSending] = useState(false);
+  const submitted = useRef(false);
+
+  useEffect(() => {
+    setErrors({});
+    setSubmissionError("");
+    setSending(false);
+    submitted.current = false;
+  }, [open, brand]);
+
+  if (!brand) return null;
+
+  const submit = async (form: HTMLFormElement) => {
+    if (submitted.current) return;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const company = String(data.get("company") || "").trim();
+    const nextErrors = validateBrochure({ name, phone, email, company });
+    setErrors(nextErrors);
+    const firstError = (Object.keys(nextErrors) as BrochureField[])[0];
+    if (firstError) {
+      form.querySelector<HTMLInputElement>(`[name="${firstError}"]`)?.focus();
+      return;
+    }
+
+    submitted.current = true;
+    setSending(true);
+    setSubmissionError("");
+    try {
+      await submitWeb3Form({
+        name,
+        company: company || "-",
+        phone,
+        email,
+        category: "Product literature",
+        brand,
+        message: `PDF download request for ${brand} catalogue.`,
+        subject: `PDF request: ${brand}`,
+        from_name: "RB International Belting & Automation website",
+      });
+      const pdf = brochureDownloads[brand];
+      if (pdf) {
+        const link = document.createElement("a");
+        link.href = pdf;
+        link.download = `${brand} Catalogue.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      } else {
+        downloadBrochurePdf(brand);
+      }
+      onOpenChange(false);
+    } catch (error) {
+      submitted.current = false;
+      setSubmissionError(error instanceof Error ? error.message : "We couldn't send your request. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-h-[92dvh] overflow-y-auto sm:max-w-2xl">
+        <DialogHeader>
+          <p className="eyebrow">Download PDF</p>
+          <DialogTitle className="text-2xl">{brand}</DialogTitle>
+          <DialogDescription className="sr-only">Download the selected brand PDF.</DialogDescription>
+        </DialogHeader>
+        <form
+          noValidate
+          className="space-y-4"
+          onSubmit={(event) => {
+            event.preventDefault();
+            void submit(event.currentTarget);
+          }}
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <Label htmlFor="br-name">Name *</Label>
+              <Input id="br-name" name="name" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "br-name-error" : undefined} onChange={() => setErrors((current) => { const next = { ...current }; delete next.name; return next; })} required maxLength={100} className="mt-1 h-12" />
+              {errors.name && <p id="br-name-error" role="alert" className="mt-1 text-sm text-destructive">{errors.name}</p>}
+            </div>
+            <div>
+              <Label htmlFor="br-company">Company</Label>
+              <Input id="br-company" name="company" autoComplete="organization" aria-invalid={!!errors.company} aria-describedby={errors.company ? "br-company-error" : undefined} onChange={() => setErrors((current) => { const next = { ...current }; delete next.company; return next; })} maxLength={120} className="mt-1 h-12" />
+              {errors.company && <p id="br-company-error" role="alert" className="mt-1 text-sm text-destructive">{errors.company}</p>}
+            </div>
+            <div>
+              <Label htmlFor="br-phone">Phone *</Label>
+              <Input id="br-phone" name="phone" autoComplete="tel" aria-invalid={!!errors.phone} aria-describedby="br-phone-error" onChange={(event) => { const error = validateBrochurePhone(event.currentTarget.value); setErrors((current) => { const next = { ...current }; if (error) next.phone = error; else delete next.phone; return next; }); }} onBlur={(event) => { const error = validateBrochurePhone(event.currentTarget.value); setErrors((current) => { const next = { ...current }; if (error) next.phone = error; else delete next.phone; return next; }); }} type="tel" inputMode="tel" required maxLength={20} className={`mt-1 h-12 ${errors.phone ? "border-destructive focus-visible:ring-destructive" : ""}`} />
+              <p id="br-phone-error" aria-live="polite" className={errors.phone ? "mt-1 text-sm font-medium text-destructive" : "sr-only"}>{errors.phone ?? ""}</p>
+            </div>
+            <div>
+              <Label htmlFor="br-email">Email *</Label>
+              <Input id="br-email" name="email" onBlur={(event) => { const error = validateBrochureEmail(event.currentTarget.value); setErrors((current) => { const next = { ...current }; if (error) next.email = error; else delete next.email; return next; }); }} autoComplete="email" aria-invalid={!!errors.email} aria-describedby="br-email-error" onChange={(event) => { const error = validateBrochureEmail(event.currentTarget.value); event.currentTarget.setCustomValidity(error ?? ""); setErrors((current) => { const next = { ...current }; if (error) next.email = error; else delete next.email; return next; }); }} type="email" inputMode="email" required maxLength={200} className={`mt-1 h-12 ${errors.email ? "border-destructive focus-visible:ring-destructive" : ""}`} />
+              <p id="br-email-error" aria-live="polite" aria-atomic="true" className={errors.email ? "mt-1 text-sm font-medium text-destructive" : "sr-only"}>{errors.email ?? ""}</p>
+            </div>
+          </div>
+          <p className="text-xs leading-5 text-muted-foreground">{formContent.contactDisclaimer}</p>
+          {submissionError && <p role="alert" className="text-sm font-medium text-destructive">{submissionError}</p>}
+          <Button type="submit" size="lg" disabled={sending} className="h-12 w-full"><Download />{sending ? "Sending request…" : "Download PDF"}</Button>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}
 export function BrochureGrid({brands}:{brands:string[]}){const [selected,setSelected]=useState<string|null>(null);return <><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{brands.slice(0,8).map(b=><article key={b} className="border border-border bg-background p-5"><Download className="text-primary"/><h3 className="mt-5 text-lg font-black">{b}</h3><Button type="button" variant="outline" size="sm" className="mt-5" onClick={()=>setSelected(b)}>Download PDF</Button></article>)}</div><BrochureRequestDialog brand={selected} open={!!selected} onOpenChange={open=>!open&&setSelected(null)}/></>}
 export function ProductTypes({pillar,sub,onQuote,onView}:{pillar:Pillar;sub:SubCategory;onQuote?:(name:string)=>void;onView?:(name:string)=>void}){return <div className="grid gap-4 md:grid-cols-2">{sub.types.map((t,i)=><article key={t} id={productTypeAnchor(t)} className="product-type scroll-mt-28"><div className="flex items-start justify-between gap-4"><span className="grid size-9 shrink-0 place-items-center bg-category text-sm font-black text-category-foreground">{String(i+1).padStart(2,"0")}</span><CheckCircle2 className="text-category"/></div><h3 className="mt-6 text-xl font-black">{t}</h3><p className="mt-3 leading-7 text-muted-foreground">{describeType(t)}</p>{onView?<Button className="mt-5" onClick={()=>onView(t)}>View range <ArrowRight/></Button>:onQuote&&<Button variant="outline" className="mt-5" onClick={()=>onQuote(t)}><MessageSquareText/>Request quote</Button>}</article>)}</div>}
 export function EnquiryBand({title,category,requirement}:{title:string;category:string;requirement?:string}){return <section id="enquire" className="pattern-shared bg-muted py-16"><div className="site-container grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p className="eyebrow">Technical enquiry</p><h2 className="section-title mt-3">{title}</h2><p className="mt-5 leading-7 text-muted-foreground">Share a part number, size, brand, drawing or application. Our team will help identify the right option.</p></div><div className="border border-border bg-background p-5 shadow-sm md:p-8"><EnquiryForm seed={requirement?{category,requirement}:{category}} compact/></div></div></section>}

@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { companyHistory, websiteIdentity } from "@/lib/site-data";
 import { SectionHeading } from "@/components/page-sections";
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 export function CompanyTimeline() {
   const [api, setApi] = useState<CarouselApi>();
@@ -40,25 +47,66 @@ export function CompanyTimeline() {
       <div className="site-container">
         <SectionHeading eyebrow={companyHistory.eyebrow} title={companyHistory.title} />
         <Carousel
-          opts={{ align: "start", loop: false, slidesToScroll: 1, dragFree: false, skipSnaps: false, duration: 35 }}
+          opts={{
+            align: "start",
+            loop: false,
+            slidesToScroll: 1,
+            dragFree: false,
+            skipSnaps: false,
+            duration: 35,
+          }}
           setApi={setApi}
           className="min-w-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
           aria-label="Company history timeline"
           tabIndex={0}
           onPointerDownCapture={() => setKeyboardFocused(false)}
           onFocusCapture={(event) => setKeyboardFocused(event.target.matches(":focus-visible"))}
-          onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setKeyboardFocused(false); }}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setKeyboardFocused(false);
+          }}
         >
           <CarouselContent className="-ml-4 items-stretch touch-pan-y pb-1" aria-live="off">
             {companyHistory.milestones.map((milestone) => (
-              <CarouselItem key={milestone.year} className="flex basis-full pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" aria-label={`${milestone.year}: ${milestone.description}`}>
+              <CarouselItem
+                key={milestone.year}
+                className="flex basis-full pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                aria-label={`${milestone.year}: ${milestone.description}`}
+              >
                 <article className="flex w-full flex-col rounded-sm border border-border border-t-4 border-t-primary bg-background p-5 shadow-sm">
-                  <h3 className="text-4xl font-black leading-none tracking-tight text-primary"><time dateTime={milestone.year}>{milestone.year}</time></h3>
-                  <p className="mt-5 border-t border-border pt-4 text-sm leading-6 text-foreground/80">{milestone.description.split(/(rbibelting\.com)/).map((part, index) => part === "rbibelting.com" ? <a key={index} href={`${websiteIdentity.url}/`} className="font-bold text-primary underline-offset-4 hover:underline focus-visible:underline">{part}</a> : part)}</p>
+                  <h3 className="text-4xl font-black leading-none tracking-tight text-primary">
+                    <time dateTime={milestone.year}>{milestone.year}</time>
+                  </h3>
+                  <p className="mt-5 border-t border-border pt-4 text-sm leading-6 text-foreground/80">
+                    {milestone.description.split(/(rbibelting\.com)/).map((part, index) =>
+                      part === "rbibelting.com" ? (
+                        <a
+                          key={index}
+                          href={`${websiteIdentity.url}/`}
+                          className="font-bold text-primary underline-offset-4 hover:underline focus-visible:underline"
+                        >
+                          {part}
+                        </a>
+                      ) : (
+                        part
+                      ),
+                    )}
+                  </p>
                 </article>
               </CarouselItem>
             ))}
           </CarouselContent>
+          <div className="mt-5 flex justify-end gap-2">
+            <CarouselPrevious
+              className="static size-10 translate-y-0 rounded-sm"
+              aria-label="Scroll to previous milestone"
+              title="Previous milestone"
+            />
+            <CarouselNext
+              className="static size-10 translate-y-0 rounded-sm"
+              aria-label="Scroll to next milestone"
+              title="Next milestone"
+            />
+          </div>
         </Carousel>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -85,6 +86,26 @@ export function ProductGallery({
             : "relative"
         }
       >
+        {multiple && (
+          <>
+            <button
+              type="button"
+              aria-label="Previous product image"
+              onClick={() => api?.scrollPrev()}
+              className="absolute left-3 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-border/70 bg-background/90 text-foreground shadow-md transition hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-category"
+            >
+              <ChevronLeft className="size-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next product image"
+              onClick={() => api?.scrollNext()}
+              className="absolute right-3 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-border/70 bg-background/90 text-foreground shadow-md transition hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-category"
+            >
+              <ChevronRight className="size-5" aria-hidden="true" />
+            </button>
+          </>
+        )}
         <CarouselContent className={`ml-0 touch-pan-y ${compact ? "h-full" : ""}`} aria-live="off">
           {photos.map((item, index) => (
             <CarouselItem
