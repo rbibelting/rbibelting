@@ -986,51 +986,52 @@ export const rangeGuidanceContent = {
   disclaimer: "Exact size, material, compatibility and availability are confirmed against the selected manufacturer's documentation. No model-specific specification is implied by this range page.",
 };
 
+const productRangePopup = (pillar: PillarKey, slug: string) => `/${pillar}?product=${encodeURIComponent(slug)}`;
 export const industryProductLinks = {
   "Automotive & Auto Components": [
-    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
-    { name: "Robotics & Actuators", to: "/automation/robotics" },
-    { name: "Structural & Epoxy Adhesives", to: "/adhesives/structural" },
+    { name: "V-Belts", to: productRangePopup("power-transmission", "v-belts") },
+    { name: "Robotics & Actuators", to: productRangePopup("automation", "robotics") },
+    { name: "Structural & Epoxy Adhesives", to: productRangePopup("adhesives", "structural") },
   ],
   "Food & Beverage Processing": [
-    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
-    { name: "Timing Belts", to: "/power-transmission/timing-belts" },
-    { name: "Silicone Sealants & Gasket Makers", to: "/adhesives/sealants" },
+    { name: "Conveyor Belts", to: productRangePopup("power-transmission", "conveyor-belts") },
+    { name: "Timing Belts", to: productRangePopup("power-transmission", "timing-belts") },
+    { name: "Silicone Sealants & Gasket Makers", to: productRangePopup("adhesives", "sealants") },
   ],
   "Packaging & Printing": [
-    { name: "Timing Belts", to: "/power-transmission/timing-belts" },
-    { name: "Linear Motion Systems", to: "/automation/linear-motion" },
-    { name: "Industrial Tapes & Compounds", to: "/adhesives/tapes" },
+    { name: "Timing Belts", to: productRangePopup("power-transmission", "timing-belts") },
+    { name: "Linear Motion Systems", to: productRangePopup("automation", "linear-motion") },
+    { name: "Industrial Tapes & Compounds", to: productRangePopup("adhesives", "tapes") },
   ],
   Pharmaceuticals: [
-    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
-    { name: "Linear Motion Systems", to: "/automation/linear-motion" },
-    { name: "Specialty Chemicals & MRO", to: "/adhesives/specialty" },
+    { name: "Conveyor Belts", to: productRangePopup("power-transmission", "conveyor-belts") },
+    { name: "Linear Motion Systems", to: productRangePopup("automation", "linear-motion") },
+    { name: "Specialty Chemicals & MRO", to: productRangePopup("adhesives", "specialty") },
   ],
   "Textiles & Garments": [
-    { name: "Flat Belts", to: "/power-transmission/flat-belts" },
-    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
-    { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
+    { name: "Flat Belts", to: productRangePopup("power-transmission", "flat-belts") },
+    { name: "V-Belts", to: productRangePopup("power-transmission", "v-belts") },
+    { name: "V-Pulleys & Bushes", to: productRangePopup("power-transmission", "pulleys-and-bushes") },
   ],
   "Cement, Mining & Heavy Industries": [
-    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
-    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
-    { name: "Couplings", to: "/power-transmission/couplings" },
+    { name: "Conveyor Belts", to: productRangePopup("power-transmission", "conveyor-belts") },
+    { name: "V-Belts", to: productRangePopup("power-transmission", "v-belts") },
+    { name: "Couplings", to: productRangePopup("power-transmission", "couplings") },
   ],
   "Logistics, Warehousing & Material Handling": [
-    { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
-    { name: "Motors & Drives", to: "/automation/motors-and-drives" },
-    { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
+    { name: "Conveyor Belts", to: productRangePopup("power-transmission", "conveyor-belts") },
+    { name: "Motors & Drives", to: productRangePopup("automation", "motors-and-drives") },
+    { name: "V-Pulleys & Bushes", to: productRangePopup("power-transmission", "pulleys-and-bushes") },
   ],
   "OEM & Machine Building": [
-    { name: "Linear Motion Systems", to: "/automation/linear-motion" },
-    { name: "Controllers", to: "/automation/controllers" },
-    { name: "Threadlockers & Retaining Compounds", to: "/adhesives/threadlockers" },
+    { name: "Linear Motion Systems", to: productRangePopup("automation", "linear-motion") },
+    { name: "Controllers", to: productRangePopup("automation", "controllers") },
+    { name: "Threadlockers & Retaining Compounds", to: productRangePopup("adhesives", "threadlockers") },
   ],
   "General Manufacturing & Job Shops": [
-    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
-    { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
-    { name: "Specialty Chemicals & MRO", to: "/adhesives/specialty" },
+    { name: "V-Belts", to: productRangePopup("power-transmission", "v-belts") },
+    { name: "V-Pulleys & Bushes", to: productRangePopup("power-transmission", "pulleys-and-bushes") },
+    { name: "Specialty Chemicals & MRO", to: productRangePopup("adhesives", "specialty") },
   ],
 } as const;
 
