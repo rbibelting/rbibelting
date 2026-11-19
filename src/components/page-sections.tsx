@@ -63,7 +63,7 @@ export function CategoryGrid({pillar}:{pillar:Pillar}){
         <p className="mt-3 min-h-20 text-sm leading-6 text-muted-foreground">{s.short}</p>
         <div className="mt-6 flex flex-wrap gap-2">
           <Button type="button" size="sm" onClick={()=>setSelected(s)}>View range <ArrowRight/></Button>
-          <Button asChild variant="outline" size="sm"><a href={`/${pillar.key}/${s.slug}#enquire`}>Quick enquiry</a></Button>
+          <Button type="button" variant="outline" size="sm" onClick={()=>setEnquiry(s)}>Quick enquiry</Button>
         </div>
       </article>)}
     </div>
