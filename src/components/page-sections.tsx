@@ -7,7 +7,7 @@ import { ProductRangeDialog } from "@/components/product-range-dialog";
 import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { EnquiryForm } from "@/components/enquiry";
+import { EnquiryDialog, EnquiryForm } from "@/components/enquiry";
 import { submitWeb3Form } from "@/lib/web3forms";
 import { SectionHeading } from "@/components/section-heading";
 import { describeType,productTypeAnchor,formContent,brochureDownloads,getBrandLogoAlt,getBrandLogo,getImageAlt,productPhotoShowcases,type Pillar,type SubCategory } from "@/lib/site-data";
@@ -15,6 +15,7 @@ import powerImg from "@/assets/power-transmission.jpg";import automationImg from
 import classicalImg from "@/assets/v-belts/classical-clean.jpg";import coggedImg from "@/assets/v-belts/cogged-clean.jpg";import bandedImg from "@/assets/v-belts/banded-clean.jpg";import narrowImg from "@/assets/v-belts/narrow-clean.jpg";
 const images={power:powerImg,automation:automationImg,adhesives:adhesivesImg};
 const vBeltPhotos=[{image:classicalImg,title:"Classical wrapped belts",note:"General-purpose wrapped profiles for dependable plant maintenance."},{image:coggedImg,title:"Raw-edge cogged belts",note:"Flexible profiles for compact drives and improved heat dissipation."},{image:bandedImg,title:"Banded drive systems",note:"Joined belts for vibration control and shock-loaded applications."},{image:narrowImg,title:"Narrow and variable-speed profiles",note:"Compact section options for high-power and adjustable-speed drives."}];
+const formCategory=(key:string)=>key==="power-transmission"?"Power Transmission":key==="automation"?"Automation":"Adhesives";
 const rangePhotos=(pillar:Pillar,sub:SubCategory)=>productPhotoShowcases[`${pillar.key}/${sub.slug}`] ?? (sub.slug==="v-belts"?vBeltPhotos:[{image:images[pillar.image],title:sub.name,note:sub.short}]);
 export function Breadcrumbs({items}:{items:{label:string;to:string}[]}){return <section className="border-b border-border bg-background"><div className="site-container py-5"><nav aria-label="Breadcrumb"><ol className="flex flex-wrap items-center gap-2 text-sm font-semibold"><li><Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary"><Home className="size-4"/>Home</Link></li>{items.map((item,index)=>{const current=index===items.length-1;return <li key={item.to} className="flex items-center gap-2"><ChevronRight className="size-4 text-muted-foreground/60"/>{current?<span aria-current="page" className="text-primary">{item.label}</span>:<a href={item.to} className="text-muted-foreground hover:text-primary">{item.label}</a>}</li>})}</ol></nav></div></section>}
 export function PageHero({kicker,title,description,image,accent="brand",compact=false}:{kicker:string;title:string;description:string;image?:string;accent?:string;compact?:boolean}){
@@ -45,6 +46,7 @@ export { BrandStrip } from "@/components/brand-strip";
 export function CategoryGrid({pillar}:{pillar:Pillar}){
   const searchStr=useRouterState({select:state=>state.location.searchStr});
   const [selected,setSelected]=useState<SubCategory|null>(null);
+  const [enquiry,setEnquiry]=useState<SubCategory|null>(null);
   const checkedInitialSearch=useRef(false);
   useEffect(()=>{
     const isInitialRefresh=!checkedInitialSearch.current&&typeof performance!=="undefined"&&performance.getEntriesByType("navigation")[0]?.type==="reload";
@@ -53,13 +55,6 @@ export function CategoryGrid({pillar}:{pillar:Pillar}){
     const slug=new URLSearchParams(searchStr).get("product");
     setSelected(pillar.subcategories.find(sub=>sub.slug===slug)??null);
   },[pillar,searchStr]);
-  const goToContact=(sub:SubCategory)=>{
-    const url=new URL("/contact",window.location.origin);
-    url.searchParams.set("category",pillar.name);
-    url.searchParams.set("requirement",`${sub.name} requirement: `);
-    url.hash="contact-enquiry-form";
-    window.location.assign(`${url.pathname}${url.search}${url.hash}`);
-  };
   return <>
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {pillar.subcategories.map((s,i)=><article className="category-card" key={s.slug}>
@@ -72,7 +67,8 @@ export function CategoryGrid({pillar}:{pillar:Pillar}){
         </div>
       </article>)}
     </div>
-    <ProductRangeDialog key={selected?.slug ?? "range"} pillar={pillar} sub={selected} photos={selected?rangePhotos(pillar,selected):[]} open={!!selected} onOpenChange={open=>!open&&setSelected(null)} onEnquire={goToContact}/>
+    <ProductRangeDialog key={selected?.slug ?? "range"} pillar={pillar} sub={selected} photos={selected?rangePhotos(pillar,selected):[]} open={!!selected} onOpenChange={open=>!open&&setSelected(null)} onEnquire={sub=>{setSelected(null);setEnquiry(sub)}}/>
+    <EnquiryDialog open={!!enquiry} onOpenChange={open=>!open&&setEnquiry(null)} seed={{category:formCategory(pillar.key),requirement:enquiry?`${enquiry.name} requirement: `:""}}/>
   </>;
 }
 const brochureSafe=(value:string)=>value.replace(/[^\w-]+/g,"-").replace(/^-+|-+$/g,"").toLowerCase();
