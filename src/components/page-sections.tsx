@@ -1,14 +1,14 @@
 import { validateBrochure, validateBrochureEmail, validateBrochurePhone, type BrochureField } from "@/lib/brochure-validation";
 import { useEffect,useRef,useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowRight,CheckCircle2,ChevronRight,Download,Home,MessageSquareText,Pause,Play } from "lucide-react";
+import { ArrowRight,CheckCircle2,ChevronRight,Download,Home,MessageSquareText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductRangeDialog } from "@/components/product-range-dialog";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { EMAIL,EnquiryForm,EnquiryDialog } from "@/components/enquiry";
+import { SectionHeading } from "@/components/section-heading";
 import { describeType,productTypeAnchor,formContent,brochureDownloads,getBrandLogoAlt,getBrandLogo,getImageAlt,productPhotoShowcases,type Pillar,type SubCategory } from "@/lib/site-data";
 import powerImg from "@/assets/power-transmission.jpg";import automationImg from "@/assets/automation.jpg";import adhesivesImg from "@/assets/adhesives.jpg";
 import classicalImg from "@/assets/v-belts/classical-clean.jpg";import coggedImg from "@/assets/v-belts/cogged-clean.jpg";import bandedImg from "@/assets/v-belts/banded-clean.jpg";import narrowImg from "@/assets/v-belts/narrow-clean.jpg";
@@ -39,78 +39,9 @@ export function PageHero({kicker,title,description,image,accent="brand",compact=
     </section>
   );
 }
-export function SectionHeading({eyebrow,title,text,wide=false}:{eyebrow?:string;title:React.ReactNode;text?:string;wide?:boolean}){return <div className={`mb-10 ${wide ? "max-w-none" : "max-w-3xl"}`}>{eyebrow&&<p className="eyebrow">{eyebrow}</p>}<h2 className="section-title mt-3">{title}</h2>{text&&<p className="mt-4 text-lg leading-8 text-muted-foreground">{text}</p>}</div>}
+export { SectionHeading };
 export { PillarCards } from "@/components/division-cards";
-export function BrandStrip({ brands }: { brands: string[] }) {
-  const [api, setApi] = useState<CarouselApi>();
-  const [playing, setPlaying] = useState(false);
-
-  useEffect(() => {
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setPlaying(!motion.matches);
-    update();
-    motion.addEventListener("change", update);
-    return () => motion.removeEventListener("change", update);
-  }, []);
-
-  useEffect(() => {
-    if (!api || !playing) return;
-    const timer = window.setInterval(() => {
-      if (!document.hidden) api.scrollNext();
-    }, 3000);
-    return () => window.clearInterval(timer);
-  }, [api, playing]);
-
-  if (!brands.length) return null;
-  // Extra slides keep short brand lists looping even with four tiles visible.
-  const slides = brands.length > 4 ? brands : [...brands, ...brands, ...brands];
-  const controlClass = "static size-9 translate-y-0 rounded-none border-background/25 bg-transparent text-background hover:bg-background hover:text-foreground";
-
-  return (
-    <Carousel
-      opts={{ align: "start", loop: true }}
-      setApi={setApi}
-      className="brand-strip min-w-0"
-      aria-label="Available brands"
-      onFocusCapture={(event) => {
-        if (event.target.matches(":focus-visible")) setPlaying(false);
-      }}
-    >
-      <CarouselContent className="ml-0 touch-pan-y" aria-live="off">
-        {slides.map((brand, index) => {
-          const logo = getBrandLogo(brand);
-          return (
-          <CarouselItem key={`${brand}-${index}`} className="basis-1/2 pl-0 sm:basis-1/3 lg:basis-1/4" aria-label={brand}>
-            <div className="brand-tile">
-              {logo ? <>
-                <div className="brand-logo-frame">
-                  <img src={logo.src} alt={getBrandLogoAlt(brand)} width={180} height={88} loading="lazy" decoding="async" draggable={false} style={{ objectFit: logo.fit ?? "contain", objectPosition: logo.position ?? "center", transform: logo.scale ? `scale(${logo.scale})` : undefined }} />
-                </div>
-                <span className="brand-tile-label">{brand}</span>
-              </> : <span>{brand}</span>}
-            </div>
-          </CarouselItem>
-          );
-        })}
-      </CarouselContent>
-      <div className="mt-3 flex justify-end gap-2">
-        <CarouselPrevious className={controlClass} title="Previous brands" />
-        <Button
-          type="button"
-          variant="outline"
-          size="icon"
-          className={controlClass}
-          aria-label={playing ? "Pause automatic sliding" : "Start automatic sliding"}
-          title={playing ? "Pause automatic sliding" : "Start automatic sliding"}
-          onClick={() => setPlaying((value) => !value)}
-        >
-          {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
-        </Button>
-        <CarouselNext className={controlClass} title="Next brands" />
-      </div>
-    </Carousel>
-  );
-}
+export { BrandStrip } from "@/components/brand-strip";
 export function CategoryGrid({pillar}:{pillar:Pillar}){const searchStr=useRouterState({select:state=>state.location.searchStr});const [selected,setSelected]=useState<SubCategory|null>(null);const checkedInitialSearch=useRef(false);useEffect(()=>{const isInitialRefresh=!checkedInitialSearch.current&&typeof performance!=="undefined"&&performance.getEntriesByType("navigation")[0]?.type==="reload";checkedInitialSearch.current=true;if(isInitialRefresh){setSelected(null);return}const slug=new URLSearchParams(searchStr).get("product");setSelected(pillar.subcategories.find(sub=>sub.slug===slug)??null)},[pillar,searchStr]);const [enquiry,setEnquiry]=useState<SubCategory|null>(null);return <><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{pillar.subcategories.map((s,i)=><article className="category-card" key={s.slug}><span className="text-xs font-black text-category">0{i+1}</span><h3 className="mt-5 text-xl font-black"><a href={`/${pillar.key}/${s.slug}`} className="text-left hover:text-category focus-visible:outline-2 focus-visible:outline-category">{s.name}</a></h3><p className="mt-3 min-h-20 text-sm leading-6 text-muted-foreground">{s.short}</p><div className="mt-6 flex flex-wrap gap-2"><Button type="button" size="sm" onClick={()=>setSelected(s)}>View range <ArrowRight/></Button><Button asChild variant="outline" size="sm"><a href={`/${pillar.key}/${s.slug}#enquire`}>Quick enquiry</a></Button></div></article>)}</div><ProductRangeDialog key={selected?.slug ?? "range"} pillar={pillar} sub={selected} photos={selected?rangePhotos(pillar,selected):[]} open={!!selected} onOpenChange={open=>!open&&setSelected(null)} onEnquire={sub=>{setSelected(null);setEnquiry(sub)}}/><EnquiryDialog open={!!enquiry} onOpenChange={open=>!open&&setEnquiry(null)} seed={{category:formCategory(pillar.key),requirement:enquiry?`${enquiry.name} requirement: `:""}}/></>}
 const brochureSafe=(value:string)=>value.replace(/[^\w-]+/g,"-").replace(/^-+|-+$/g,"").toLowerCase();
 const pdfText=(value:string)=>value.replace(/[\\()]/g,"\\$&").replace(/[^\x20-\x7e]/g,"");

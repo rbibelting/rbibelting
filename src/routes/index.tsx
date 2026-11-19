@@ -9,7 +9,9 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BrandStrip, PillarCards, SectionHeading } from "@/components/page-sections";
+import { BrandStrip } from "@/components/brand-strip";
+import { PillarCards } from "@/components/division-cards";
+import { SectionHeading } from "@/components/section-heading";
 import { EnquiryDialog } from "@/components/enquiry";
 import { DealerRelationships } from "@/components/dealer-relationships";
 import { IndustryShowcase } from "@/components/industry-showcase";
@@ -46,13 +48,20 @@ function Home() {
   return (
     <>
       <section className="home-hero">
-        <img
-          src={hero}
-          alt={getImageAlt(hero, "Factory production floor")}
-          width={1600}
-          height={912}
-          fetchPriority="high"
-        />
+        <picture>
+          <source
+            srcSet="/home/factory-hero-800.webp 800w, /home/factory-hero.webp 1600w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src={hero}
+            alt={getImageAlt(hero, "Factory production floor")}
+            width={1600}
+            height={912}
+            fetchPriority="high"
+          />
+        </picture>
         <div className="absolute inset-0 hidden bg-foreground/75 md:block" />
         <div className="site-container relative flex items-start py-8 text-background md:min-h-[calc(100svh-5rem-1px)] md:items-center md:py-10">
           <div className="w-full max-w-6xl">

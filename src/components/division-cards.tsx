@@ -92,7 +92,7 @@ function DivisionPhotos({ name, photos }: { name: string; photos: readonly Divis
                 alt={getImageAlt(photo.src, photo.alt)}
                 width={960}
                 height={600}
-                loading={index <= 1 ? "eager" : "lazy"}
+                loading="lazy"
                 decoding="async"
                 draggable={false}
                 className="absolute inset-0 size-full object-cover object-center"
