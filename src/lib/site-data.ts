@@ -143,7 +143,9 @@ export const brochureDownloads: Record<string, string> = {
   PIX: "/catalogues/pix-catalogue.pdf",
   TOCO: "/catalogues/toco-catalogue.pdf",
   "Speb 7": "/catalogues/speb7-catalogue.pdf",
+  Mitsuboshi: "/catalogues/mitsuboshi.pdf",
 };
+export const brochureBrandReplacements: Record<string, string> = { Carlisle: "Mitsuboshi" };
 // Verified public company details shared by structured data. Placeholder social links are excluded.
 export const websiteIdentity = {
   url: "https://www.rbibelting.com",
