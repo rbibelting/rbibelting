@@ -141,6 +141,7 @@ export const footerProductLinks = [
 export const brochureDownloads: Record<string, string> = {
   PIX: "/catalogues/pix-catalogue.pdf",
   TOCO: "/catalogues/toco-catalogue.pdf",
+  "Speb 7": "/catalogues/speb7-catalogue.pdf",
 };
 // Verified public company details shared by structured data. Placeholder social links are excluded.
 export const websiteIdentity = {
