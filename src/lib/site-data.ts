@@ -986,7 +986,7 @@ export const rangeGuidanceContent = {
 
 export const industryProductLinks = {
   "Automotive & Auto Components": [
-    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
     { name: "Robotics & Actuators", to: "/automation/robotics" },
     { name: "Structural & Epoxy Adhesives", to: "/adhesives/structural" },
   ],
@@ -1007,12 +1007,12 @@ export const industryProductLinks = {
   ],
   "Textiles & Garments": [
     { name: "Flat Belts", to: "/power-transmission/flat-belts" },
-    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
     { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
   ],
   "Cement, Mining & Heavy Industries": [
     { name: "Conveyor Belts", to: "/power-transmission/conveyor-belts" },
-    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
     { name: "Couplings", to: "/power-transmission/couplings" },
   ],
   "Logistics, Warehousing & Material Handling": [
