@@ -1026,7 +1026,7 @@ export const industryProductLinks = {
     { name: "Threadlockers & Retaining Compounds", to: "/adhesives/threadlockers" },
   ],
   "General Manufacturing & Job Shops": [
-    { name: "V-Belts", to: "/power-transmission/v-belts" },
+    { name: "V-Belts", to: "/power-transmission?product=v-belts" },
     { name: "V-Pulleys & Bushes", to: "/power-transmission/pulleys-and-bushes" },
     { name: "Specialty Chemicals & MRO", to: "/adhesives/specialty" },
   ],
