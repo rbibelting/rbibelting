@@ -108,7 +108,7 @@ async function checkEngine(name, engine, options) {
       await page.waitForURL("**/contact");
       await menu.waitFor({ state: "detached" });
       await page.waitForLoadState("networkidle");
-      await page.getByRole("button", { name: "Submit your inquiry", exact: true }).tap();
+      await page.getByRole("button", { name: "Open email draft", exact: true }).tap();
       await page.getByText("Please add your name, phone number and requirement.").waitFor();
       const faq = page
         .locator("details")

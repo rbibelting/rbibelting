@@ -66,7 +66,7 @@ try {
   await page.getByRole('dialog').getByRole('button', {name: 'Close', exact: true}).click();
 
   await page.goto(base + '/contact', { waitUntil: 'networkidle' });
-  await page.getByRole('button', {name: 'Submit your inquiry', exact: true}).click();
+  await page.getByRole('button', {name: 'Open email draft', exact: true}).click();
   assert.ok(await page.getByText('Please add your name, phone number and requirement.').isVisible());
   assert.equal(await page.evaluate(() => (window.dataLayer || []).filter(item => item.event === 'enquiry_handoff').length), 0);
   await page.locator('[name="name"]').fill('SEO test');
@@ -75,7 +75,7 @@ try {
   await page.locator('[name="category"]').selectOption('Automation');
   // Both clicks happen in one task, before any external mail application can open.
   await page.evaluate(() => {
-    const button = [...document.querySelectorAll('button')].find(button => button.textContent.includes('Submit your inquiry'));
+    const button = [...document.querySelectorAll('button')].find(button => button.textContent.includes('Open email draft'));
     button.click(); button.click();
   });
   const events = await page.evaluate(() => (window.dataLayer || []).filter(item => item.event === 'enquiry_handoff'));

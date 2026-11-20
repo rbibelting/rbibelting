@@ -4,9 +4,10 @@ import { ProductGallery } from "@/components/product-gallery";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { productPhotoShowcases } from "@/lib/site-data";
 
-const slides = productPhotoShowcases["power-transmission/v-belts"];
+const slides = productPhotoShowcases["power-transmission/v-belts"] ?? [];
 
-const specifications: Record<string, { models: string; sizes: string; construction: string; duty: string }> = {
+type BeltSpecification = { models: string; sizes: string; construction: string; duty: string };
+const specifications: Record<string, BeltSpecification> & { "Classical V-Belts": BeltSpecification } = {
   "Classical V-Belts": { models: "Z, A, B, C, D, E", sizes: "Section dependent; matched sets available", construction: "Wrapped rubber with tensile cord", duty: "General industrial drives" },
   "Narrow V-Belts": { models: "SPZ, SPA, SPB, SPC", sizes: "Metric datum lengths; matched sets available", construction: "High-power wedge profile", duty: "Compact, high-load drives" },
   "Micro V-Belts": { models: "PJ, PK, PL, PM", sizes: "Multi-rib profiles by pitch and rib count", construction: "Longitudinal ribbed belt", duty: "Precision and auxiliary drives" },

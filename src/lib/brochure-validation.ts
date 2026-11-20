@@ -4,7 +4,7 @@ export type BrochureValues = Record<BrochureField, string>;
 export function validateBrochure(values: BrochureValues) {
   const errors: Partial<Record<BrochureField, string>> = {};
   const name = values.name.trim();
-  if (name.length < 2 || name.length > 100 || !/\p{L}/u.test(name) || !/^[\p{L}\p{M}\s.'’\-]+$/u.test(name)) {
+  if (name.length < 2 || name.length > 100 || !/\p{L}/u.test(name) || !/^[\p{L}\p{M}\s.'’-]+$/u.test(name)) {
     errors.name = "Enter your name (2–100 characters, using letters, spaces, apostrophes or hyphens).";
   }
   if (values.company.trim().length > 120) errors.company = "Company must be 120 characters or fewer.";
@@ -42,7 +42,7 @@ export function validateBrochureEmail(value: string): string | undefined {
 export function validateBrochurePhone(value: string): string | undefined {
   const phone = value.trim();
   if (!phone) return "Please enter your phone number.";
-  if (!/^\+?[\d\s()\-]+$/.test(phone)) return "Use only digits and an optional country code, such as +91.";
+  if (!/^\+?[\d\s()-]+$/.test(phone)) return "Use only digits and an optional country code, such as +91.";
   const digits = phone.replace(/\D/g, "");
   const indianCountryCode = phone.startsWith("+91") || (digits.startsWith("91") && digits.length > 10);
   if (indianCountryCode && digits.length !== 12) return "Enter exactly 10 digits after the +91 country code.";

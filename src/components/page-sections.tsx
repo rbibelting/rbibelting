@@ -1,14 +1,13 @@
 import { validateBrochure, validateBrochureEmail, validateBrochurePhone, type BrochureField } from "@/lib/brochure-validation";
 import { useEffect,useRef,useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowRight,CheckCircle2,ChevronRight,Download,Home,MessageSquareText } from "lucide-react";
+import { ArrowRight,CheckCircle2,ChevronRight,Download,Home,Mail,MessageSquareText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductRangeDialog } from "@/components/product-range-dialog";
 import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { EnquiryDialog, EnquiryForm } from "@/components/enquiry";
-import { submitWeb3Form } from "@/lib/web3forms";
+import { EnquiryDialog, EnquiryForm, enquiryEmailLink } from "@/components/enquiry";
 import { SectionHeading } from "@/components/section-heading";
 import { describeType,productTypeAnchor,formContent,brochureDownloads,getBrandLogoAlt,getBrandLogo,getImageAlt,productPhotoShowcases,type Pillar,type SubCategory } from "@/lib/site-data";
 import powerImg from "@/assets/power-transmission.jpg";import automationImg from "@/assets/automation.jpg";import adhesivesImg from "@/assets/adhesives.jpg";
@@ -49,7 +48,7 @@ export function CategoryGrid({pillar}:{pillar:Pillar}){
   const [enquiry,setEnquiry]=useState<SubCategory|null>(null);
   const checkedInitialSearch=useRef(false);
   useEffect(()=>{
-    const isInitialRefresh=!checkedInitialSearch.current&&typeof performance!=="undefined"&&performance.getEntriesByType("navigation")[0]?.type==="reload";
+    const isInitialRefresh=!checkedInitialSearch.current&&typeof performance!=="undefined"&&(performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined)?.type==="reload";
     checkedInitialSearch.current=true;
     if(isInitialRefresh){setSelected(null);return}
     const slug=new URLSearchParams(searchStr).get("product");
@@ -71,15 +70,6 @@ export function CategoryGrid({pillar}:{pillar:Pillar}){
     <EnquiryDialog open={!!enquiry} onOpenChange={open=>!open&&setEnquiry(null)} seed={{category:formCategory(pillar.key),requirement:enquiry?`${enquiry.name} requirement: `:""}}/>
   </>;
 }
-const brochureSafe=(value:string)=>value.replace(/[^\w-]+/g,"-").replace(/^-+|-+$/g,"").toLowerCase();
-const pdfText=(value:string)=>value.replace(/[\\()]/g,"\\$&").replace(/[^\x20-\x7e]/g,"");
-function downloadBrochurePdf(brand:string){
-const lines=[brand,"RB International Belting & Automation","Power transmission, automation and industrial adhesive supply from Pune.","","This generated PDF placeholder confirms your download request.","The RB International Belting & Automation team will share the latest official literature and selection support by email.","","Contact: rbtraders1@yahoo.co.in | +91 87881 95839"];
-const streamLines=lines.map((line,index)=>`BT /F1 ${index===0?24:12} Tf 72 ${720-index*34} Td (${pdfText(line)}) Tj ET`).join("\n");
-const objects=["<< /Type /Catalog /Pages 2 0 R >>","<< /Type /Pages /Kids [3 0 R] /Count 1 >>","<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>","<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",`<< /Length ${streamLines.length} >>\nstream\n${streamLines}\nendstream`];
-let pdf="%PDF-1.4\n";const offsets=[0];objects.forEach((object,index)=>{offsets[index+1]=pdf.length;pdf+=`${index+1} 0 obj\n${object}\nendobj\n`});const xref=pdf.length;pdf+=`xref\n0 ${objects.length+1}\n0000000000 65535 f \n${offsets.slice(1).map(offset=>`${String(offset).padStart(10,"0")} 00000 n `).join("\n")}\ntrailer\n<< /Size ${objects.length+1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`;
-const url=URL.createObjectURL(new Blob([pdf],{type:"application/pdf"}));const link=document.createElement("a");link.href=url;link.download=`${brochureSafe(brand) || "rb-international-belting-automation"}-product-information.pdf`;document.body.appendChild(link);link.click();link.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
 function BrochureRequestDialog({
   brand,
   open,
@@ -90,20 +80,16 @@ function BrochureRequestDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const [errors, setErrors] = useState<Partial<Record<BrochureField, string>>>({});
-  const [submissionError, setSubmissionError] = useState("");
-  const [sending, setSending] = useState(false);
   const submitted = useRef(false);
 
   useEffect(() => {
     setErrors({});
-    setSubmissionError("");
-    setSending(false);
     submitted.current = false;
   }, [open, brand]);
 
   if (!brand) return null;
 
-  const submit = async (form: HTMLFormElement) => {
+  const submit = (form: HTMLFormElement) => {
     if (submitted.current) return;
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
@@ -119,54 +105,25 @@ function BrochureRequestDialog({
     }
 
     submitted.current = true;
-    setSending(true);
-    setSubmissionError("");
-    try {
-      await submitWeb3Form({
-        name,
-        company: company || "-",
-        phone,
-        email,
-        category: "Product literature",
-        brand,
-        message: `PDF download request for ${brand} catalogue.`,
-        subject: `PDF request: ${brand}`,
-        from_name: "RB International Belting & Automation website",
-      });
-      const pdf = brochureDownloads[brand];
-      if (pdf) {
-        const link = document.createElement("a");
-        link.href = pdf;
-        link.download = `${brand} Catalogue.pdf`;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-      } else {
-        downloadBrochurePdf(brand);
-      }
-      onOpenChange(false);
-    } catch (error) {
-      submitted.current = false;
-      setSubmissionError(error instanceof Error ? error.message : "We couldn't send your request. Please try again.");
-    } finally {
-      setSending(false);
-    }
+    const message = `Please share the ${brand} catalogue.\nName: ${name}\nCompany: ${company}\nPhone: ${phone}\nEmail: ${email}`;
+    window.location.href = enquiryEmailLink(`Catalogue request: ${brand}`, message);
+    onOpenChange(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[92dvh] overflow-y-auto sm:max-w-2xl">
         <DialogHeader>
-          <p className="eyebrow">Download PDF</p>
+          <p className="eyebrow">Request catalogue</p>
           <DialogTitle className="text-2xl">{brand}</DialogTitle>
-          <DialogDescription className="sr-only">Download the selected brand PDF.</DialogDescription>
+          <DialogDescription className="sr-only">Open an email draft requesting the selected catalogue.</DialogDescription>
         </DialogHeader>
         <form
           noValidate
           className="space-y-4"
           onSubmit={(event) => {
             event.preventDefault();
-            void submit(event.currentTarget);
+            submit(event.currentTarget);
           }}
         >
           <div className="grid gap-4 sm:grid-cols-2">
@@ -192,14 +149,36 @@ function BrochureRequestDialog({
             </div>
           </div>
           <p className="text-xs leading-5 text-muted-foreground">{formContent.contactDisclaimer}</p>
-          {submissionError && <p role="alert" className="text-sm font-medium text-destructive">{submissionError}</p>}
-          <Button type="submit" size="lg" disabled={sending} className="h-12 w-full"><Download />{sending ? "Sending request…" : "Download PDF"}</Button>
+          <Button type="submit" size="lg" className="h-12 w-full"><Mail />Open email draft</Button>
         </form>
       </DialogContent>
     </Dialog>
   );
 }
-export function BrochureGrid({brands}:{brands:string[]}){const [selected,setSelected]=useState<string|null>(null);return <><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{brands.slice(0,8).map(b=><article key={b} className="border border-border bg-background p-5"><Download className="text-primary"/><h3 className="mt-5 text-lg font-black">{b}</h3><Button type="button" variant="outline" size="sm" className="mt-5" onClick={()=>setSelected(b)}>Download PDF</Button></article>)}</div><BrochureRequestDialog brand={selected} open={!!selected} onOpenChange={open=>!open&&setSelected(null)}/></>}
+export function BrochureGrid({ brands }: { brands: string[] }) {
+  const [selected, setSelected] = useState<string | null>(null);
+  return <>
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {brands.slice(0, 8).map((brand) => {
+        const pdf = brochureDownloads[brand];
+        return <article key={brand} className="border border-border bg-background p-5">
+          <Download className="text-primary" />
+          <h3 className="mt-5 text-lg font-black">{brand}</h3>
+          {pdf ? (
+            <Button asChild variant="outline" size="sm" className="mt-5">
+              <a href={pdf} download={`${brand} Catalogue.pdf`}>Download PDF</a>
+            </Button>
+          ) : (
+            <Button type="button" variant="outline" size="sm" className="mt-5" onClick={() => setSelected(brand)}>
+              Request catalogue
+            </Button>
+          )}
+        </article>;
+      })}
+    </div>
+    <BrochureRequestDialog brand={selected} open={!!selected} onOpenChange={(open) => !open && setSelected(null)} />
+  </>;
+}
 export function ProductTypes({pillar,sub,onQuote,onView}:{pillar:Pillar;sub:SubCategory;onQuote?:(name:string)=>void;onView?:(name:string)=>void}){return <div className="grid gap-4 md:grid-cols-2">{sub.types.map((t,i)=><article key={t} id={productTypeAnchor(t)} className="product-type scroll-mt-28"><div className="flex items-start justify-between gap-4"><span className="grid size-9 shrink-0 place-items-center bg-category text-sm font-black text-category-foreground">{String(i+1).padStart(2,"0")}</span><CheckCircle2 className="text-category"/></div><h3 className="mt-6 text-xl font-black">{t}</h3><p className="mt-3 leading-7 text-muted-foreground">{describeType(t)}</p>{onView?<Button className="mt-5" onClick={()=>onView(t)}>View range <ArrowRight/></Button>:onQuote&&<Button variant="outline" className="mt-5" onClick={()=>onQuote(t)}><MessageSquareText/>Request quote</Button>}</article>)}</div>}
 export function EnquiryBand({title,category,requirement}:{title:string;category:string;requirement?:string}){return <section id="enquire" className="pattern-shared bg-muted py-16"><div className="site-container grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p className="eyebrow">Technical enquiry</p><h2 className="section-title mt-3">{title}</h2><p className="mt-5 leading-7 text-muted-foreground">Share a part number, size, brand, drawing or application. Our team will help identify the right option.</p></div><div className="border border-border bg-background p-5 shadow-sm md:p-8"><EnquiryForm seed={requirement?{category,requirement}:{category}} compact/></div></div></section>}
 export {images};

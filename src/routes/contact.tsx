@@ -21,8 +21,8 @@ const faqSchema = {
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>) => ({
-    category: typeof search.category === "string" ? search.category : "",
-    requirement: typeof search.requirement === "string" ? search.requirement : "",
+    ...(typeof search["category"] === "string" && search["category"] ? { category: search["category"] } : {}),
+    ...(typeof search["requirement"] === "string" && search["requirement"] ? { requirement: search["requirement"] } : {}),
   }),
   head: () =>
     pageHead(
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const { category, requirement } = Route.useSearch();
+  const seed = Route.useSearch();
   return (
     <>
       <PageHero
@@ -50,7 +50,7 @@ function Contact() {
           <div className="self-start border border-border bg-background p-6 md:p-8">
             <h2 className="text-3xl font-black">{formContent.generalTitle}</h2>
             <div className="mt-7">
-              <EnquiryForm variant="general" seed={{ category, requirement }} />
+              <EnquiryForm variant="general" seed={seed} />
             </div>
           </div>
           <aside className="space-y-4">

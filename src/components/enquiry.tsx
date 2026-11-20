@@ -2,7 +2,6 @@ import { validateBrochurePhone, validateBrochureEmail } from "@/lib/brochure-val
 import { useId, useRef, useState } from "react";
 import { trackEnquiryHandoff } from "@/lib/analytics";
 import { Mail, MessageCircle } from "lucide-react";
-import { submitWeb3Form } from "@/lib/web3forms";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -12,7 +11,11 @@ import { formContent, getEnquiryCategory, websiteIdentity } from "@/lib/site-dat
 
 export type EnquirySeed = { requirement?: string; category?: string };
 export const WA_PHONE = websiteIdentity.telephone[0].replace(/\D/g, "");
-export const EMAIL = websiteIdentity.email[0];
+const EMAIL = websiteIdentity.email[0];
+
+export function enquiryEmailLink(subject: string, body: string) {
+  return `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 const clean = (value: string, max = 1000) => value.trim().slice(0, max);
 
@@ -25,20 +28,18 @@ type EnquiryDetails = {
   requirement: string;
 };
 
-export function buildMessage(details: EnquiryDetails) {
+function buildMessage(details: EnquiryDetails) {
   return `Website enquiry\nName: ${clean(details.name, 100)}\nCompany: ${clean(details.company, 120)}\nPhone: ${clean(details.phone, 20)}\nEmail: ${clean(details.email, 200)}\nCategory: ${clean(details.category, 80)}\nRequirement: ${clean(details.requirement)}`;
 }
 
-export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, submitLabel = "Submit your inquiry", variant = "product" }: { seed?: EnquirySeed; compact?: boolean; hideWhatsApp?: boolean; submitLabel?: string; variant?: "product" | "general" }) {
+export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, submitLabel = "Open email draft", variant = "product" }: { seed?: EnquirySeed; compact?: boolean; hideWhatsApp?: boolean; submitLabel?: string; variant?: "product" | "general" }) {
   const formId = useId();
   const seedCategory = getEnquiryCategory(seed.category);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [sending, setSending] = useState(false);
   const handingOff = useRef(false);
   const [phoneError, setPhoneError] = useState<string | undefined>();
 
-  const send = async (kind: "email" | "wa", form: HTMLFormElement) => {
+  const send = (kind: "email" | "wa", form: HTMLFormElement) => {
     if (handingOff.current) return;
     const formData = new FormData(form);
     const details = {
@@ -47,12 +48,13 @@ export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, 
       phone: String(formData.get("phone") || ""),
       email: String(formData.get("email") || ""),
       category: String(formData.get("category") || seedCategory || "Not specified"),
-      requirement: String(formData.get("requirement") || seed.requirement || ""),
+      requirement: String(formData.get("requirement") || ""),
     };
     if (!clean(details.name) || !clean(details.phone) || !clean(details.requirement)) {
       setError("Please add your name, phone number and requirement.");
       return;
     }
+    setError("");
     const invalidPhone = validateBrochurePhone(details.phone);
     setPhoneError(invalidPhone);
     if (invalidPhone) { form.querySelector<HTMLInputElement>('[name="phone"]')?.focus(); return; }
@@ -60,46 +62,24 @@ export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, 
       const invalidEmail = validateBrochureEmail(details.email);
       if (invalidEmail) { setError(invalidEmail); return; }
     }
-    setError("");
-    setSuccess("");
     const message = buildMessage(details);
+    const subject = `${variant === "general" ? formContent.generalTitle : "Product enquiry"}: ${clean(details.category, 80)}`;
+    const href = kind === "wa"
+      ? `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`
+      : enquiryEmailLink(subject, message);
     handingOff.current = true;
-    if (kind === "wa") {
-      trackEnquiryHandoff("whatsapp", details.category);
-      window.location.href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
-      window.setTimeout(() => { handingOff.current = false; }, 1500);
-      return;
-    }
-
-    setSending(true);
-    try {
-      await submitWeb3Form({
-        name: clean(details.name, 100),
-        company: clean(details.company, 120) || "-",
-        phone: clean(details.phone, 20),
-        email: clean(details.email, 200),
-        category: clean(details.category, 80),
-        message: clean(details.requirement),
-        subject: `${variant === "general" ? formContent.generalTitle : "Product enquiry"}: ${details.category}`,
-        from_name: "RB International Belting & Automation website",
-      });
-      trackEnquiryHandoff("email", details.category);
-      setSuccess("Your enquiry has been sent. Our team will get back to you soon.");
-      form.reset();
-    } catch (submissionError) {
-      setError(submissionError instanceof Error ? submissionError.message : "We couldn't send your enquiry. Please try again.");
-    } finally {
-      setSending(false);
-      handingOff.current = false;
-    }
+    window.setTimeout(() => { handingOff.current = false; }, 1500);
+    trackEnquiryHandoff(kind === "wa" ? "whatsapp" : "email", details.category);
+    window.location.href = href;
   };
 
   return (
     <form
       className="space-y-4"
+      noValidate
       onSubmit={(event) => {
         event.preventDefault();
-        void send("email", event.currentTarget);
+        send("email", event.currentTarget);
       }}
     >
       <div className="grid gap-4 sm:grid-cols-2">
@@ -117,10 +97,9 @@ export function EnquiryForm({ seed = {}, compact = false, hideWhatsApp = false, 
       </div>
       <div><Label htmlFor={`${formId}-requirement`}>Describe what you need *</Label><Textarea id={`${formId}-requirement`} name="requirement" required maxLength={1000} defaultValue={seed.requirement} rows={compact ? 3 : 5} className="mt-1" placeholder={variant === "general" ? undefined : formContent.requirementPlaceholder} /></div>
       {error && <p role="alert" className="text-sm font-medium text-destructive">{error}</p>}
-      {success && <p role="status" className="text-sm font-medium text-green-700">{success}</p>}
       <p className="text-xs leading-5 text-muted-foreground">{formContent.contactDisclaimer}</p>
       <div className={`grid gap-3 ${hideWhatsApp ? "" : "sm:grid-cols-2"}`}>
-        <Button type="submit" size="lg" className="h-12" disabled={sending || !!success}><Mail />{sending ? "Sending…" : success ? "Sent" : submitLabel}</Button>
+        <Button type="submit" size="lg" className="h-12"><Mail />{submitLabel}</Button>
         {!hideWhatsApp && <Button type="button" size="lg" variant="outline" className="h-12 border-whatsapp text-whatsapp hover:bg-whatsapp-soft" onClick={(event) => { const form = event.currentTarget.form; if (form) send("wa", form); }}><MessageCircle />Send on WhatsApp</Button>}
       </div>
     </form>

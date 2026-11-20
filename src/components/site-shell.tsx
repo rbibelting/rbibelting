@@ -97,7 +97,11 @@ function Footer({footerRef}:{footerRef:React.RefObject<HTMLElement|null>}) {
         <div className="min-w-0 text-center md:text-left">
           <img src={logo} alt="RB International Belting & Automation logo" width={80} height={80} className="mx-auto size-20 rounded-full object-contain md:mx-0" />
           <p className="mx-auto mt-5 max-w-sm text-sm leading-6 text-background/70 md:mx-0">{footerContact.description}</p>
-          <div className="mt-5 flex justify-center gap-2.5 md:justify-start"><a href="https://www.instagram.com/rbibelting/" aria-label="RB International Belting & Automation on Instagram" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Instagram className="size-4"/></a><a href="#" aria-label="RB International Belting & Automation on LinkedIn" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Linkedin className="size-4"/></a><a href="#" aria-label="RB International Belting & Automation on YouTube" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Youtube className="size-4"/></a><a href="#" aria-label="RB International Belting & Automation on Facebook" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Facebook className="size-4"/></a></div>
+          <div className="mt-5 flex justify-center gap-2.5 md:justify-start"><a href="https://www.instagram.com/rbibelting/" aria-label="RB International Belting & Automation on Instagram" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Instagram className="size-4"/></a>
+            <span title="LinkedIn profile unavailable" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/50"><Linkedin className="size-4" aria-hidden="true" /><span className="sr-only">LinkedIn profile unavailable</span></span>
+            <span title="YouTube profile unavailable" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/50"><Youtube className="size-4" aria-hidden="true" /><span className="sr-only">YouTube profile unavailable</span></span>
+            <span title="Facebook profile unavailable" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/50"><Facebook className="size-4" aria-hidden="true" /><span className="sr-only">Facebook profile unavailable</span></span>
+          </div>
         </div>
         <div className="min-w-0 text-center md:text-left">
           <h2 className="footer-title tracking-[0.25em]">Quick Links</h2>
@@ -105,7 +109,7 @@ function Footer({footerRef}:{footerRef:React.RefObject<HTMLElement|null>}) {
         </div>
         <div className="min-w-0 text-center md:text-left">
           <h2 className="footer-title tracking-[0.25em]">Products</h2>
-          {footerProductLinks.map(links => <div key={links[0].to} className="py-[.35rem] text-sm leading-6 text-background/70">
+          {footerProductLinks.map(links => <div key={links.map(link => link.to).join(",")} className="py-[.35rem] text-sm leading-6 text-background/70">
             {links.map((link, index) => <span key={link.to}>{index > 0 && " & "}<a href={link.to} className="hover:text-primary-soft">{link.label}</a></span>)}
           </div>)}
         </div>
