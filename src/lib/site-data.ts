@@ -264,6 +264,58 @@ export const productVideoShowcases: Record<string, readonly ProductVideo[]> = {
 };
 export type ProductShowcasePhoto = { image: string; title: string; note: string; alt?: string };
 export const productPhotoShowcases: Record<string, readonly ProductShowcasePhoto[]> = {
+  "power-transmission/couplings": [
+    { image: "/product-images/couplings/01_eurogrip_flexible_couplings.png", title: "Eurogrip Flexible Couplings", note: "", alt: "Flexible coupling assembly with metal hubs and a dark central flexible element." },
+    { image: "/product-images/couplings/02_servo_couplings.png", title: "Servo Couplings", note: "", alt: "Metal shaft coupling with a flexible bellows center section." },
+    { image: "/product-images/couplings/03_encoder_couplings.png", title: "Encoder Couplings", note: "", alt: "Compact metal shaft coupling with a narrow flexible center section." },
+    { image: "/product-images/couplings/04_star_couplings.png", title: "Star Couplings", note: "", alt: "Coupling with two metal hubs joined by a visible red and yellow elastomer insert." },
+    { image: "/product-images/couplings/05_sp_wrap_flex_spider_couplings.png", title: "S-P Wrap Flex / Spider Couplings", note: "", alt: "Flexible coupling with metal hubs and a dark elastomer spider element." },
+    { image: "/product-images/couplings/06_hrc_couplings.png", title: "HRC Couplings", note: "", alt: "Heavy-duty flexible coupling with a dark elastomer insert and metal hubs." },
+    { image: "/product-images/couplings/07_cushion_star_couplings.png", title: "Cushion Star Couplings", note: "", alt: "Coupling assembly with a dark cushioned elastomer center between metal hubs." },
+    { image: "/product-images/couplings/08_pin_bush_couplings.png", title: "Pin-bush Couplings", note: "", alt: "Flanged coupling with visible connecting pins and bushes between the halves." },
+    { image: "/product-images/couplings/09_tyre_couplings.png", title: "Tyre Couplings", note: "", alt: "Flexible tyre-style coupling element fitted between two metal flanges." },
+    { image: "/product-images/couplings/10_gear_couplings.png", title: "Gear Couplings", note: "", alt: "Metal gear coupling assembly with a central enclosed coupling section." },
+    { image: "/product-images/couplings/11_resilient_grid_couplings.png", title: "Resilient Grid Couplings", note: "", alt: "Metal coupling with a visible serpentine spring grid element inside its housing." },
+  ],
+  "power-transmission/pulleys-and-bushes": [
+    { image: "/product-images/pulleys-and-bushes/timing-pulley.jpg", title: "Timing Pulleys", note: "", alt: "Machined silver timing pulley with a toothed rim, flanges and central keyed bore." },
+    { image: "/product-images/pulleys-and-bushes/ci-timing-pulley.jpg", title: "CI Timing Pulleys", note: "", alt: "Dark cast-finish timing pulley with a toothed rim and central keyed bore." },
+    { image: "/product-images/pulleys-and-bushes/v-pulley.jpg", title: "V-Pulleys", note: "", alt: "Metal pulley with two V-belt grooves and a central keyed bore." },
+    { image: "/product-images/pulleys-and-bushes/taper-lock-bush.jpg", title: "Taper Lock Bushes", note: "", alt: "Split tapered bushing flange with a central bore and multiple mounting holes." },
+    { image: "/product-images/pulleys-and-bushes/keyless-bush.jpg", title: "Keyless Bushes", note: "", alt: "Cylindrical keyless locking bushing with evenly spaced clamping bolts around its flange." },
+  ],
+  "power-transmission/flat-belts": [
+    { image: "/product-images/flat-belts/flat-transmission-belt.jpg", title: "Flat Transmission Belts", note: "", alt: "Green flat transmission belt loop with a smooth wide surface and layered belt edges." },
+    { image: "/product-images/flat-belts/steel-cord-flat-belt.jpg", title: "Steel Cord Flat Belts", note: "", alt: "Translucent flat belt loop with several parallel reinforcement cords visible through the material." },
+    { image: "/product-images/flat-belts/round-pu-cord-belt.jpg", title: "Round PU Cords/Belts", note: "", alt: "Orange polyurethane round cord arranged in a loop." },
+    { image: "/product-images/flat-belts/woven-belt.jpg", title: "Woven Belts", note: "", alt: "Light-colored woven belt loop with a clearly textured textile surface." },
+  ],
+  "power-transmission/caterpillar-belts": [
+    { image: "/product-images/caterpillar-belts/red-smooth-caterpillar-belt.jpg", title: "Flat Caterpillar / Feeder Belts", note: "", alt: "Red caterpillar belt with a smooth outer surface and dark inner lining." },
+    { image: "/product-images/caterpillar-belts/green-grooved-caterpillar-belt.jpg", title: "Grooved / Dual-Sided Grooved Belts", note: "", alt: "Green caterpillar belt with multiple longitudinal outer grooves and a smooth inner surface." },
+    { image: "/product-images/caterpillar-belts/red-cleated-caterpillar-belt.jpg", title: "Ribbed Caterpillar Belts", note: "", alt: "Red caterpillar belt with repeated raised transverse ribs on the outer surface." },
+    { image: "/product-images/caterpillar-belts/black-cleated-caterpillar-belt.jpg", title: "Chain Conveyor / Ribbed Caterpillar Belts", note: "", alt: "Black caterpillar belt with raised rectangular outer cleats and a molded inner profile." },
+  ],  "power-transmission/timing-belts": [
+    { image: "/product-images/timing-belts/rubber-timing-belts.jpg", title: "Rubber Timing Belts", note: "", alt: "Black rubber timing belt loop with straight inner teeth." },
+    { image: "/product-images/timing-belts/pu-timing-belts.jpg", title: "PU Timing Belts", note: "", alt: "Translucent polyurethane timing belt with molded cleats and visible reinforcement cords." },
+    { image: "/product-images/timing-belts/pu-coated-timing-belts.jpg", title: "PU Coated Timing Belts", note: "", alt: "Red coated timing belt with a smooth outer surface and translucent toothed inner face." },
+    { image: "/product-images/timing-belts/eagle-pd-timing-belts.jpg", title: "Eagle PD Timing Belts", note: "", alt: "Blue timing belt with straight inner teeth and a smooth outer surface." },
+    { image: "/product-images/timing-belts/gates-polychain-gt-carbon.jpg", title: "Gates Polychain GT Carbon", note: "", alt: "Black timing belt with chevron-shaped inner teeth." },
+    { image: "/product-images/timing-belts/gates-polyflex-jb.jpg", title: "Gates Polyflex JB", note: "", alt: "Translucent polyurethane belt with multiple parallel ribs and visible cords." },
+    { image: "/product-images/timing-belts/htd-timing-belts.jpg", title: "HTD Belts", note: "", alt: "Black timing belt with a textured back and molded inner teeth." },
+    { image: "/product-images/timing-belts/special-timing-belts.jpg", title: "Special Timing Belts", note: "", alt: "Translucent multi-rib belt shown in a loop." },
+  ],
+  "power-transmission/accessories": [
+    { image: "/product-images/accessories/01-belt-tension-testers.jpg", title: "Belt Tension Testers", note: "", alt: "Belt tension measuring device with a sensor probe and coiled cable." },
+    { image: "/product-images/accessories/02-maintenance-tools.jpg", title: "Maintenance Tools", note: "", alt: "Open maintenance tool kit with wrenches and service tools." },
+    { image: "/product-images/accessories/03-rust-preventives-cleaners.jpg", title: "Rust Preventives & Cleaners", note: "", alt: "PIX rust preventive and cleaner spray cans with a small bottle." },
+    { image: "/product-images/accessories/04-digital-tension-meter.jpg", title: "Digital Tension Meter", note: "", alt: "Handheld digital tension meter connected to a sensor probe." },
+    { image: "/product-images/accessories/05-xalign-laser-alignment-tool.jpg", title: "X’Align Laser-guided Pulley Alignment Tool", note: "", alt: "Red and black laser guided pulley alignment instruments." },
+    { image: "/product-images/accessories/06-pix-service-kit.jpg", title: "PIX Service Kit", note: "", alt: "Open red PIX service case with maintenance tools arranged inside." },
+    { image: "/product-images/accessories/07-analog-tension-tester.jpg", title: "Analog Tension Tester", note: "", alt: "Spring-loaded analog belt tension tester with a metal measuring scale." },
+    { image: "/product-images/accessories/08-belt-profile-gauge.jpg", title: "Belt Profile Gauge", note: "", alt: "Metal belt profile gauge with rollers and two dial indicators." },
+    { image: "/product-images/accessories/09-pulley-gauges.jpg", title: "Pulley Gauges", note: "", alt: "Vernier caliper style metal gauge for measuring pulley dimensions." },
+  ],
   "power-transmission/v-belts": [
     { image: "/product-images/v-belts/banded-v-belts.png", title: "Banded V-Belts", note: "", alt: "Three joined black V-belts shown from the inner cogged side, with reinforcing cords visible at the cut ends." },
     { image: "/product-images/v-belts/classical-v-belts.jpg", title: "Classical V-Belts", note: "", alt: "Looped black classical V-belts arranged in nested circles, with a trapezoidal cross-section visible at the cut end." },
