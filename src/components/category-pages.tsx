@@ -30,6 +30,9 @@ export function SubCategoryPage({pillar,sub}:{pillar:Pillar;sub:SubCategory}){co
   const accessoriesPhotos = pillar.key === "power-transmission" && sub.slug === "accessories"
     ? productPhotoShowcases["power-transmission/accessories"]
     : undefined;
+  const productIllustrations = (pillar.key === "automation" || pillar.key === "adhesives")
+    ? productPhotoShowcases[`${pillar.key}/${sub.slug}`]
+    : undefined;
   return <div className={`theme-${pillar.key}`}><PageHero kicker={pillar.name} title={sub.name} description={`${sub.short} We supply genuine branded products for maintenance, replacement and OEM requirements across India.`} image={images[pillar.image]} accent={pillar.key} compact/><section className="pattern-category py-20"><div className="site-container"><SectionHeading eyebrow="Available range" title={`${sub.name} product types`} text={isVBelts?"Select a product type to compare profiles, size guidance and typical applications.":"The range is organised by product type rather than individual SKU. Send the code or size you need for a direct match."}/>
     {caterpillarBeltPhotos && (
       <div className="mx-auto mb-8 max-w-3xl overflow-hidden rounded-xl">
@@ -59,6 +62,11 @@ export function SubCategoryPage({pillar,sub}:{pillar:Pillar;sub:SubCategory}){co
     {accessoriesPhotos && (
       <div className="mx-auto mb-8 max-w-3xl overflow-hidden rounded-xl">
         <ProductGallery photos={accessoriesPhotos} eyebrow="Accessories & tools" active={false} />
+      </div>
+    )}
+    {productIllustrations && (
+      <div className="mx-auto mb-8 max-w-3xl overflow-hidden rounded-xl">
+        <ProductGallery photos={productIllustrations} eyebrow="Product illustrations" active={false} />
       </div>
     )}
     <ProductTypes pillar={pillar} sub={sub} onQuote={setQuote} {...(isVBelts ? { onView: setShowcase } : {})}/><RangeSelectionGuidance sub={sub}/></div></section><section className="pattern-shared content-surface py-16 text-foreground"><div className="site-container grid gap-10 lg:grid-cols-2"><div><p className="eyebrow text-primary-soft">Applications</p><h2 className="section-title mt-3">Built for industrial duty</h2><p className="mt-5 leading-7 text-background/70">{sub.name} are used in {sub.applications}. RB International Belting &amp; Automation supports single replacements, planned maintenance and bulk requirements with application guidance.</p></div><div><p className="eyebrow text-primary-soft">Available brands</p><div className="mt-5 flex flex-wrap gap-2">{sub.brands.length === 0 && <p className="text-background/70">Contact us for brand availability.</p>}{sub.brands.map(b=><a key={b} href={`/${pillar.key}#brands`} className="border border-background/20 px-3 py-2 text-sm font-bold hover:text-primary">{b}</a>)}</div></div></div></section><section className="pattern-shared py-16"><div className="site-container"><SectionHeading title="Related product families"/><div className="flex flex-wrap gap-3">{pillar.subcategories.filter(x=>x.slug!==sub.slug).map(x=><a key={x.slug} href={`/${pillar.key}/${x.slug}`} className="border border-border bg-background px-4 py-3 text-sm font-bold hover:border-category hover:text-category">{x.name}</a>)}</div></div></section><EnquiryBand title={`Looking for ${sub.name}? Tell us your requirement.`} category={pillar.name} requirement={sub.name}/><VBeltsShowcase product={showcase} open={!!showcase} onOpenChange={v=>!v&&setShowcase("")} onEnquire={setQuote}/><EnquiryDialog open={!!quote} onOpenChange={v=>!v&&setQuote("")} seed={{category:pillar.name,requirement:quote}}/></div>}
