@@ -32,6 +32,14 @@ export const getImageAlt = (src: string, fallback: string) => imageDescriptions[
 
 // Original image URLs remain available; responsive derivatives preserve the photography.
 export function responsiveProductImage(src: string) {
+  if (src.startsWith("/product-images/") && src.endsWith("-1280.webp")) {
+    const stem = src.slice(0, -"-1280.webp".length);
+    return {
+      src,
+      srcSet: `${stem}-640.webp 640w, ${src} 1280w`,
+      sizes: "(max-width: 767px) 100vw, 768px",
+    };
+  }
   if (!src.startsWith("/product-images/conveyor-belts/") || !src.endsWith(".png")) return {};
   const stem = src.slice(0, -4);
   if (!["pu-pvc-conveyor-belt", "plastic-modular-conveyor-belt", "rubber-conveyor-belt", "cleated-conveyor-belt"].some((name) => stem.endsWith(`/${name}`))) return {};
@@ -265,63 +273,63 @@ export const productVideoShowcases: Record<string, readonly ProductVideo[]> = {
 export type ProductShowcasePhoto = { image: string; title: string; note: string; alt?: string };
 export const productPhotoShowcases: Record<string, readonly ProductShowcasePhoto[]> = {
   "adhesives/tapes": [
-    { image: "/product-images/tapes/double-sided-tapes.png", title: "Double-Sided Tapes", note: "", alt: "Red and clear double-sided tape rolls beside mounting samples." },
-    { image: "/product-images/tapes/foam-tapes.png", title: "Foam Tapes", note: "", alt: "Foam tape rolls with peeled release liners beside metal samples." },
-    { image: "/product-images/tapes/masking-tapes.png", title: "Masking Tapes", note: "", alt: "Beige and blue masking tape rolls beside panels with applied strips." },
-    { image: "/product-images/tapes/specialty-compounds.png", title: "Specialty Compounds", note: "", alt: "Compound cans, jars, and cartridges beside a dispenser and metal components." },
+    { image: "/product-images/tapes/double-sided-tapes-1280.webp", title: "Double-Sided Tapes", note: "", alt: "Red and clear double-sided tape rolls beside mounting samples." },
+    { image: "/product-images/tapes/foam-tapes-1280.webp", title: "Foam Tapes", note: "", alt: "Foam tape rolls with peeled release liners beside metal samples." },
+    { image: "/product-images/tapes/masking-tapes-1280.webp", title: "Masking Tapes", note: "", alt: "Beige and blue masking tape rolls beside panels with applied strips." },
+    { image: "/product-images/tapes/specialty-compounds-1280.webp", title: "Specialty Compounds", note: "", alt: "Compound cans, jars, and cartridges beside a dispenser and metal components." },
   ],
   "adhesives/specialty": [
-    { image: "/product-images/specialty/penetrating-lubricants.png", title: "Penetrating Lubricants", note: "", alt: "Aerosol lubricants beside rusty and clean fasteners." },
-    { image: "/product-images/specialty/electrical-cleaners.png", title: "Electrical Cleaners", note: "", alt: "Precision spray cans and bottles beside a circuit board and electrical terminals." },
-    { image: "/product-images/specialty/steel-putty.png", title: "Steel Putty", note: "", alt: "Metal cans and a putty stick beside a scraper and machined housing." },
-    { image: "/product-images/specialty/hot-melt-adhesives.png", title: "Hot Melt Adhesives", note: "", alt: "Hot melt glue gun and glue sticks beside cardboard and plastic samples." },
-    { image: "/product-images/specialty/rust-preventives.png", title: "Rust Preventives", note: "", alt: "Protective sprays and liquid containers beside gears and bearings." },
+    { image: "/product-images/specialty/penetrating-lubricants-1280.webp", title: "Penetrating Lubricants", note: "", alt: "Aerosol lubricants beside rusty and clean fasteners." },
+    { image: "/product-images/specialty/electrical-cleaners-1280.webp", title: "Electrical Cleaners", note: "", alt: "Precision spray cans and bottles beside a circuit board and electrical terminals." },
+    { image: "/product-images/specialty/steel-putty-1280.webp", title: "Steel Putty", note: "", alt: "Metal cans and a putty stick beside a scraper and machined housing." },
+    { image: "/product-images/specialty/hot-melt-adhesives-1280.webp", title: "Hot Melt Adhesives", note: "", alt: "Hot melt glue gun and glue sticks beside cardboard and plastic samples." },
+    { image: "/product-images/specialty/rust-preventives-1280.webp", title: "Rust Preventives", note: "", alt: "Protective sprays and liquid containers beside gears and bearings." },
   ],
   "adhesives/general-purpose": [
-    { image: "/product-images/general-purpose/wood-adhesives.png", title: "Wood Adhesives", note: "", alt: "Yellow-capped wood glue bottles beside clamped wood joints." },
-    { image: "/product-images/general-purpose/instant-adhesives.png", title: "Instant Adhesives", note: "", alt: "Precision-tip adhesive bottles beside seals and metal hardware." },
-    { image: "/product-images/general-purpose/construction-chemicals.png", title: "Construction Chemicals", note: "", alt: "Adhesive jugs and cartridges beside an applicator and masonry samples." },
-    { image: "/product-images/general-purpose/contact-adhesives.png", title: "Contact Adhesives", note: "", alt: "Adhesive can, amber jar, and brush beside laminate samples and rubber strips." },
+    { image: "/product-images/general-purpose/wood-adhesives-1280.webp", title: "Wood Adhesives", note: "", alt: "Yellow-capped wood glue bottles beside clamped wood joints." },
+    { image: "/product-images/general-purpose/instant-adhesives-1280.webp", title: "Instant Adhesives", note: "", alt: "Precision-tip adhesive bottles beside seals and metal hardware." },
+    { image: "/product-images/general-purpose/construction-chemicals-1280.webp", title: "Construction Chemicals", note: "", alt: "Adhesive jugs and cartridges beside an applicator and masonry samples." },
+    { image: "/product-images/general-purpose/contact-adhesives-1280.webp", title: "Contact Adhesives", note: "", alt: "Adhesive can, amber jar, and brush beside laminate samples and rubber strips." },
   ],
   "adhesives/structural": [
-    { image: "/product-images/structural/two-part-epoxies.png", title: "Two-Part Epoxies", note: "", alt: "Dual-barrel epoxy syringe with a mixing nozzle beside a squeeze bottle." },
-    { image: "/product-images/structural/structural-acrylics.png", title: "Structural Acrylics", note: "", alt: "Adhesive dispensing gun, cartridges, mixing tips, and bonding samples." },
-    { image: "/product-images/structural/metal-repair-compounds.png", title: "Metal Repair Compounds", note: "", alt: "Metal repair compound cans, two-tone putty, and a scraper beside a machined housing." },
+    { image: "/product-images/structural/two-part-epoxies-1280.webp", title: "Two-Part Epoxies", note: "", alt: "Dual-barrel epoxy syringe with a mixing nozzle beside a squeeze bottle." },
+    { image: "/product-images/structural/structural-acrylics-1280.webp", title: "Structural Acrylics", note: "", alt: "Adhesive dispensing gun, cartridges, mixing tips, and bonding samples." },
+    { image: "/product-images/structural/metal-repair-compounds-1280.webp", title: "Metal Repair Compounds", note: "", alt: "Metal repair compound cans, two-tone putty, and a scraper beside a machined housing." },
   ],
   "adhesives/sealants": [
-    { image: "/product-images/sealants/rtv-silicone-sealants.png", title: "RTV Silicone Sealants", note: "", alt: "General-purpose RTV silicone sealant cartridge with a clear bead." },
-    { image: "/product-images/sealants/gasket-makers.png", title: "Gasket Makers", note: "", alt: "Instant gasket maker can with an applicator nozzle and a black bead." },
-    { image: "/product-images/sealants/high-temperature-sealants.png", title: "High Temperature Sealants", note: "", alt: "High-temperature sealant cartridge with an applicator nozzle and a red bead." },
+    { image: "/product-images/sealants/rtv-silicone-sealants-1280.webp", title: "RTV Silicone Sealants", note: "", alt: "General-purpose RTV silicone sealant cartridge with a clear bead." },
+    { image: "/product-images/sealants/gasket-makers-1280.webp", title: "Gasket Makers", note: "", alt: "Instant gasket maker can with an applicator nozzle and a black bead." },
+    { image: "/product-images/sealants/high-temperature-sealants-1280.webp", title: "High Temperature Sealants", note: "", alt: "High-temperature sealant cartridge with an applicator nozzle and a red bead." },
   ],
   "adhesives/threadlockers": [
-    { image: "/product-images/threadlockers/medium-strength-threadlockers.png", title: "Medium Strength Threadlockers", note: "", alt: "Blue medium strength threadlocker bottle beside steel bolts and nuts." },
-    { image: "/product-images/threadlockers/high-strength-threadlockers.png", title: "High Strength Threadlockers", note: "", alt: "Red high strength threadlocker bottle beside steel fasteners." },
-    { image: "/product-images/threadlockers/bearing-retainers.png", title: "Bearing Retainers", note: "", alt: "Green retaining compound bottle beside bearings and a machined steel component." },
-    { image: "/product-images/threadlockers/flange-sealants.png", title: "Flange Sealants", note: "", alt: "Sealant applicator beside a metal flange with an orange sealant bead." },
+    { image: "/product-images/threadlockers/medium-strength-threadlockers-1280.webp", title: "Medium Strength Threadlockers", note: "", alt: "Blue medium strength threadlocker bottle beside steel bolts and nuts." },
+    { image: "/product-images/threadlockers/high-strength-threadlockers-1280.webp", title: "High Strength Threadlockers", note: "", alt: "Red high strength threadlocker bottle beside steel fasteners." },
+    { image: "/product-images/threadlockers/bearing-retainers-1280.webp", title: "Bearing Retainers", note: "", alt: "Green retaining compound bottle beside bearings and a machined steel component." },
+    { image: "/product-images/threadlockers/flange-sealants-1280.webp", title: "Flange Sealants", note: "", alt: "Sealant applicator beside a metal flange with an orange sealant bead." },
   ],
   "automation/linear-motion": [
-    { image: "/product-images/linear-motion/ball-screws.png", title: "Ball Screws", note: "", alt: "Threaded ball screw shaft with a flanged ball nut." },
-    { image: "/product-images/linear-motion/ball-screw-support-units.png", title: "Ball Screw Support Units", note: "", alt: "Two ball screw bearing supports with rectangular and rounded housings." },
-    { image: "/product-images/linear-motion/linear-guideways.png", title: "Linear Guideways", note: "", alt: "Steel guide rail with a green and black sliding carriage." },
-    { image: "/product-images/linear-motion/linear-shafts.png", title: "Linear Shafts", note: "", alt: "Smooth steel linear shaft beside a pillow block bearing." },
-    { image: "/product-images/linear-motion/racks-and-pinions.png", title: "Racks & Pinions", note: "", alt: "Steel pinion gear meshed with a straight toothed rack." },
+    { image: "/product-images/linear-motion/ball-screws-1280.webp", title: "Ball Screws", note: "", alt: "Threaded ball screw shaft with a flanged ball nut." },
+    { image: "/product-images/linear-motion/ball-screw-support-units-1280.webp", title: "Ball Screw Support Units", note: "", alt: "Two ball screw bearing supports with rectangular and rounded housings." },
+    { image: "/product-images/linear-motion/linear-guideways-1280.webp", title: "Linear Guideways", note: "", alt: "Steel guide rail with a green and black sliding carriage." },
+    { image: "/product-images/linear-motion/linear-shafts-1280.webp", title: "Linear Shafts", note: "", alt: "Smooth steel linear shaft beside a pillow block bearing." },
+    { image: "/product-images/linear-motion/racks-and-pinions-1280.webp", title: "Racks & Pinions", note: "", alt: "Steel pinion gear meshed with a straight toothed rack." },
   ],
   "automation/controllers": [
-    { image: "/product-images/controllers/cnc-controllers.png", title: "CNC Controllers", note: "", alt: "CNC control panel with a display, keypad, two dials, and a red emergency stop button." },
-    { image: "/product-images/controllers/dsp-controllers.png", title: "DSP Controllers", note: "", alt: "Handheld DSP controller with a coiled cable beside a green interface board." },
+    { image: "/product-images/controllers/cnc-controllers-1280.webp", title: "CNC Controllers", note: "", alt: "CNC control panel with a display, keypad, two dials, and a red emergency stop button." },
+    { image: "/product-images/controllers/dsp-controllers-1280.webp", title: "DSP Controllers", note: "", alt: "Handheld DSP controller with a coiled cable beside a green interface board." },
   ],
   "automation/motors-and-drives": [
-    { image: "/product-images/motors-and-drives/servo-motors-and-drives.png", title: "Servo Motors & Drives", note: "", alt: "Servo motor beside a drive with a red display and green terminals." },
-    { image: "/product-images/motors-and-drives/stepper-motors.png", title: "Stepper Motors", note: "", alt: "Stepper motor beside a driver with a bundle of colored wires." },
-    { image: "/product-images/motors-and-drives/gearbox-pab-ppg-ppga.png", title: "Gearbox PAB/PPG/PPGA Series", note: "", alt: "Silver gearbox with a projecting shaft and a flanged opening." },
+    { image: "/product-images/motors-and-drives/servo-motors-and-drives-1280.webp", title: "Servo Motors & Drives", note: "", alt: "Servo motor beside a drive with a red display and green terminals." },
+    { image: "/product-images/motors-and-drives/stepper-motors-1280.webp", title: "Stepper Motors", note: "", alt: "Stepper motor beside a driver with a bundle of colored wires." },
+    { image: "/product-images/motors-and-drives/gearbox-pab-ppg-ppga-1280.webp", title: "Gearbox PAB/PPG/PPGA Series", note: "", alt: "Silver gearbox with a projecting shaft and a flanged opening." },
   ],
   "automation/robotics": [
-    { image: "/product-images/robotics/tgp-series.png", title: "TGP Series", note: "", alt: "Linear stage with an exposed screw and a central carriage." },
-    { image: "/product-images/robotics/xyth-series.png", title: "XYTH Series", note: "", alt: "Gantry assembly with a vertical screw axis and a horizontal crossbeam." },
-    { image: "/product-images/robotics/tgh-series.png", title: "TGH Series", note: "", alt: "Horizontal actuator with visible belts and a motor mounted at one end." },
-    { image: "/product-images/robotics/tgps-series.png", title: "TGPS Series", note: "", alt: "Positioning assembly with a perforated work platform and cable carrier." },
-    { image: "/product-images/robotics/tgb-series.png", title: "TGB Series", note: "", alt: "Front view of a linear stage with a central carriage and black bellows." },
-    { image: "/product-images/robotics/mono-stage-systems.png", title: "Mono Stage Systems", note: "", alt: "Compact motor-driven linear stage with a sliding carriage." },
+    { image: "/product-images/robotics/tgp-series-1280.webp", title: "TGP Series", note: "", alt: "Linear stage with an exposed screw and a central carriage." },
+    { image: "/product-images/robotics/xyth-series-1280.webp", title: "XYTH Series", note: "", alt: "Gantry assembly with a vertical screw axis and a horizontal crossbeam." },
+    { image: "/product-images/robotics/tgh-series-1280.webp", title: "TGH Series", note: "", alt: "Horizontal actuator with visible belts and a motor mounted at one end." },
+    { image: "/product-images/robotics/tgps-series-1280.webp", title: "TGPS Series", note: "", alt: "Positioning assembly with a perforated work platform and cable carrier." },
+    { image: "/product-images/robotics/tgb-series-1280.webp", title: "TGB Series", note: "", alt: "Front view of a linear stage with a central carriage and black bellows." },
+    { image: "/product-images/robotics/mono-stage-systems-1280.webp", title: "Mono Stage Systems", note: "", alt: "Compact motor-driven linear stage with a sliding carriage." },
   ],
   "power-transmission/couplings": [
     { image: "/product-images/couplings/01_eurogrip_flexible_couplings.png", title: "Eurogrip Flexible Couplings", note: "", alt: "Flexible coupling assembly with metal hubs and a dark central flexible element." },
