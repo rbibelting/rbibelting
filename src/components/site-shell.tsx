@@ -93,11 +93,11 @@ function WhatsAppLogo(){return <svg viewBox="0 0 32 32" aria-hidden="true" focus
 function Footer({footerRef}:{footerRef:React.RefObject<HTMLElement|null>}) {
   return (
     <footer ref={footerRef} className="bg-foreground text-background">
-      <div className="site-container grid gap-8 py-10 md:grid-cols-2 lg:grid-cols-[1.25fr_.85fr_1.1fr_1.35fr]">
+      <div className="site-container grid gap-6 py-8 md:grid-cols-2 lg:grid-cols-[1.25fr_.85fr_1.1fr_1.35fr]">
         <div className="min-w-0 text-center md:text-left">
           <img src={logo} alt="RB International Belting & Automation logo" width={80} height={80} className="mx-auto size-20 rounded-full object-contain md:mx-0" />
-          <p className="mx-auto mt-5 max-w-sm text-sm leading-6 text-background/70 md:mx-0">{footerContact.description}</p>
-          <div className="mt-5 flex justify-center gap-2.5 md:justify-start"><a href="https://www.instagram.com/rbibelting/" aria-label="RB International Belting & Automation on Instagram" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Instagram className="size-4"/></a>
+          <p className="mx-auto mt-4 max-w-sm text-[.8125rem] leading-[1.5] text-background/70 md:mx-0">{footerContact.description}</p>
+          <div className="mt-4 flex justify-center gap-2.5 md:justify-start"><a href="https://www.instagram.com/rbibelting/" aria-label="RB International Belting & Automation on Instagram" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/75 hover:text-primary-soft"><Instagram className="size-4"/></a>
             <span title="LinkedIn profile unavailable" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/50"><Linkedin className="size-4" aria-hidden="true" /><span className="sr-only">LinkedIn profile unavailable</span></span>
             <span title="YouTube profile unavailable" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/50"><Youtube className="size-4" aria-hidden="true" /><span className="sr-only">YouTube profile unavailable</span></span>
             <span title="Facebook profile unavailable" className="grid size-9 place-items-center rounded-full border border-background/15 bg-background/5 text-background/50"><Facebook className="size-4" aria-hidden="true" /><span className="sr-only">Facebook profile unavailable</span></span>
@@ -109,7 +109,7 @@ function Footer({footerRef}:{footerRef:React.RefObject<HTMLElement|null>}) {
         </div>
         <div className="min-w-0 text-center md:text-left">
           <h2 className="footer-title tracking-[0.25em]">Products</h2>
-          {footerProductLinks.map(links => <div key={links.map(link => link.to).join(",")} className="py-[.35rem] text-sm leading-6 text-background/70">
+          {footerProductLinks.map(links => <div key={links.map(link => link.to).join(",")} className="py-[.25rem] text-[.8125rem] leading-[1.5] text-background/70">
             {links.map((link, index) => <span key={link.to}>{index > 0 && " & "}<a href={link.to} className="hover:text-primary-soft">{link.label}</a></span>)}
           </div>)}
         </div>
@@ -122,8 +122,8 @@ function Footer({footerRef}:{footerRef:React.RefObject<HTMLElement|null>}) {
           <p className="footer-contact justify-center text-sm md:justify-start"><Clock className="text-primary-soft" />{footerContact.hours}</p>
         </div>
       </div>
-      <p className="site-container pb-4 text-center text-sm leading-6 text-background/60">{footerContact.serviceAreas}</p>
-      <div className="border-t border-background/10 py-3 text-center text-xs text-background/60">&copy; 2026 RB International Belting & Automation. All rights reserved.</div>
+      <p className="site-container pb-3 text-center text-[.8125rem] leading-[1.5] text-background/60">{footerContact.serviceAreas}</p>
+      <div className="border-t border-background/10 py-2.5 text-center text-xs text-background/60">&copy; 2026 RB International Belting & Automation. All rights reserved.</div>
     </footer>
   );
 }

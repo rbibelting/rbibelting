@@ -1,24 +1,18 @@
-import powerDivisionPhoto from "@/assets/power-transmission.jpg";
-import automationDivisionPhoto from "@/assets/automation.jpg";
-import adhesivesDivisionPhoto from "@/assets/adhesives.jpg";
 import classicalDivisionPhoto from "@/assets/v-belts/classical-clean.jpg";
 import coggedDivisionPhoto from "@/assets/v-belts/cogged-clean.jpg";
-import factoryPhoto from "@/assets/factory-hero.jpg";
 import bandedPhoto from "@/assets/v-belts/banded-clean.jpg";
 import narrowPhoto from "@/assets/v-belts/narrow-clean.jpg";
 import rbInternationalLogo from "@/assets/rb-logo.jpeg";
 
 const imageDescriptions: Record<string, string> = {
-  [factoryPhoto]: "Industrial factory floor with CNC machines and component assembly lines",
-  [powerDivisionPhoto]: "Industrial power transmission belts running over metal pulleys beside an electric motor",
-  [automationDivisionPhoto]: "Gantry robot and linear motion equipment on an automated manufacturing line",
-  [adhesivesDivisionPhoto]: "Technician applying industrial adhesive to a threaded fastener beside gears and a gearbox",
-  "/division-images/automation-linear-motion.jpg": "Ball screw assembly and linear guideways with sliding carriages on a CNC machine bed",
-  "/division-images/automation-robotics.jpg": "Industrial robotic arm handling a metal component on an automated assembly line",
-  "/division-images/automation-servo-drives.jpg": "Servo motors and electronic servo drives for industrial motion control",
-  "/division-images/adhesives-threadlocking.jpg": "Blue threadlocking adhesive applied to a metal bolt beside machined flanges",
-  "/division-images/adhesives-epoxy-bonding.jpg": "Two-part structural adhesive dispensed through a mixing nozzle along a metal joint",
-  "/division-images/adhesives-tapes-sealants.jpg": "Industrial sealing tapes and sealant cartridge beside a bolted pipe flange",
+  "/product-images/linear-motion/ball-screws-1280.webp": "Industrial ball screws for precision linear motion",
+  "/product-images/linear-motion/linear-guideways-1280.webp": "Linear guideways and carriages for automation equipment",
+  "/product-images/robotics/tgp-series-1280.webp": "TGP precision positioning stage for industrial automation",
+  "/product-images/motors-and-drives/servo-motors-and-drives-1280.webp": "Industrial servo motors and drives",
+  "/product-images/threadlockers/high-strength-threadlockers-1280.webp": "High strength industrial threadlocking adhesive",
+  "/product-images/threadlockers/medium-strength-threadlockers-1280.webp": "Medium strength threadlocking adhesive",
+  "/product-images/structural/two-part-epoxies-1280.webp": "Two part structural epoxy adhesives",
+  "/product-images/sealants/rtv-silicone-sealants-1280.webp": "Industrial RTV silicone sealants",
   [classicalDivisionPhoto]: "Classical wrapped V-belts for industrial drive systems",
   [coggedDivisionPhoto]: "Raw-edge cogged V-belts with notched inner profiles",
   [bandedPhoto]: "Banded V-belts with multiple belt sections joined together",
@@ -54,13 +48,13 @@ export function pageImage(path: string) {
   const section = path.split("/")[1];
   const src =
     section === "power-transmission"
-      ? powerDivisionPhoto
+      ? "/product-images/v-belts/classical-v-belts.jpg"
       : section === "automation"
-        ? automationDivisionPhoto
+        ? "/product-images/linear-motion/linear-guideways-1280.webp"
         : section === "adhesives"
-          ? adhesivesDivisionPhoto
-          : factoryPhoto;
-  return { src, alt: getImageAlt(src, "Industrial production equipment") };
+          ? "/product-images/threadlockers/high-strength-threadlockers-1280.webp"
+          : "/product-images/conveyor-belts/rubber-conveyor-belt-1280.webp";
+  return { src, alt: getImageAlt(src, "Industrial product range") };
 }
 
 export type PillarKey = "power-transmission" | "automation" | "adhesives";
@@ -74,7 +68,6 @@ export const divisionCards: Record<PillarKey, { title: string; description: stri
     description: "V-belts, timing belts, conveyor belts, pulleys and couplings. Fenner, Gates, Optibelt, PIX, Continental and more.",
     linkLabel: "Explore Belts & Drives",
     photos: [
-      { src: powerDivisionPhoto, alt: "Industrial drive belts and pulleys on production machinery", label: "Drive Belts & Pulleys" },
       { src: classicalDivisionPhoto, alt: "Classical wrapped V-belts for industrial drives", label: "Classical V-Belts", fit: "contain" },
       { src: coggedDivisionPhoto, alt: "Raw-edge cogged drive belts", label: "Cogged V-Belts", fit: "contain" },
       { src: "/product-images/conveyor-belts/rubber-conveyor-belt.png", alt: "Rubber conveyor belting", label: "Rubber Conveyor Belts", fit: "contain" },
@@ -86,10 +79,10 @@ export const divisionCards: Record<PillarKey, { title: string; description: stri
     description: "Ball screws, linear guideways, servo motors, CNC controllers and gantry robots for precision automation.",
     linkLabel: "Explore Automation",
     photos: [
-      { src: automationDivisionPhoto, alt: "Automated industrial production equipment" },
-      { src: "/division-images/automation-linear-motion.jpg", alt: "Linear guides and ball screw assembly" },
-      { src: "/division-images/automation-robotics.jpg", alt: "Robotic arm at an automated assembly cell" },
-      { src: "/division-images/automation-servo-drives.jpg", alt: "Servo motors and precision motion-control drives" },
+      { src: "/product-images/linear-motion/ball-screws-1280.webp", alt: "Industrial ball screws for precision linear motion", label: "Ball Screws" },
+      { src: "/product-images/linear-motion/linear-guideways-1280.webp", alt: "Linear guideways and carriages for automation equipment", label: "Linear Guideways" },
+      { src: "/product-images/robotics/tgp-series-1280.webp", alt: "TGP precision positioning stage for industrial automation", label: "Precision Positioning Stages" },
+      { src: "/product-images/motors-and-drives/servo-motors-and-drives-1280.webp", alt: "Industrial servo motors and drives", label: "Servo Motors & Drives" },
     ],
   },
   adhesives: {
@@ -97,10 +90,10 @@ export const divisionCards: Record<PillarKey, { title: string; description: stri
     description: "Loctite, Pidilite, 3M, Anabond, WD-40. Threadlockers, sealants, epoxies and MRO chemicals.",
     linkLabel: "Explore Adhesives",
     photos: [
-      { src: adhesivesDivisionPhoto, alt: "Industrial maintenance and repair workbench" },
-      { src: "/division-images/adhesives-threadlocking.jpg", alt: "Threadlocking adhesive applied to a metal fastener" },
-      { src: "/division-images/adhesives-epoxy-bonding.jpg", alt: "Structural epoxy bonding of metal components" },
-      { src: "/division-images/adhesives-tapes-sealants.jpg", alt: "Industrial tapes and sealants for maintenance" },
+      { src: "/product-images/threadlockers/high-strength-threadlockers-1280.webp", alt: "High strength industrial threadlocking adhesive", label: "High Strength Threadlockers" },
+      { src: "/product-images/threadlockers/medium-strength-threadlockers-1280.webp", alt: "Medium strength threadlocking adhesive", label: "Medium Strength Threadlockers" },
+      { src: "/product-images/structural/two-part-epoxies-1280.webp", alt: "Two part structural epoxy adhesives", label: "Structural Epoxies" },
+      { src: "/product-images/sealants/rtv-silicone-sealants-1280.webp", alt: "Industrial RTV silicone sealants", label: "RTV Silicone Sealants" },
     ],
   },
 };
@@ -258,13 +251,13 @@ export const productVideoShowcases: Record<string, readonly ProductVideo[]> = {
   "automation/linear-motion": [
     {
       src: "/product-videos/conveyor-equipment-demo.mp4",
-      poster: "/product-videos/conveyor-equipment-demo.jpg",
+      poster: "/product-images/conveyor-belts/rubber-conveyor-belt-1280.webp",
       title: "Equipment demonstration",
       duration: "15 sec",
     },
     {
       src: "/product-videos/magnetic-levitation-conveyor.mp4",
-      poster: "/product-videos/magnetic-levitation-conveyor.jpg",
+      poster: "/product-images/linear-motion/linear-guideways-1280.webp",
       title: "Magnetic levitation conveyor",
       duration: "13 sec",
     },
@@ -830,15 +823,15 @@ export const industryCoverage = {
   instruction: "Select an industry to explore how we support your production.",
 };
 export const industries = [
-  { name: "Automotive & Auto Components", image: "/industry-sector-images/automotive-auto-components.jpg", imageAlt: "Technician operating a control panel beside an automated automotive components assembly line", imageWidth: 1920, imageHeight: 1071, description: "High-torque drive belts, precision linear motion, and structural adhesives for automotive assembly lines." },
-  { name: "Food & Beverage Processing", image: "/industry-sector-images/food-beverage.jpg", imageAlt: "Food and beverage production line with blue conveyor belts and stainless steel processing equipment", imageWidth: 1200, imageHeight: 896, description: "Washdown-ready PU/PVC conveyor belts, timing drives, and food-safe sealants for hygienic processing lines." },
-  { name: "Packaging & Printing", image: "/industry-sector-images/packaging-printing.jpg", imageAlt: "Packaging production line carrying printed cartons through automated machinery", imageWidth: 1200, imageHeight: 896, description: "Precision timing belts, servo motion systems, and fast-curing adhesives for continuous packaging and print runs." },
-  { name: "Pharmaceuticals", image: "/industry-sector-images/pharmaceuticals.jpg", imageAlt: "Pharmaceutical production line with a cleanroom operator handling containers on a conveyor", imageWidth: 1200, imageHeight: 896, description: "Contamination-free conveyor belts, compact linear actuators, and cleanroom MRO solutions for pharma plants." },
-  { name: "Textiles & Garments", image: "/industry-sector-images/textiles-garments.jpg", imageAlt: "Textile mill with rows of spinning machinery, yarn and an operator at a control panel", imageWidth: 1200, imageHeight: 896, description: "High-grip flat belts, multi-ribbed V-belts, and drive pulleys built for continuous 24/7 textile mill operation." },
-  { name: "Cement, Mining & Heavy Industries", image: "/industry-sector-images/cement-mining-heavy-industries.jpg", imageAlt: "Industrial conveyor transporting aggregate through a heavy processing facility", imageWidth: 1200, imageHeight: 896, description: "Abrasion-resistant rubber conveyor belts, heavy V-drives, and high-load couplings for bulk material handling." },
-  { name: "Logistics, Warehousing & Material Handling", image: "/industry-sector-images/logistics-warehousing-material-handling.jpg", imageAlt: "Warehouse sorting system with green conveyor belts, rollers and parcels", imageWidth: 1200, imageHeight: 896, description: "High-friction incline conveyor belts, geared motors, and roller-drive components for automated sorting hubs." },
-  { name: "OEM & Machine Building", image: "/industry-sector-images/oem-machine-building.jpg", imageAlt: "Machine builder inspecting a linear motion assembly on an industrial machine", imageWidth: 1920, imageHeight: 1071, description: "Complete motion control packages, synchronous drives, and threadlockers for custom machine builders." },
-  { name: "General Manufacturing & Job Shops", image: "/industry-sector-images/general-manufacturing-job-shops.jpg", imageAlt: "Machinist inspecting a metal component beside CNC machines in a job shop", imageWidth: 1920, imageHeight: 1071, description: "Everyday replacement V-belts, taper-lock pulleys, and industrial MRO adhesives for rapid plant maintenance." },
+  { name: "Automotive & Auto Components", image: "/product-images/timing-belts/eagle-pd-timing-belts.jpg", imageAlt: "Eagle PD timing belts for automotive and component drives", imageWidth: 1200, imageHeight: 896, description: "High-torque drive belts, precision linear motion, and structural adhesives for automotive assembly lines." },
+  { name: "Food & Beverage Processing", image: "/product-images/conveyor-belts/pu-pvc-conveyor-belt-1280.webp", imageAlt: "PU and PVC conveyor belt range for food and beverage processing", imageWidth: 1200, imageHeight: 896, description: "Washdown-ready PU/PVC conveyor belts, timing drives, and food-safe sealants for hygienic processing lines." },
+  { name: "Packaging & Printing", image: "/product-images/timing-belts/black-toothed-belts.jpg", imageAlt: "Toothed timing belts for packaging and printing machinery", imageWidth: 1200, imageHeight: 896, description: "Precision timing belts, servo motion systems, and fast-curing adhesives for continuous packaging and print runs." },
+  { name: "Pharmaceuticals", image: "/product-images/conveyor-belts/plastic-modular-conveyor-belt-1280.webp", imageAlt: "Plastic modular conveyor belt for pharmaceutical production lines", imageWidth: 1200, imageHeight: 896, description: "Contamination-free conveyor belts, compact linear actuators, and cleanroom MRO solutions for pharma plants." },
+  { name: "Textiles & Garments", image: "/product-images/flat-belts/flat-transmission-belt.jpg", imageAlt: "Flat transmission belt range for textile machinery", imageWidth: 1200, imageHeight: 896, description: "High-grip flat belts, multi-ribbed V-belts, and drive pulleys built for continuous 24/7 textile mill operation." },
+  { name: "Cement, Mining & Heavy Industries", image: "/product-images/conveyor-belts/rubber-conveyor-belt-1280.webp", imageAlt: "Heavy-duty rubber conveyor belt range for bulk material handling", imageWidth: 1200, imageHeight: 896, description: "Abrasion-resistant rubber conveyor belts, heavy V-drives, and high-load couplings for bulk material handling." },
+  { name: "Logistics, Warehousing & Material Handling", image: "/product-images/conveyor-belts/cleated-conveyor-belt-1280.webp", imageAlt: "Cleated conveyor belt range for material handling", imageWidth: 1200, imageHeight: 896, description: "High-friction incline conveyor belts, geared motors, and roller-drive components for automated sorting hubs." },
+  { name: "OEM & Machine Building", image: "/product-images/linear-motion/linear-guideways-1280.webp", imageAlt: "Linear guideways for OEM machinery and automation", imageWidth: 1200, imageHeight: 896, description: "Complete motion control packages, synchronous drives, and threadlockers for custom machine builders." },
+  { name: "General Manufacturing & Job Shops", image: "/product-images/v-belts/classical-v-belts.jpg", imageAlt: "Classical V-belts for manufacturing and job shop machinery", imageWidth: 1200, imageHeight: 896, description: "Everyday replacement V-belts, taper-lock pulleys, and industrial MRO adhesives for rapid plant maintenance." },
 ] as const;
 export const navItems=[{label:"Home",to:"/"},{label:"About",to:"/about"},{label:"Power Transmission",to:"/power-transmission"},{label:"Automation",to:"/automation"},{label:"Adhesives",to:"/adhesives"},{label:"Contact",to:"/contact"},{label:"Franchise",to:"/franchise"}] as const;
 export const productTypeAnchor = (name: string) => `type-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;

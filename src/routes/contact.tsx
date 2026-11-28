@@ -5,7 +5,6 @@ import { EnquiryForm } from "@/components/enquiry";
 import { PageHero } from "@/components/page-sections";
 import { breadcrumbSchema, pageHead } from "@/lib/seo";
 import {mainPageSeo,  contactFaqs, footerContact, formContent } from "@/lib/site-data";
-import hero from "@/assets/factory-hero.jpg";
 
 export const faqs = contactFaqs;
 
@@ -42,7 +41,7 @@ function Contact() {
         kicker="Send your requirement"
         title="Talk directly to our industrial supply team."
         description="Share the part number, brand, size, drawing or machine application. Choose email or WhatsApp to send your details."
-        image={hero}
+        image="/product-images/threadlockers/high-strength-threadlockers-1280.webp"
         compact
       />
       <section id="contact-enquiry-form" className="pattern-shared scroll-mt-24 py-20">

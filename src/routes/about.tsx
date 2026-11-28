@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/page-sections";
 import { pageHead, breadcrumbSchema } from "@/lib/seo";
-import hero from "@/assets/factory-hero.jpg";
 export const Route = createFileRoute("/about")({
   head: () =>
     pageHead(
@@ -34,7 +33,7 @@ function About() {
         kicker="Our journey"
         title={aboutHeroContent.title}
         description={aboutHeroContent.description}
-        image={hero}
+        image="/product-images/linear-motion/linear-guideways-1280.webp"
         compact
       />
       <section className="pattern-shared bg-muted py-20">

@@ -110,12 +110,19 @@ export function ProductGallery({
           {photos.map((item, index) => (
             <CarouselItem
               key={item.image}
-              className={compact ? "relative h-full bg-muted/25 pl-0" : "relative aspect-[16/9] pl-0"}
+              className={
+                compact ? "relative h-full bg-muted/25 pl-0" : "relative aspect-[16/9] pl-0"
+              }
               aria-hidden={selected !== index}
               aria-label={`${index + 1} of ${photos.length}: ${item.title}`}
             >
               <div className="absolute inset-0">
-                <ProductPhoto src={item.image} alt={item.alt ?? item.title} fit="contain" />
+                <ProductPhoto
+                  src={item.image}
+                  alt={item.alt ?? item.title}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fit="contain"
+                />
               </div>
             </CarouselItem>
           ))}
